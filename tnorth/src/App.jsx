@@ -4,7 +4,6 @@ import { HelmetProvider } from 'react-helmet-async';
 import Layout from './components/Layout';
 import ErrorBoundary from './components/ErrorBoundary';
 import { ThemeProvider } from './context/ThemeContext';
-import { Analytics } from '@vercel/analytics/react';
 import ScrollToTop from './components/ScrollToTop';
 
 // Lazy loading for code splitting
@@ -55,7 +54,6 @@ function App() {
               </Routes>
             </Suspense>
           </BrowserRouter>
-          <Analytics />
         </ErrorBoundary>
       </HelmetProvider>
     </ThemeProvider>
