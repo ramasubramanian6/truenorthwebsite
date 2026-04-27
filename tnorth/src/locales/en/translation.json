@@ -2,30 +2,33 @@
   "nav": {
     "home": "Home",
     "services": "Services",
-    "projects": "Projects",
     "about": "About",
     "contact": "Contact",
-    "blog": "Blog"
+    "blog": "Insights",
+    "testimonials": "Testimonials",
+    "careers": "Careers"
   },
   "hero": {
     "title1": "ELEVATING BUSINESSES.",
     "title2": "BUILDING FUTURES.",
-    "subtitle": "Delivering scalable digital solutions and SaaS support for modern businesses. Charting the digital course for your success.",
+    "subtitle": "Delivering scalable digital solutions and SaaS support for modern businesses — from strategy to execution.",
     "ctaPrimary": "Get Started",
-    "ctaSecondary": "Request a Quote"
+    "ctaSecondary": "Explore Services"
   },
   "services": {
     "heading": "Our Services",
-    "subheading": "Comprehensive digital solutions engineered for growth and reliability."
+    "subheading": "End-to-end digital solutions built on our four-pillar approach: Consult, Build, Test, and Implement."
   },
   "about": {
     "mission": "Our Mission",
-    "missionDesc": "To democratize high-tier software solutions, making elite engineering accessible...",
+    "missionDesc": "To make elite-tier software engineering accessible and cost-effective for modern businesses worldwide.",
     "vision": "Our Vision",
-    "global": "Global Reach"
+    "visionDesc": "To become the globally trusted digital partner for scalable SaaS products and enterprise-grade web solutions.",
+    "global": "Global Reach",
+    "globalDesc": "Rooted in India, built for the world. Our delivery standards, communication, and infrastructure are engineered for a diverse, international clientele."
   },
   "footer": {
-    "desc": "Global Digital Solutions for Modern Businesses.",
+    "desc": "End-to-end digital solutions — from strategy to execution.",
     "company": "COMPANY",
     "contact": "CONTACT",
     "rights": "All rights reserved."

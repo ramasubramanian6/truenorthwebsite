@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 
-const AnimatedSection = ({ children, className = '', delay = 0, animationType = 'fadeUp' }) => {
+const AnimatedSection = ({ children, className = '', delay = 0, animationType = 'fadeUp', ...props }) => {
   const shouldReduceMotion = useReducedMotion();
 
   const variants = {
@@ -21,9 +21,10 @@ const AnimatedSection = ({ children, className = '', delay = 0, animationType = 
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        viewport={{ once: true, margin: "-50px" }}
+        viewport={{ once: true, margin: "-10px" }}
         className={className}
         transition={{ duration: 0.3 }}
+        {...props}
       >
         {children}
       </motion.div>
@@ -37,6 +38,7 @@ const AnimatedSection = ({ children, className = '', delay = 0, animationType = 
       whileInView="visible"
       viewport={{ once: true, margin: "-50px" }}
       className={className}
+      {...props}
     >
       {children}
     </motion.div>

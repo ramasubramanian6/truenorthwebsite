@@ -2,30 +2,33 @@
   "nav": {
     "home": "Inicio",
     "services": "Servicios",
-    "projects": "Proyectos",
     "about": "Nosotros",
     "contact": "Contacto",
-    "blog": "Blog"
+    "blog": "Ideas",
+    "testimonials": "Testimonios",
+    "careers": "Carreras"
   },
   "hero": {
     "title1": "IMPULSANDO EMPRESAS.",
     "title2": "CONSTRUYENDO FUTUROS.",
-    "subtitle": "Brindando soluciones digitales escalables y soporte SaaS para empresas modernas. Trazando el rumbo digital hacia su éxito.",
+    "subtitle": "Brindando soluciones digitales escalables y soporte SaaS para empresas modernas — de la estrategia a la ejecución.",
     "ctaPrimary": "Empezar",
-    "ctaSecondary": "Solicitar Cotización"
+    "ctaSecondary": "Ver Servicios"
   },
   "services": {
     "heading": "Nuestros Servicios",
-    "subheading": "Soluciones digitales integrales diseñadas para el crecimiento y la confiabilidad."
+    "subheading": "Soluciones digitales completas basadas en nuestro enfoque de cuatro pilares: Consultar, Construir, Probar e Implementar."
   },
   "about": {
     "mission": "Nuestra Misión",
-    "missionDesc": "Democratizar soluciones de software de alto nivel, haciendo que la ingeniería de élite sea accesible...",
+    "missionDesc": "Hacer que la ingeniería de software de élite sea accesible y rentable para las empresas modernas de todo el mundo.",
     "vision": "Nuestra Visión",
-    "global": "Alcance Global"
+    "visionDesc": "Convertirnos en el socio digital de confianza a nivel mundial para productos SaaS escalables y soluciones web de nivel empresarial.",
+    "global": "Alcance Global",
+    "globalDesc": "Con raíces en India, construido para el mundo. Nuestros estándares de entrega, comunicación e infraestructura están diseñados para una clientela internacional diversa."
   },
   "footer": {
-    "desc": "Soluciones Digitales Globales para Empresas Modernas.",
+    "desc": "Soluciones digitales integrales — de la estrategia a la ejecución.",
     "company": "COMPAÑÍA",
     "contact": "CONTACTO",
     "rights": "Todos los derechos reservados."

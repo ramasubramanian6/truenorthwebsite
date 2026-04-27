@@ -59,6 +59,11 @@ html {
   scroll-behavior: smooth;
 }
 
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }
