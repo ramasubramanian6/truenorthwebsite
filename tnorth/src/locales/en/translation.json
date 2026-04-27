@@ -1,0 +1,33 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact",
+    "blog": "Blog"
+  },
+  "hero": {
+    "title1": "Global Digital Solutions for",
+    "title2": "Modern Businesses",
+    "subtitle": "Cost-effective, high-quality digital services for startups and growing companies worldwide.",
+    "ctaPrimary": "Get Started",
+    "ctaSecondary": "Request a Quote"
+  },
+  "services": {
+    "heading": "Our Services",
+    "subheading": "Comprehensive digital solutions engineered for growth and reliability."
+  },
+  "about": {
+    "mission": "Our Mission",
+    "missionDesc": "To democratize high-tier software solutions, making elite engineering accessible...",
+    "vision": "Our Vision",
+    "global": "Global Reach"
+  },
+  "footer": {
+    "desc": "Global Digital Solutions for Modern Businesses.",
+    "company": "COMPANY",
+    "contact": "CONTACT",
+    "rights": "All rights reserved."
+  }
+}

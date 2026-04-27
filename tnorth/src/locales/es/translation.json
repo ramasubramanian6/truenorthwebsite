@@ -1,0 +1,33 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "projects": "Proyectos",
+    "about": "Nosotros",
+    "contact": "Contacto",
+    "blog": "Blog"
+  },
+  "hero": {
+    "title1": "Soluciones Digitales Globales para",
+    "title2": "Empresas Modernas",
+    "subtitle": "Servicios digitales rentables y de alta calidad para startups y empresas en crecimiento a nivel mundial.",
+    "ctaPrimary": "Empezar",
+    "ctaSecondary": "Solicitar Cotización"
+  },
+  "services": {
+    "heading": "Nuestros Servicios",
+    "subheading": "Soluciones digitales integrales diseñadas para el crecimiento y la confiabilidad."
+  },
+  "about": {
+    "mission": "Nuestra Misión",
+    "missionDesc": "Democratizar soluciones de software de alto nivel, haciendo que la ingeniería de élite sea accesible...",
+    "vision": "Nuestra Visión",
+    "global": "Alcance Global"
+  },
+  "footer": {
+    "desc": "Soluciones Digitales Globales para Empresas Modernas.",
+    "company": "COMPAÑÍA",
+    "contact": "CONTACTO",
+    "rights": "Todos los derechos reservados."
+  }
+}
