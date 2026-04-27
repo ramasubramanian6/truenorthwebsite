@@ -31,10 +31,7 @@ const Header = () => {
   const navLinks = [
     { name: t('nav.home'),         path: '/' },
     { name: t('nav.services'),     path: '/services' },
-    { name: 'Case Studies',        path: '/case-studies' },
     { name: t('nav.about'),        path: '/about' },
-    { name: t('nav.testimonials'), path: '/testimonials' },
-    { name: t('nav.blog'),         path: '/blog' },
     { name: t('nav.careers'),      path: '/careers' },
     { name: t('nav.contact'),      path: '/contact' },
   ];

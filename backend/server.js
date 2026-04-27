@@ -16,6 +16,7 @@ app.use(cors({
   origin: [
     process.env.FRONTEND_URL || 'http://localhost:5173',
     'https://truenorthitc.com',
+    'https://truenorthwebsite-fjxoxhejw-truenorthspaces-8691s-projects.vercel.app',
     'http://localhost:5173',
   ],
   credentials: true,
@@ -29,6 +30,15 @@ app.use('/api/testimonials', testimonialRoutes);
 app.use('/api/blog', blogRoutes);
 app.use('/api/careers', careerRoutes);
 app.use('/api/admin', adminRoutes);
+
+// Root health check
+app.get('/', (req, res) => {
+  res.json({ 
+    success: true, 
+    message: 'True North IT Solutions API is live',
+    timestamp: new Date()
+  });
+});
 
 // Health check
 app.get('/api/health', (req, res) => {
