@@ -7,7 +7,7 @@ export const generateOrganizationSchema = () => ({
   url: BASE_URL,
   logo: `${BASE_URL}/logo.png`,
   description:
-    'True North IT Consultant – World-class IT consulting, software development, QA testing, and managed IT support. Headquartered in Tirunelveli, serving Chennai, Dubai, and global clients.',
+    'True North IT Consultant – World-class IT consulting, software development, QA testing, and managed IT support serving global clients.',
   foundingDate: '1999',
   sameAs: [
     'https://www.linkedin.com/company/truenorth-it',
@@ -21,17 +21,7 @@ export const generateOrganizationSchema = () => ({
     areaServed: ['IN', 'AE', 'GB', 'US', 'SG'],
     availableLanguage: ['English', 'Tamil'],
   },
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Tirunelveli',
-    addressRegion: 'Tamil Nadu',
-    addressCountry: 'IN',
-  },
   areaServed: [
-    { '@type': 'City', name: 'Tirunelveli' },
-    { '@type': 'City', name: 'Chennai' },
-    { '@type': 'City', name: 'Dubai' },
-    { '@type': 'Country', name: 'India' },
     { '@type': 'AdministrativeArea', name: 'Global' },
   ],
 });
@@ -44,27 +34,9 @@ export const generateLocalBusinessSchema = () => ({
   logo: `${BASE_URL}/logo.png`,
   image: `${BASE_URL}/logo.png`,
   description:
-    'True North IT Consultant provides expert IT consulting, software development, QA testing, and managed support in Tirunelveli, Chennai, Dubai, and globally.',
+    'True North IT Consultant provides expert IT consulting, software development, QA testing, and managed support globally.',
   telephone: '+91-95665-56056',
   email: 'admin@truenorthitc.com',
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Tirunelveli',
-    addressRegion: 'Tamil Nadu',
-    postalCode: '627001',
-    addressCountry: 'IN',
-  },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: '8.7139',
-    longitude: '77.7567',
-  },
-  openingHoursSpecification: {
-    '@type': 'OpeningHoursSpecification',
-    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-    opens: '09:00',
-    closes: '18:00',
-  },
   priceRange: '$$',
   currenciesAccepted: 'INR, USD, AED',
   areaServed: 'Worldwide',
@@ -76,7 +48,7 @@ export const generateWebsiteSchema = () => ({
   name: 'True North IT Consultant',
   url: BASE_URL,
   description:
-    'IT Consultant & Software Development Company in Tirunelveli – Serving Chennai, Dubai, and global clients with 25+ years of engineering excellence.',
+    'IT Consultant & Software Development Company – Serving global clients with 25+ years of engineering excellence.',
   potentialAction: {
     '@type': 'SearchAction',
     target: `${BASE_URL}/blog?q={search_term_string}`,
@@ -119,18 +91,9 @@ export const generateServiceSchema = (service) => ({
     '@type': 'LocalBusiness',
     name: 'True North IT Consultant',
     url: BASE_URL,
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Tirunelveli',
-      addressRegion: 'Tamil Nadu',
-      addressCountry: 'IN',
-    },
     telephone: '+91-95665-56056',
   },
   areaServed: [
-    { '@type': 'City', name: 'Tirunelveli' },
-    { '@type': 'City', name: 'Chennai' },
-    { '@type': 'City', name: 'Dubai' },
     { '@type': 'AdministrativeArea', name: 'Global' },
   ],
   hasOfferCatalog: {

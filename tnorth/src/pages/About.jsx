@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import AnimatedSection from '../components/AnimatedSection';
 import {
   Globe, Target, Lightbulb, CheckCircle2, Code, ShieldCheck, Rocket,
-  Award, Users, TrendingUp, Layers
+  Award, Users, TrendingUp, Layers, MapPin
 } from 'lucide-react';
 import { generateBreadcrumbSchema } from '../utils/seoSchema';
 
@@ -17,7 +17,7 @@ const About = () => {
         <title>About True North | IT Consultancy Backed by 25+ Years of Leadership</title>
         <meta
           name="description"
-          content="True North is a technology consultancy specialising in scalable digital solutions and SaaS products, backed by leadership with 25+ years of IT industry expertise. Headquartered in Tirunelveli, India."
+          content="True North is a technology consultancy specialising in scalable digital solutions and SaaS products, backed by leadership with 25+ years of IT industry expertise."
         />
         <script type="application/ld+json">
           {JSON.stringify(generateBreadcrumbSchema([
@@ -49,7 +49,7 @@ const About = () => {
             design, and enterprise delivery to every engagement.
           </p>
           <p className="text-lg text-text-secondary leading-relaxed">
-            Headquartered in Tirunelveli, Tamil Nadu, India, we serve clients across the UK,
+            Operating with a global-first mindset, we serve clients across the UK,
             Europe, North America, and Asia-Pacific with the same commitment to quality, clarity,
             and measurable outcomes.
           </p>
@@ -86,8 +86,8 @@ const About = () => {
             <p className="text-xs text-text-secondary">Leadership Exp.</p>
           </div>
           <div className="absolute bottom-4 right-4 glass rounded-xl px-4 py-3 shadow-lg">
-            <p className="text-xl font-black text-brand-red">150+</p>
-            <p className="text-xs text-text-secondary">Global Clients</p>
+            <p className="text-xl font-black text-brand-red">Founders</p>
+            <p className="text-xs text-text-secondary">Led Engineering</p>
           </div>
         </AnimatedSection>
       </div>
@@ -151,9 +151,9 @@ const About = () => {
               },
               {
                 icon: Users,
-                badge: '150+ Clients',
-                title: 'Global Client Portfolio',
-                desc: 'Trusted by organisations across the UK, Europe, North America, and Asia-Pacific.',
+                badge: 'High Precision',
+                title: 'Quality Focused',
+                desc: 'Delivering excellence through rigorous engineering standards and founder-level oversight.',
                 color: 'text-blue-400',
                 bg: 'rgba(96,165,250,0.07)',
                 border: 'border-blue-400/30',

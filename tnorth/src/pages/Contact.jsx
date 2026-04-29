@@ -195,18 +195,18 @@ const Contact = () => {
             <AnimatedSection delay={0.3}>
               <div className="glass p-8 rounded-2xl border border-border-subtle relative overflow-hidden">
                 <div className="absolute top-0 right-0 p-4 opacity-10">
-                  <MapPin size={40} className="text-brand-red" />
+                  <Globe size={40} className="text-brand-red" />
                 </div>
                 <h3 className="text-xs font-black uppercase tracking-[0.3em] text-text-secondary mb-4">Command Center</h3>
-                <p className="text-sm text-text-primary font-bold mb-1">Tirunelveli, Tamil Nadu</p>
-                <p className="text-xs text-text-secondary mb-2">Operations Hub | South India</p>
-                <p className="text-xs text-text-secondary mb-4">Meena plaza, 75/1B STC, 60 Feet Rd, Perumalpuram, Vasantha Nager, Tirunelveli, Tamil Nadu 627007</p>
-                <p className="text-xs text-text-secondary">Phone: 093450 00685</p>
+                <p className="text-sm text-text-primary font-bold mb-1">Global Operations Hub</p>
+                <p className="text-xs text-text-secondary mb-2">Central Engineering | Distributed Teams</p>
+                <p className="text-xs text-text-secondary mb-4">We operate with a decentralized, global-first model, ensuring 24/7 availability and seamless collaboration across all time zones.</p>
+                <p className="text-xs text-text-secondary">Official Channel: admin@truenorthitc.com</p>
 
                 <div className="mt-8 pt-8 border-t border-border-subtle">
-                  <a href="https://maps.app.goo.gl/G9TQ72bragN6HYju7" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-brand-red font-bold text-xs uppercase tracking-widest hover:underline">
-                    View on Satellite <ExternalLink size={12} />
-                  </a>
+                  <Link to="/about" className="flex items-center gap-2 text-brand-red font-bold text-xs uppercase tracking-widest hover:underline">
+                    Learn about our reach <ArrowRight size={12} />
+                  </Link>
                 </div>
               </div>
             </AnimatedSection>
