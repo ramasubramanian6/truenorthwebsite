@@ -4,7 +4,8 @@ import { Menu, X, Sun, Moon, Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '../context/ThemeContext';
-import logo from '../assets/logo.png';
+
+const logo = '/logo.png';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -51,7 +52,7 @@ const Header = () => {
             <img
               src={logo}
               alt="True North IT Consultant"
-              width="150"
+              width="27"
               height="48"
               className={`h-12 w-auto object-contain transition-all duration-500 group-hover:scale-105 ${
                 theme === 'dark' ? 'brightness-0 invert' : ''

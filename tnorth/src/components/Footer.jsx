@@ -5,7 +5,8 @@ import { Mail, Phone, MapPin } from 'lucide-react';
 import { FaLinkedin } from 'react-icons/fa6';
 import { useTheme } from '../context/ThemeContext';
 import { useSiteSettings } from '../context/SiteSettingsContext';
-import logo from '../assets/logo.png';
+
+const logo = '/logo.png';
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -25,7 +26,7 @@ const Footer = () => {
               <img
                 src={logo}
                 alt="True North IT Consultant"
-                width="150"
+                width="27"
                 height="48"
                 className={`h-12 w-auto object-contain transition-all duration-300 group-hover:scale-105 ${theme === 'dark' ? 'brightness-0 invert' : ''
                   }`}
