@@ -10,7 +10,7 @@ const NotFound = () => {
   return (
     <div className="min-h-[75vh] flex flex-col items-center justify-center px-6 text-center relative overflow-hidden">
       <Helmet>
-        <title>404 Not Found | True North IT Solutions</title>
+        <title>404 Not Found | True North IT Consultant</title>
         <meta name="robots" content="noindex" />
       </Helmet>
 

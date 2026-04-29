@@ -82,7 +82,7 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <title>True North IT Solutions | Global Software Engineering & Digital Infrastructure</title>
+        <title>True North IT Consultant | Global Software Engineering & Digital Infrastructure</title>
         <meta name="description" content="True North IT Consultant – World-class IT consulting, software development, QA testing, and managed IT support serving global clients." />
         <meta name="keywords" content="Software Engineering, Digital Infrastructure, SaaS Development, Cloud Native, React Developers, Node.js Experts" />
         <script type="application/ld+json">

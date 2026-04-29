@@ -94,7 +94,7 @@ const BlogPost = () => {
   return (
     <div className="pt-10 pb-24">
       <Helmet>
-        <title>{post.title} | True North IT Solutions</title>
+        <title>{post.title} | True North IT Consultant</title>
         <meta name="description" content={post.excerpt} />
       </Helmet>
 

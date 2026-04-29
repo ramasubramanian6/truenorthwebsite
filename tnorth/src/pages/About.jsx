@@ -14,7 +14,7 @@ const About = () => {
   return (
     <div className="container mx-auto px-6 max-w-7xl">
       <Helmet>
-        <title>About True North | IT Consultancy Backed by 25+ Years of Leadership</title>
+        <title>About True North IT Consultant | IT Consultancy Backed by 25+ Years of Leadership</title>
         <meta
           name="description"
           content="True North is a technology consultancy specialising in scalable digital solutions and SaaS products, backed by leadership with 25+ years of IT industry expertise."

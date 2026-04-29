@@ -41,7 +41,7 @@ const Careers = () => {
   return (
     <div className="pt-10 pb-24">
       <Helmet>
-        <title>Careers | True North IT Solutions</title>
+        <title>Careers | True North IT Consultant</title>
         <meta name="description" content="Join True North and help us build the next generation of digital infrastructure and SaaS products." />
       </Helmet>
 

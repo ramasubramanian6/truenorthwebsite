@@ -6,8 +6,8 @@ const PrivacyPolicy = () => {
   return (
     <div className="pt-20 pb-24">
       <Helmet>
-        <title>Privacy Policy | True North IT Solutions</title>
-        <meta name="description" content="Privacy Policy and Data Protection guidelines for True North IT Solutions." />
+        <title>Privacy Policy | True North IT Consultant</title>
+        <meta name="description" content="Privacy Policy and Data Protection guidelines for True North IT Consultant." />
       </Helmet>
 
       <section className="container mx-auto px-6 max-w-4xl">
@@ -20,7 +20,7 @@ const PrivacyPolicy = () => {
         <AnimatedSection delay={0.1} className="glass p-8 md:p-12 rounded-3xl border border-border-subtle prose prose-invert max-w-none">
           <h3 className="text-xl font-bold text-text-primary mb-4 mt-8 first:mt-0">1. Information We Collect</h3>
           <p className="text-text-secondary leading-relaxed mb-6">
-            When you engage with True North IT Solutions, we may collect personal information such as your name, email address, company details, and phone number via our contact forms. We also automatically collect standard analytics data (IP address, browser type, pages visited) to improve our service quality.
+            When you engage with True North IT Consultant, we may collect personal information such as your name, email address, company details, and phone number via our contact forms. We also automatically collect standard analytics data (IP address, browser type, pages visited) to improve our service quality.
           </p>
 
           <h3 className="text-xl font-bold text-text-primary mb-4 mt-8">2. How We Use Your Information</h3>

@@ -46,6 +46,7 @@ export const generateWebsiteSchema = () => ({
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'True North IT Consultant',
+  alternateName: ['True North', 'True North IT', 'True North IT Consultant'],
   url: BASE_URL,
   description:
     'IT Consultant & Software Development Company – Serving global clients with 25+ years of engineering excellence.',

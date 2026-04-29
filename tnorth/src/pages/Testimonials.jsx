@@ -77,10 +77,10 @@ const Testimonials = () => {
   return (
     <div className="container mx-auto px-6 max-w-7xl">
       <Helmet>
-        <title>Client Testimonials | True North IT Solutions</title>
+        <title>Client Testimonials | True North IT Consultant</title>
         <meta
           name="description"
-          content="Read what clients say about working with True North IT Solutions — from SaaS delivery to QA testing, deployment, and ongoing support."
+          content="Read what clients say about working with True North IT Consultant — from SaaS delivery to QA testing, deployment, and ongoing support."
         />
       </Helmet>
 

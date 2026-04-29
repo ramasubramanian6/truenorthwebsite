@@ -9,7 +9,7 @@ const CaseStudies = () => {
   return (
     <div className="pt-20 pb-24">
       <Helmet>
-        <title>Case Studies | True North IT Solutions</title>
+        <title>Case Studies | True North IT Consultant</title>
         <meta name="description" content="Explore our portfolio of successful enterprise IT projects, cloud migrations, and custom software development case studies." />
       </Helmet>
 
