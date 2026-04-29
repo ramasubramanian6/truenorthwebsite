@@ -8,8 +8,8 @@
   --color-text-primary: #000000;
   --color-text-secondary: #4B5563; /* gray-600 */
   --color-border-subtle: rgba(0, 0, 0, 0.1);
-  --color-brand-red: #E50914;
-  --color-red-glow: rgba(229, 9, 20, 0.1);
+  --color-brand-red: #D30812;
+  --color-red-glow: rgba(211, 8, 18, 0.1);
 }
 
 .dark {

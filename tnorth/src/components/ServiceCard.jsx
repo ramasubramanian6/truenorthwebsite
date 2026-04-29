@@ -30,9 +30,9 @@ const ServiceCard = ({ id, title, short, icon }) => {
       <Link 
         to={`/services/${id}`}
         className="inline-flex items-center text-brand-red font-bold text-sm tracking-tight hover:text-brand-red/80 transition-colors group/link"
-        aria-label={`Learn more about ${title}`}
+        aria-label={`Learn more about our ${title} services`}
       >
-        <span>Learn more</span>
+        <span>Explore {title}</span>
         <LucideIcons.ArrowRight size={14} className="ml-2 group-hover/link:translate-x-1.5 transition-transform" />
       </Link>
     </motion.div>

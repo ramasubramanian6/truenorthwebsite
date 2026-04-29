@@ -85,6 +85,13 @@ const Home = () => {
         <title>True North IT Consultant | Global Software Engineering & Digital Infrastructure</title>
         <meta name="description" content="True North IT Consultant – World-class IT consulting, software development, QA testing, and managed IT support serving global clients." />
         <meta name="keywords" content="Software Engineering, Digital Infrastructure, SaaS Development, Cloud Native, React Developers, Node.js Experts" />
+        <link rel="canonical" href="https://truenorthitc.com/" />
+        <meta property="og:title" content="True North IT Consultant | Engineering Excellence" />
+        <meta property="og:description" content="World-class IT consulting and software development for global businesses." />
+        <meta property="og:url" content="https://truenorthitc.com/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://truenorthitc.com/logo.png" />
+        <meta name="twitter:card" content="summary_large_image" />
         <script type="application/ld+json">
           {`[
             ${JSON.stringify(generateOrganizationSchema())}, 
@@ -107,7 +114,7 @@ const Home = () => {
           <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-6 lg:gap-8 items-center">
 
             {/* LEFT — Text */}
-            <AnimatedSection>
+            <div className="flex flex-col">
               {/* Eyebrow */}
               <div className="flex items-center gap-3 mb-8">
                 <div className="w-8 h-px bg-brand-red" />
@@ -122,31 +129,32 @@ const Home = () => {
                 <span className="block text-gradient">{t('hero.title2')}</span>
               </h1>
 
-              {/* Subtitle */}
-              <p className="text-lg md:text-xl text-text-secondary mb-10 max-w-lg leading-relaxed">
-                {t('hero.subtitle')}
-              </p>
+              <AnimatedSection delay={0.1}>
+                {/* Subtitle */}
+                <p className="text-lg md:text-xl text-text-secondary mb-10 max-w-lg leading-relaxed">
+                  {t('hero.subtitle')}
+                </p>
 
-              {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-4 mb-14">
-                <Link
-                  to="/contact"
-                  className="px-7 py-4 bg-brand-red text-white font-bold rounded-lg hover:bg-red-700 hover:scale-[1.02] transition-all duration-300 shadow-[0_0_28px_var(--color-red-glow)] text-center relative overflow-hidden group"
-                >
-                  <span className="absolute inset-0 w-1/3 bg-white/15 skew-x-12 -ml-10 group-hover:translate-x-[600px] transition-transform duration-700 pointer-events-none" />
-                  {t('hero.ctaPrimary')} <ArrowRight size={16} className="inline ml-1" />
-                </Link>
-                <Link
-                  to="/services"
-                  className="px-7 py-4 glass border hover:border-brand-red/60 text-text-primary font-bold rounded-lg flex items-center justify-center transition-all duration-300 group"
-                >
-                  {t('hero.ctaSecondary')}
-                  <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform text-brand-red" />
-                </Link>
-              </div>
+                {/* CTAs */}
+                <div className="flex flex-col sm:flex-row gap-4 mb-14">
+                  <Link
+                    to="/contact"
+                    className="px-7 py-4 bg-brand-red text-white font-bold rounded-lg hover:bg-red-700 hover:scale-[1.02] transition-all duration-300 shadow-[0_0_28px_var(--color-red-glow)] text-center relative overflow-hidden group"
+                  >
+                    <span className="absolute inset-0 w-1/3 bg-white/15 skew-x-12 -ml-10 group-hover:translate-x-[600px] transition-transform duration-700 pointer-events-none" />
+                    {t('hero.ctaPrimary')} <ArrowRight size={16} className="inline ml-1" />
+                  </Link>
+                  <Link
+                    to="/services"
+                    className="px-7 py-4 glass border hover:border-brand-red/60 text-text-primary font-bold rounded-lg flex items-center justify-center transition-all duration-300 group"
+                  >
+                    {t('hero.ctaSecondary')}
+                    <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform text-brand-red" />
+                  </Link>
+                </div>
+              </AnimatedSection>
 
-              {/* Trust indicators */}
-              <div className="flex items-center gap-6 flex-wrap">
+              <AnimatedSection delay={0.2} className="flex items-center gap-6 flex-wrap">
                 {[
                   { val: '25+', label: 'Years Exp.' },
                   { val: 'Founder', label: 'Led Engineering' },
@@ -160,8 +168,8 @@ const Home = () => {
                     </div>
                   </React.Fragment>
                 ))}
-              </div>
-            </AnimatedSection>
+              </AnimatedSection>
+            </div>
 
             {/* RIGHT — Dashboard Visual */}
             <AnimatedSection delay={0.3} animationType="fadeIn" className="relative hidden lg:block lg:ml-auto w-full max-w-[480px]">
@@ -264,7 +272,7 @@ const Home = () => {
                   <Icon size={17} className="text-brand-red" />
                 </div>
                 <div className="text-[10px] font-bold text-brand-red mb-0.5">{num}</div>
-                <h4 className="text-sm font-bold text-text-primary mb-0.5">{label}</h4>
+                <h3 className="text-sm font-bold text-text-primary mb-0.5">{label}</h3>
                 <p className="text-[11px] text-text-secondary">{detail}</p>
               </div>
             ))}
@@ -331,7 +339,7 @@ const Home = () => {
                 <p className="text-text-secondary max-w-sm">Precise insights into your operational flows via custom BI dashboards tethered directly to your primary database.</p>
               </div>
               <div className="hidden sm:block w-32 h-32 relative shrink-0">
-                <svg viewBox="0 0 100 100" className="w-full h-full text-brand-red/20 group-hover:text-brand-red/40 transition-colors">
+                <svg width="128" height="128" viewBox="0 0 100 100" className="w-full h-full text-brand-red/20 group-hover:text-brand-red/40 transition-colors">
                   <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="15" strokeDasharray="180" />
                   <circle cx="50" cy="50" r="40" fill="none" stroke="#E50914" strokeWidth="15" strokeDasharray="120 100" />
                 </svg>
@@ -400,7 +408,7 @@ const Home = () => {
                 <div className={`mb-4 mx-auto w-12 h-12 rounded-xl bg-bg-secondary flex items-center justify-center border border-border-subtle group-hover:scale-110 transition-transform duration-500 ${tech.color}`}>
                   <tech.icon size={24} />
                 </div>
-                <h4 className="text-sm font-bold text-text-primary mb-1">{tech.name}</h4>
+                <h3 className="text-sm font-bold text-text-primary mb-1">{tech.name}</h3>
                 <p className="text-[10px] text-text-secondary uppercase tracking-tight font-medium">{tech.desc}</p>
               </AnimatedSection>
             ))}
@@ -430,24 +438,24 @@ const Home = () => {
               <div className="space-y-4 pt-12">
                 <div className="glass p-6 rounded-2xl border border-border-subtle hover:border-brand-red/20 transition-colors">
                   <Cpu size={24} className="text-brand-red mb-4" />
-                  <h4 className="text-text-primary font-bold mb-2">Innovation Lab</h4>
+                  <h3 className="text-text-primary font-bold mb-2">Innovation Lab</h3>
                   <p className="text-xs text-text-secondary">Work on cutting-edge SaaS products.</p>
                 </div>
                 <div className="glass p-6 rounded-2xl border border-border-subtle hover:border-brand-red/20 transition-colors">
                   <Globe size={24} className="text-blue-400 mb-4" />
-                  <h4 className="text-text-primary font-bold mb-2">Global Impact</h4>
+                  <h3 className="text-text-primary font-bold mb-2">Global Impact</h3>
                   <p className="text-xs text-text-secondary">Deliver solutions to clients worldwide.</p>
                 </div>
               </div>
               <div className="space-y-4">
                 <div className="glass p-6 rounded-2xl border border-border-subtle hover:border-brand-red/20 transition-colors">
                   <Layers size={24} className="text-cyan-400 mb-4" />
-                  <h4 className="text-text-primary font-bold mb-2">Modern Stack</h4>
+                  <h3 className="text-text-primary font-bold mb-2">Modern Stack</h3>
                   <p className="text-xs text-text-secondary">React 19, Node.js, and Cloud-Native.</p>
                 </div>
                 <div className="glass p-6 rounded-2xl border border-border-subtle hover:border-brand-red/20 transition-colors">
                   <Zap size={24} className="text-yellow-400 mb-4" />
-                  <h4 className="text-text-primary font-bold mb-2">Rapid Growth</h4>
+                  <h3 className="text-text-primary font-bold mb-2">Rapid Growth</h3>
                   <p className="text-xs text-text-secondary">Accelerated career progression tracks.</p>
                 </div>
               </div>

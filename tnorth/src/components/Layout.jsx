@@ -34,9 +34,7 @@ const Layout = () => {
       <SocialBar />
       <Header />
       <main className="flex-grow pt-20 pb-12 relative z-10">
-        <Suspense fallback={null}>
-          <Outlet />
-        </Suspense>
+        <Outlet />
       </main>
       <Footer />
     </div>

@@ -51,6 +51,8 @@ const Header = () => {
             <img
               src={logo}
               alt="True North IT Consultant"
+              width="150"
+              height="48"
               className={`h-12 w-auto object-contain transition-all duration-500 group-hover:scale-105 ${
                 theme === 'dark' ? 'brightness-0 invert' : ''
               }`}

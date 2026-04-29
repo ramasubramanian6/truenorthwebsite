@@ -11,7 +11,7 @@ const Accordion = ({ title, children, defaultOpen = false }) => {
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex justify-between items-center p-5 focus:outline-none focus:bg-white/5 transition-colors"
       >
-        <h4 className="text-lg font-bold text-text-primary text-left">{title}</h4>
+        <h3 className="text-lg font-bold text-text-primary text-left">{title}</h3>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3 }}

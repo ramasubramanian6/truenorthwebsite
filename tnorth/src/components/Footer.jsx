@@ -25,6 +25,8 @@ const Footer = () => {
               <img
                 src={logo}
                 alt="True North IT Consultant"
+                width="150"
+                height="48"
                 className={`h-12 w-auto object-contain transition-all duration-300 group-hover:scale-105 ${theme === 'dark' ? 'brightness-0 invert' : ''
                   }`}
               />
@@ -54,9 +56,9 @@ const Footer = () => {
 
           {/* Services Links */}
           <div>
-            <h4 className="text-text-primary font-bold mb-6 tracking-wider uppercase text-sm">
+            <h3 className="text-text-primary font-bold mb-6 tracking-wider uppercase text-sm">
               {t('nav.services')}
-            </h4>
+            </h3>
             <ul className="space-y-3">
               <li><Link to="/services/development" className="text-text-secondary hover:text-brand-red transition-colors text-sm">Development</Link></li>
               <li><Link to="/services/qa-testing" className="text-text-secondary hover:text-brand-red transition-colors text-sm">QA Testing</Link></li>
@@ -67,9 +69,9 @@ const Footer = () => {
 
           {/* Company Links */}
           <div>
-            <h4 className="text-text-primary font-bold mb-6 tracking-wider uppercase text-sm">
+            <h3 className="text-text-primary font-bold mb-6 tracking-wider uppercase text-sm">
               {t('footer.company')}
-            </h4>
+            </h3>
             <ul className="space-y-3">
               <li><Link to="/about" className="text-text-secondary hover:text-brand-red transition-colors text-sm">About Us</Link></li>
               <li><Link to="/case-studies" className="text-text-secondary hover:text-brand-red transition-colors text-sm">Case Studies</Link></li>
@@ -84,9 +86,9 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h4 className="text-text-primary font-bold mb-6 tracking-wider uppercase text-sm">
+            <h3 className="text-text-primary font-bold mb-6 tracking-wider uppercase text-sm">
               {t('footer.contact')}
-            </h4>
+            </h3>
             <ul className="space-y-4">
               <li className="flex items-start text-text-secondary text-sm">
                 <MapPin size={16} className="mr-3 text-brand-red shrink-0 mt-0.5" />
