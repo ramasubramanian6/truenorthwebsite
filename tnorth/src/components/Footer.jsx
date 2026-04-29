@@ -4,11 +4,13 @@ import { useTranslation } from 'react-i18next';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { FaLinkedin } from 'react-icons/fa6';
 import { useTheme } from '../context/ThemeContext';
+import { useSiteSettings } from '../context/SiteSettingsContext';
 import logo from '../assets/logo.png';
 
 const Footer = () => {
   const { t } = useTranslation();
   const { theme } = useTheme();
+  const { settings } = useSiteSettings();
 
   const currentYear = new Date().getFullYear();
 
@@ -23,20 +25,15 @@ const Footer = () => {
               <img
                 src={logo}
                 alt="True North Logo"
-                className={`h-12 w-auto object-contain transition-all duration-300 group-hover:scale-105 ${
-                  theme === 'dark' ? 'brightness-0 invert' : ''
-                }`}
+                className={`h-12 w-auto object-contain transition-all duration-300 group-hover:scale-105 ${theme === 'dark' ? 'brightness-0 invert' : ''
+                  }`}
               />
               <div className="flex flex-col leading-tight">
-                <span
-                  className={`font-black uppercase tracking-[0.1em] text-base transition-colors ${
-                    theme === 'dark' ? 'text-white' : 'text-black'
-                  }`}
-                >
+                <span className="font-black uppercase tracking-[0.1em] text-base text-brand-red">
                   True North
                 </span>
                 <span className="text-[9px] tracking-[0.25em] uppercase text-text-secondary font-medium">
-                  IT Solutions
+                  IT Consultant
                 </span>
               </div>
             </Link>
@@ -61,10 +58,10 @@ const Footer = () => {
               {t('nav.services')}
             </h4>
             <ul className="space-y-3">
-              <li><Link to="/services/development"   className="text-text-secondary hover:text-brand-red transition-colors text-sm">Development</Link></li>
-              <li><Link to="/services/qa-testing"    className="text-text-secondary hover:text-brand-red transition-colors text-sm">QA Testing</Link></li>
-              <li><Link to="/services/support"       className="text-text-secondary hover:text-brand-red transition-colors text-sm">Ongoing Support</Link></li>
-              <li><Link to="/services/implementation" className="text-text-secondary hover:text-brand-red transition-colors text-sm">Deploy & Integrate</Link></li>
+              <li><Link to="/services/development" className="text-text-secondary hover:text-brand-red transition-colors text-sm">Development</Link></li>
+              <li><Link to="/services/qa-testing" className="text-text-secondary hover:text-brand-red transition-colors text-sm">QA Testing</Link></li>
+              <li><Link to="/services/support" className="text-text-secondary hover:text-brand-red transition-colors text-sm">Ongoing Support</Link></li>
+              <li><Link to="/services/implementation" className="text-text-secondary hover:text-brand-red transition-colors text-sm">Implementation & Consulting</Link></li>
             </ul>
           </div>
 
@@ -74,12 +71,14 @@ const Footer = () => {
               {t('footer.company')}
             </h4>
             <ul className="space-y-3">
-              <li><Link to="/about"        className="text-text-secondary hover:text-brand-red transition-colors text-sm">About Us</Link></li>
+              <li><Link to="/about" className="text-text-secondary hover:text-brand-red transition-colors text-sm">About Us</Link></li>
               <li><Link to="/case-studies" className="text-text-secondary hover:text-brand-red transition-colors text-sm">Case Studies</Link></li>
-              <li><Link to="/testimonials" className="text-text-secondary hover:text-brand-red transition-colors text-sm">Testimonials</Link></li>
-              <li><Link to="/blog"         className="text-text-secondary hover:text-brand-red transition-colors text-sm">Insights & Blog</Link></li>
-              <li><Link to="/careers"      className="text-text-secondary hover:text-brand-red transition-colors text-sm">Careers</Link></li>
-              <li><Link to="/contact"      className="text-text-secondary hover:text-brand-red transition-colors text-sm">Contact Us</Link></li>
+              {settings.testimonialsVisible && (
+                <li><Link to="/testimonials" className="text-text-secondary hover:text-brand-red transition-colors text-sm">Testimonials</Link></li>
+              )}
+              <li><Link to="/blog" className="text-text-secondary hover:text-brand-red transition-colors text-sm">Insights & Blog</Link></li>
+              <li><Link to="/careers" className="text-text-secondary hover:text-brand-red transition-colors text-sm">Careers</Link></li>
+              <li><Link to="/contact" className="text-text-secondary hover:text-brand-red transition-colors text-sm">Contact Us</Link></li>
             </ul>
           </div>
 
@@ -118,7 +117,7 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="border-t border-border-subtle pt-8 flex flex-col md:flex-row justify-between items-center gap-4 transition-colors">
           <p className="text-text-secondary text-sm text-center md:text-left">
-            &copy; {currentYear} True North IT Solutions. {t('footer.rights')}
+            &copy; {currentYear} True North IT Consultant. {t('footer.rights')}
           </p>
           <div className="flex items-center gap-4 text-xs text-text-secondary">
             <Link to="/privacy" className="hover:text-brand-red transition-colors">Privacy Policy</Link>

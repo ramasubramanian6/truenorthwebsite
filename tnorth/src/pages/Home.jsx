@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSiteSettings } from '../context/SiteSettingsContext';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
@@ -57,6 +58,7 @@ const StarRow = ({ count = 5 }) => (
 /* ──────────────────────────────────────────────────────────── */
 const Home = () => {
   const { t } = useTranslation();
+  const { settings } = useSiteSettings();
 
   const faqs = [
     {
@@ -93,7 +95,7 @@ const Home = () => {
       </Helmet>
 
       {/* ── HERO ───────────────────────────────────────────── */}
-      <section className="relative min-h-screen flex flex-col overflow-hidden bg-bg-primary">
+      <section className="relative min-h-[88vh] flex flex-col overflow-hidden bg-bg-primary">
         {/* Background grid */}
         <div className="absolute inset-0 bg-[linear-gradient(var(--color-border-subtle)_1px,transparent_1px),linear-gradient(90deg,var(--color-border-subtle)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_50%,transparent_100%)] z-0 pointer-events-none" />
         {/* Glow blobs */}
@@ -101,8 +103,8 @@ const Home = () => {
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-brand-red/4 rounded-full blur-[90px] pointer-events-none" />
 
         {/* Main grid */}
-        <div className="container mx-auto px-6 max-w-7xl relative z-10 flex-1 flex flex-col justify-center pt-16 pb-10">
-          <div className="grid grid-cols-1 lg:grid-cols-[58%_42%] gap-12 xl:gap-20 items-center min-h-[70vh]">
+        <div className="container mx-auto px-6 max-w-7xl relative z-10 flex-1 flex flex-col justify-center pt-20 pb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-[58%_42%] gap-10 xl:gap-16 items-center">
 
             {/* LEFT — Text */}
             <AnimatedSection>
@@ -110,7 +112,7 @@ const Home = () => {
               <div className="flex items-center gap-3 mb-8">
                 <div className="w-8 h-px bg-brand-red" />
                 <span className="text-brand-red text-xs font-bold uppercase tracking-[0.3em]">
-                  True North IT Solutions
+                  True North IT Consultant
                 </span>
               </div>
 
@@ -146,7 +148,7 @@ const Home = () => {
               {/* Trust indicators */}
               <div className="flex items-center gap-6 flex-wrap">
                 {[
-                  { val: '25+', label: 'Years Experience' },
+                  { val: '25+', label: 'Leadership Exp.' },
                   { val: '150+', label: 'Global Clients' },
                   { val: '99.9%', label: 'Uptime SLA' },
                 ].map((item, i) => (
@@ -200,7 +202,7 @@ const Home = () => {
 
                 {/* Tech chips */}
                 <div className="flex flex-wrap gap-2 mb-5 pb-5 border-b border-border-subtle">
-                  {['React', 'Node.js', 'MongoDB', 'Express', 'Cloudinary'].map((tech) => (
+                  {['Cloud Native', 'SaaS', 'Microservices', 'CI/CD', 'DevOps'].map((tech) => (
                     <span key={tech} className="px-2.5 py-1 bg-bg-secondary text-text-secondary text-xs font-mono rounded-md">{tech}</span>
                   ))}
                 </div>
@@ -209,7 +211,7 @@ const Home = () => {
                 <div className="grid grid-cols-3 gap-4 text-center">
                   <div>
                     <p className="text-2xl font-black text-brand-red">25+</p>
-                    <p className="text-[10px] text-text-secondary mt-0.5 uppercase tracking-wider">Yrs. Exp.</p>
+                    <p className="text-[10px] text-text-secondary mt-0.5 uppercase tracking-wider">Leadership Exp.</p>
                   </div>
                   <div className="border-x border-border-subtle">
                     <p className="text-2xl font-black text-text-primary">150+</p>
@@ -249,33 +251,29 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Process Bar */}
-        <div className="container mx-auto px-6 max-w-7xl relative z-10 pb-20">
-          <AnimatedSection delay={0.6} animationType="fadeIn">
-            <div className="glass rounded-2xl p-7 md:p-8">
-              <p className="text-center text-[11px] font-bold uppercase tracking-[0.25em] text-text-secondary mb-7">
-                Our Approach — Strategy to Execution
-              </p>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 relative">
-                <div className="hidden md:block absolute top-[22px] left-[12.5%] right-[12.5%] h-px bg-border-subtle z-0" />
-                {PROCESS_STEPS.map(({ num, label, detail, icon: Icon }) => (
-                  <div key={label} className="text-center relative z-10">
-                    <div className="w-11 h-11 mx-auto mb-3 bg-bg-primary rounded-full border border-brand-red flex items-center justify-center shadow-[0_0_12px_var(--color-red-glow)]">
-                      <Icon size={17} className="text-brand-red" />
-                    </div>
-                    <div className="text-[10px] font-bold text-brand-red mb-0.5">{num}</div>
-                    <h4 className="text-sm font-bold text-text-primary mb-0.5">{label}</h4>
-                    <p className="text-[11px] text-text-secondary">{detail}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </AnimatedSection>
-        </div>
       </section>
 
+      {/* ── PROCESS STRIP ──────────────────────────────────────── */}
+      <div className="bg-bg-secondary border-y border-border-subtle">
+        <div className="container mx-auto px-6 max-w-7xl py-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 relative">
+            <div className="hidden md:block absolute top-[22px] left-[12.5%] right-[12.5%] h-px bg-border-subtle z-0" />
+            {PROCESS_STEPS.map(({ num, label, detail, icon: Icon }) => (
+              <div key={label} className="text-center relative z-10">
+                <div className="w-11 h-11 mx-auto mb-3 bg-bg-primary rounded-full border border-brand-red flex items-center justify-center shadow-[0_0_12px_var(--color-red-glow)]">
+                  <Icon size={17} className="text-brand-red" />
+                </div>
+                <div className="text-[10px] font-bold text-brand-red mb-0.5">{num}</div>
+                <h4 className="text-sm font-bold text-text-primary mb-0.5">{label}</h4>
+                <p className="text-[11px] text-text-secondary">{detail}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* ── SERVICES ──────────────────────────────────────────── */}
-      <section className="py-24 bg-bg-secondary relative transition-colors">
+      <section className="py-16 md:py-20 bg-bg-primary relative transition-colors">
         <div className="container mx-auto px-6 max-w-7xl relative z-10">
           <AnimatedSection className="mb-16 text-center">
             <span className="text-brand-red text-xs font-bold uppercase tracking-[0.3em] mb-4 block">What We Do</span>
@@ -293,37 +291,40 @@ const Home = () => {
       </section>
 
       {/* ── ENGINEERING EXCELLENCE BENTO ──────────────────────── */}
-      <section className="py-24">
+      <section className="py-16 md:py-20 bg-bg-secondary">
         <div className="container mx-auto px-6 max-w-7xl">
           <AnimatedSection className="mb-16">
             <span className="text-brand-red text-xs font-bold uppercase tracking-[0.3em] mb-4 block">Why True North</span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary">
               Engineering <br /><span className="text-gradient">Excellence</span>
             </h2>
+            <p className="text-text-secondary text-lg mt-4 max-w-xl leading-relaxed">
+              Uncompromising quality and performance at every layer of your digital infrastructure.
+            </p>
           </AnimatedSection>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 auto-rows-[300px]">
-            <AnimatedSection delay={0.1} className="lg:col-span-2 rounded-3xl overflow-hidden glass p-10 relative group hover:border-brand-red/30 transition-colors">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <AnimatedSection delay={0.1} className="lg:col-span-2 rounded-3xl glass p-8 relative group hover:border-brand-red/30 transition-colors min-h-[260px]">
               <div className="absolute top-0 right-0 w-64 h-64 bg-brand-red/5 blur-3xl pointer-events-none rounded-full" />
               <Code size={40} className="text-brand-red mb-6" />
               <h3 className="text-3xl font-bold text-text-primary mb-4">Code-First Approach</h3>
               <p className="text-text-secondary text-lg max-w-lg mb-8">Raw performance engineered directly into the architecture. No bloated builders — clean, scalable code that grows with your business.</p>
-              <div className="flex gap-2 font-mono text-sm text-text-secondary flex-wrap">
-                {['React', 'Node.js', 'MongoDB', 'Express'].map((tech) => (
-                  <span key={tech} className="bg-bg-primary px-3 py-1 rounded">{tech}</span>
+              <div className="flex gap-2 flex-wrap mb-6">
+                {['High Performance', 'Scalable', 'Zero Bloat', 'Production-Ready'].map((tech) => (
+                  <span key={tech} className="px-3 py-1.5 text-xs font-semibold tracking-wide rounded-full border border-brand-red/40 text-brand-red" style={{ backgroundColor: 'rgba(229,9,20,0.08)' }}>{tech}</span>
                 ))}
               </div>
             </AnimatedSection>
-            <AnimatedSection delay={0.2} className="rounded-3xl overflow-hidden glass p-10 flex flex-col items-start justify-center group hover:border-brand-red/30 transition-colors">
+            <AnimatedSection delay={0.2} className="rounded-3xl overflow-hidden glass p-8 flex flex-col items-start justify-center group hover:border-brand-red/30 transition-colors min-h-[260px]">
               <Server size={40} className="text-brand-red mb-4" />
               <h3 className="text-2xl font-bold text-text-primary mb-2">99.9% Uptime</h3>
               <p className="text-text-secondary">Load-balanced, redundant architectures built for fault tolerance and continuous availability.</p>
             </AnimatedSection>
-            <AnimatedSection delay={0.3} className="rounded-3xl overflow-hidden glass p-10 flex flex-col justify-end group hover:border-brand-red/30 transition-colors">
+            <AnimatedSection delay={0.3} className="rounded-3xl overflow-hidden glass p-8 flex flex-col justify-center group hover:border-brand-red/30 transition-colors">
               <Shield size={40} className="text-brand-red mb-4" />
               <h3 className="text-2xl font-bold text-text-primary mb-2">Security Audited</h3>
               <p className="text-text-secondary">Penetration testing and vulnerability scanning on every production release.</p>
             </AnimatedSection>
-            <AnimatedSection delay={0.4} className="lg:col-span-2 rounded-3xl overflow-hidden glass p-10 flex items-center justify-between group hover:border-brand-red/30 transition-colors">
+            <AnimatedSection delay={0.4} className="lg:col-span-2 rounded-3xl overflow-hidden glass p-8 flex items-center justify-between gap-6 group hover:border-brand-red/30 transition-colors">
               <div>
                 <Activity size={40} className="text-brand-red mb-4" />
                 <h3 className="text-2xl font-bold text-text-primary mb-2">Real-Time Analytics</h3>
@@ -341,43 +342,45 @@ const Home = () => {
       </section>
 
       {/* ── TESTIMONIALS TEASER ─────────────────────────────────── */}
-      <section className="py-24 bg-bg-secondary transition-colors">
-        <div className="container mx-auto px-6 max-w-7xl">
-          <AnimatedSection className="text-center mb-14">
-            <span className="text-brand-red text-xs font-bold uppercase tracking-[0.3em] mb-4 block">Client Stories</span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary mb-4">
-              Trusted by Teams <span className="text-gradient">Worldwide</span>
-            </h2>
-            <p className="text-text-secondary max-w-xl mx-auto">From startups to established enterprises — our clients achieve measurable results.</p>
-          </AnimatedSection>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            {TESTIMONIAL_PREVIEW.map((item, idx) => (
-              <AnimatedSection key={item.name} delay={0.1 * idx} className="glass rounded-2xl p-8 flex flex-col">
-                <StarRow />
-                <p className="text-text-secondary leading-relaxed mb-6 flex-grow text-sm">"{item.quote}"</p>
-                <div className="flex items-center gap-3 border-t border-border-subtle pt-5">
-                  <div className="w-9 h-9 rounded-full bg-brand-red/10 border border-brand-red/20 flex items-center justify-center text-brand-red font-bold text-xs shrink-0">
-                    {item.initials}
+      {settings.testimonialsVisible && (
+        <section className="py-16 md:py-20 bg-bg-primary transition-colors">
+          <div className="container mx-auto px-6 max-w-7xl">
+            <AnimatedSection className="text-center mb-14">
+              <span className="text-brand-red text-xs font-bold uppercase tracking-[0.3em] mb-4 block">Client Stories</span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary mb-4">
+                Trusted by Teams <span className="text-gradient">Worldwide</span>
+              </h2>
+              <p className="text-text-secondary max-w-xl mx-auto">From startups to established enterprises — our clients achieve measurable results.</p>
+            </AnimatedSection>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+              {TESTIMONIAL_PREVIEW.map((item, idx) => (
+                <AnimatedSection key={item.name} delay={0.1 * idx} className="glass rounded-2xl p-8 flex flex-col">
+                  <StarRow />
+                  <p className="text-text-secondary leading-relaxed mb-6 flex-grow text-sm">"{item.quote}"</p>
+                  <div className="flex items-center gap-3 border-t border-border-subtle pt-5">
+                    <div className="w-9 h-9 rounded-full bg-brand-red/10 border border-brand-red/20 flex items-center justify-center text-brand-red font-bold text-xs shrink-0">
+                      {item.initials}
+                    </div>
+                    <div>
+                      <p className="text-sm font-bold text-text-primary leading-none mb-0.5">{item.name}</p>
+                      <p className="text-xs text-text-secondary">{item.role}</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-sm font-bold text-text-primary leading-none mb-0.5">{item.name}</p>
-                    <p className="text-xs text-text-secondary">{item.role}</p>
-                  </div>
-                </div>
-              </AnimatedSection>
-            ))}
+                </AnimatedSection>
+              ))}
+            </div>
+            <div className="text-center">
+              <Link to="/testimonials" className="inline-flex items-center gap-2 px-6 py-3 glass border hover:border-brand-red/60 rounded-lg text-text-primary font-semibold transition-all duration-300 group">
+                View All Testimonials
+                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform text-brand-red" />
+              </Link>
+            </div>
           </div>
-          <div className="text-center">
-            <Link to="/testimonials" className="inline-flex items-center gap-2 px-6 py-3 glass border hover:border-brand-red/60 rounded-lg text-text-primary font-semibold transition-all duration-300 group">
-              View All Testimonials
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform text-brand-red" />
-            </Link>
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Technology Stack Section */}
-      <section className="py-24 relative overflow-hidden bg-bg-primary">
+      <section className="py-16 md:py-20 relative overflow-hidden bg-bg-secondary">
         <div className="container mx-auto px-6 max-w-7xl">
           <AnimatedSection className="text-center mb-16">
             <span className="text-brand-red text-xs font-bold uppercase tracking-[0.3em] mb-4 block">Our Ecosystem</span>
@@ -406,9 +409,9 @@ const Home = () => {
       </section>
 
       {/* Careers Teaser */}
-      <section className="py-24 bg-bg-secondary border-y border-border-subtle relative overflow-hidden">
+      <section className="py-16 md:py-20 bg-bg-primary border-y border-border-subtle relative overflow-hidden">
         <div className="container mx-auto px-6 max-w-7xl">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
+          <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
             <AnimatedSection className="lg:w-1/2">
               <span className="text-brand-red text-xs font-bold uppercase tracking-[0.3em] mb-4 block">Join The Team</span>
               <h2 className="text-3xl md:text-5xl font-black text-text-primary tracking-tight mb-8">Build the Future <br />With <span className="text-gradient">True North</span></h2>
@@ -454,7 +457,7 @@ const Home = () => {
       </section>
 
       {/* ── FAQ ───────────────────────────────────────────────── */}
-      <section className="py-24 border-t border-b border-border-subtle transition-colors">
+      <section className="py-16 md:py-20 border-t border-b border-border-subtle bg-bg-secondary transition-colors">
         <div className="container mx-auto px-6 max-w-3xl">
           <AnimatedSection className="text-center mb-14">
             <span className="text-brand-red text-xs font-bold uppercase tracking-[0.3em] mb-4 block">FAQ</span>
@@ -478,7 +481,7 @@ const Home = () => {
       </section>
 
       {/* ── CTA ───────────────────────────────────────────────── */}
-      <section className="py-28 relative overflow-hidden">
+      <section className="py-20 md:py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-brand-red" />
         <div className="absolute inset-0 opacity-20 bg-[repeating-linear-gradient(45deg,transparent,transparent_10px,rgba(0,0,0,0.1)_10px,rgba(0,0,0,0.1)_20px)]" />
         <div className="container mx-auto px-6 max-w-4xl relative z-10 text-center">

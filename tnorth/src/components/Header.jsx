@@ -40,18 +40,18 @@ const Header = () => {
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
         isScrolled
-          ? 'py-3 glass shadow-2xl shadow-black/10'
-          : 'py-6 bg-transparent'
+          ? 'py-1.5 glass shadow-2xl shadow-black/10'
+          : 'py-2 bg-transparent'
       }`}
     >
       <div className="container mx-auto max-w-7xl px-6 flex items-center justify-between">
         {/* Logo & Brand */}
-        <Link to="/" className="flex items-center space-x-3 z-50 group" aria-label="True North Home">
+        <Link to="/" className="flex flex-col items-center z-50 group" aria-label="True North Home">
           <div className="relative">
             <img
               src={logo}
               alt="True North Logo"
-              className={`h-16 w-auto object-contain transition-all duration-500 group-hover:scale-105 ${
+              className={`h-12 w-auto object-contain transition-all duration-500 group-hover:scale-105 ${
                 theme === 'dark' ? 'brightness-0 invert' : ''
               }`}
             />
@@ -62,16 +62,14 @@ const Header = () => {
               }`}
             />
           </div>
-          <div className="hidden sm:flex flex-col leading-none select-none">
-            <span
-              className={`font-black uppercase tracking-[0.12em] text-lg transition-colors ${
-                theme === 'dark' ? 'text-white' : 'text-black'
-              }`}
-            >
-              True North
+          <div className="flex flex-col items-center leading-none select-none mt-1">
+            <span className="font-black uppercase tracking-[0.08em] text-base text-brand-red">
+              True North Co.
             </span>
-            <span className="text-[10px] tracking-[0.25em] uppercase text-text-secondary font-medium">
-              IT Solutions
+            <span className={`text-[8px] tracking-[0.22em] uppercase font-bold mt-0.5 ${
+              theme === 'dark' ? 'text-white' : 'text-black'
+            }`}>
+              IT Consultant
             </span>
           </div>
         </Link>

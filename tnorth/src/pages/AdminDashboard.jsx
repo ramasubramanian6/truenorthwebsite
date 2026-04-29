@@ -5,9 +5,10 @@ import {
   LayoutDashboard, FileText, Users, Briefcase, Mail, 
   Settings, LogOut, Plus, Trash2, Edit, ChevronRight,
   Activity, CheckCircle2, Clock, X, Menu, ExternalLink,
-  Eye, EyeOff, Globe
+  Eye, EyeOff, Globe, ToggleLeft, ToggleRight
 } from 'lucide-react';
 import { API_URL } from '../config/api';
+import { useSiteSettings } from '../context/SiteSettingsContext';
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -37,6 +38,7 @@ const AdminDashboard = () => {
   const [modalType, setModalType] = useState(null);
   const navigate = useNavigate();
   const token = localStorage.getItem('adminToken');
+  const { settings, updateSetting } = useSiteSettings();
 
   useEffect(() => {
     if (!token) navigate('/admin/login');
@@ -536,12 +538,65 @@ const AdminDashboard = () => {
               </div>
            )}
 
-           {/* Placeholder for settings */}
+           {/* Settings Tab */}
            {activeTab === 'settings' && (
-              <div className="max-w-5xl mx-auto py-20 text-center glass rounded-3xl border border-border-subtle animate-in zoom-in-95 duration-500">
-                  <Activity size={48} className="text-brand-red mx-auto mb-6" />
-                  <h2 className="text-2xl font-black mb-2 tracking-tight">Tactical Maintenance</h2>
-                  <p className="text-text-secondary">Settings module is temporarily locked for backend synchronization.</p>
+              <div className="max-w-3xl mx-auto animate-in fade-in zoom-in-95 duration-500">
+                <header className="mb-10">
+                  <h1 className="text-4xl font-black tracking-tight">Site <span className="text-gradient">Controls</span></h1>
+                  <p className="text-text-secondary mt-1">Manage public-facing visibility settings</p>
+                </header>
+
+                <div className="glass rounded-3xl border border-border-subtle divide-y divide-border-subtle overflow-hidden">
+
+                  {/* Testimonials Toggle */}
+                  <div className="flex items-center justify-between p-8 group hover:bg-bg-secondary/40 transition-colors">
+                    <div className="flex items-center gap-5">
+                      <div className="w-12 h-12 rounded-xl bg-bg-secondary border border-border-subtle flex items-center justify-center shrink-0">
+                        <Users size={20} className="text-green-400" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-text-primary text-base">Testimonials Section</h4>
+                        <p className="text-xs text-text-secondary mt-0.5">
+                          Controls the Home page teaser, Footer link, and the <code className="text-brand-red">/testimonials</code> page route.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Toggle Button */}
+                    <button
+                      id="toggle-testimonials"
+                      onClick={() => updateSetting('testimonialsVisible', !settings.testimonialsVisible)}
+                      title={settings.testimonialsVisible ? 'Hide testimonials' : 'Show testimonials'}
+                      className={`relative flex-shrink-0 w-14 h-7 rounded-full border-2 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-red ${
+                        settings.testimonialsVisible
+                          ? 'bg-brand-red border-brand-red'
+                          : 'bg-bg-secondary border-border-subtle'
+                      }`}
+                    >
+                      <span
+                        className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow-md transform transition-transform duration-300 ${
+                          settings.testimonialsVisible ? 'translate-x-7' : 'translate-x-0'
+                        }`}
+                      />
+                    </button>
+                  </div>
+
+                  {/* Status indicator row */}
+                  <div className="px-8 py-5 flex items-center gap-3">
+                    {settings.testimonialsVisible ? (
+                      <>
+                        <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                        <span className="text-xs font-bold text-green-400 uppercase tracking-widest">Testimonials are Live</span>
+                      </>
+                    ) : (
+                      <>
+                        <div className="w-2 h-2 rounded-full bg-yellow-400" />
+                        <span className="text-xs font-bold text-yellow-400 uppercase tracking-widest">Testimonials are Hidden</span>
+                      </>
+                    )}
+                  </div>
+
+                </div>
               </div>
            )}
 

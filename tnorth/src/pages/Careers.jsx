@@ -21,22 +21,12 @@ const Careers = () => {
             setJobs(data);
             setIsLive(true);
         } else {
-            // Fallback to static if empty from backend
-            setJobs([
-                { _id: '1', title: 'Senior Backend Engineer', team: 'Platform', location: 'Remote / India', type: 'Full-time' },
-                { _id: '2', title: 'Full Stack Developer (Next.js)', team: 'Product', location: 'Remote', type: 'Full-time' },
-                { _id: '3', title: 'QA Automation Lead', team: 'Quality', location: 'Hybrid / TN', type: 'Full-time' }
-            ]);
+            setJobs([]);
             setIsLive(false);
         }
       } catch (err) {
         setIsLive(false);
-        // Silent fallback
-        setJobs([
-            { _id: '1', title: 'Senior Backend Engineer', team: 'Platform', location: 'Remote / India', type: 'Full-time' },
-            { _id: '2', title: 'Full Stack Developer (Next.js)', team: 'Product', location: 'Remote', type: 'Full-time' },
-            { _id: '3', title: 'QA Automation Lead', team: 'Quality', location: 'Hybrid / TN', type: 'Full-time' }
-        ]);
+        setJobs([]);
       } finally {
         setLoading(false);
       }
@@ -159,6 +149,18 @@ const Careers = () => {
               </div>
             )}
           </AnimatedSection>
+
+          {!loading && jobs.length === 0 && (
+            <AnimatedSection className="glass rounded-2xl border border-border-subtle p-12 text-center mb-8">
+              <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-bg-primary border border-border-subtle flex items-center justify-center text-brand-red">
+                <Users size={32} />
+              </div>
+              <h3 className="text-2xl font-bold text-text-primary mb-3">No Current Openings</h3>
+              <p className="text-text-secondary max-w-md mx-auto leading-relaxed">
+                We don't have any open positions at this time. If a suitable opportunity arises in the future, we'll be sure to post it here — stay tuned!
+              </p>
+            </AnimatedSection>
+          )}
 
           {loading ? (
             <div className="flex justify-center py-20"><Activity className="animate-spin text-brand-red" /></div>
