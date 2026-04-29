@@ -104,7 +104,7 @@ const Home = () => {
 
         {/* Main grid */}
         <div className="container mx-auto px-6 max-w-7xl relative z-10 flex-1 flex flex-col justify-center pt-20 pb-12">
-          <div className="grid grid-cols-1 lg:grid-cols-[58%_42%] gap-10 xl:gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-6 lg:gap-8 items-center">
 
             {/* LEFT — Text */}
             <AnimatedSection>
@@ -123,7 +123,7 @@ const Home = () => {
               </h1>
 
               {/* Subtitle */}
-              <p className="text-lg md:text-xl text-text-secondary mb-10 max-w-xl leading-relaxed">
+              <p className="text-lg md:text-xl text-text-secondary mb-10 max-w-lg leading-relaxed">
                 {t('hero.subtitle')}
               </p>
 
@@ -164,25 +164,25 @@ const Home = () => {
             </AnimatedSection>
 
             {/* RIGHT — Dashboard Visual */}
-            <AnimatedSection delay={0.3} animationType="fadeIn" className="relative hidden lg:block">
+            <AnimatedSection delay={0.3} animationType="fadeIn" className="relative hidden lg:block lg:ml-auto w-full max-w-[480px]">
               {/* Main glass card */}
-              <div className="glass rounded-3xl p-7 relative overflow-hidden shadow-2xl">
+              <div className="glass rounded-3xl p-3 relative overflow-hidden shadow-2xl">
                 <div className="absolute -top-20 -right-20 w-56 h-56 bg-brand-red/10 rounded-full blur-3xl pointer-events-none" />
                 {/* Toolbar */}
-                <div className="flex items-center justify-between mb-5">
-                  <div className="flex gap-1.5">
-                    <div className="w-3 h-3 rounded-full bg-red-500" />
-                    <div className="w-3 h-3 rounded-full bg-yellow-400" />
-                    <div className="w-3 h-3 rounded-full bg-green-400" />
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex gap-1">
+                    <div className="w-2.5 h-2.5 rounded-full bg-red-500" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
                   </div>
-                  <div className="flex items-center gap-2 px-3 py-1 bg-bg-secondary rounded-full">
-                    <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                    <span className="text-xs text-text-secondary font-mono">Live Dashboard</span>
+                  <div className="flex items-center gap-2 px-2.5 py-0.5 bg-bg-secondary rounded-full">
+                    <div className="w-1 h-1 rounded-full bg-green-400 animate-pulse" />
+                    <span className="text-[10px] text-text-secondary font-mono">Live Dashboard</span>
                   </div>
                 </div>
 
                 {/* Metrics */}
-                <div className="space-y-4 mb-5">
+                <div className="space-y-3.5 mb-4">
                   {[
                     { label: 'System Uptime', value: '99.9%', pct: 99.9, from: 'from-brand-red', to: 'to-red-400' },
                     { label: 'Project Success Rate', value: '95%', pct: 95, from: 'from-orange-500', to: 'to-yellow-400' },
@@ -201,9 +201,9 @@ const Home = () => {
                 </div>
 
                 {/* Tech chips */}
-                <div className="flex flex-wrap gap-2 mb-5 pb-5 border-b border-border-subtle">
+                <div className="flex flex-wrap gap-1.5 mb-4 pb-4 border-b border-border-subtle">
                   {['Cloud Native', 'SaaS', 'Microservices', 'CI/CD', 'DevOps'].map((tech) => (
-                    <span key={tech} className="px-2.5 py-1 bg-bg-secondary text-text-secondary text-xs font-mono rounded-md">{tech}</span>
+                    <span key={tech} className="px-2 py-0.5 bg-bg-secondary text-text-secondary text-[10px] font-mono rounded-md">{tech}</span>
                   ))}
                 </div>
 
@@ -225,7 +225,7 @@ const Home = () => {
               </div>
 
               {/* Floating badge: Deployment */}
-              <div className="absolute -top-5 -left-8 glass rounded-xl px-4 py-3 flex items-center gap-3 shadow-xl border border-green-500/20"
+              <div className="absolute -top-18 -left-4 glass rounded-xl px-4 py-3 flex items-center gap-3 shadow-xl border border-green-500/20"
                 style={{ animation: 'float 5s ease-in-out infinite' }}>
                 <div className="w-8 h-8 bg-green-500/10 rounded-lg flex items-center justify-center shrink-0">
                   <CheckCircle2 size={15} className="text-green-400" />
@@ -237,7 +237,7 @@ const Home = () => {
               </div>
 
               {/* Floating badge: Growth */}
-              <div className="absolute -bottom-5 -right-5 glass rounded-xl px-4 py-3 flex items-center gap-3 shadow-xl border border-brand-red/20"
+              <div className="absolute -bottom-18 -right-5 glass rounded-xl px-4 py-3 flex items-center gap-3 shadow-xl border border-brand-red/20"
                 style={{ animation: 'float 6s ease-in-out 1s infinite' }}>
                 <div className="w-8 h-8 bg-brand-red/10 rounded-lg flex items-center justify-center shrink-0">
                   <TrendingUp size={15} className="text-brand-red" />
