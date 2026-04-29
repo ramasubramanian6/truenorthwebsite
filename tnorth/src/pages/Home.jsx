@@ -105,9 +105,9 @@ const Home = () => {
       <section className="relative min-h-[88vh] flex flex-col overflow-hidden bg-bg-primary">
         {/* Background grid */}
         <div className="absolute inset-0 bg-[linear-gradient(var(--color-border-subtle)_1px,transparent_1px),linear-gradient(90deg,var(--color-border-subtle)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_50%,transparent_100%)] z-0 pointer-events-none" />
-        {/* Glow blobs */}
-        <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-brand-red/8 rounded-full blur-[130px] pointer-events-none translate-x-1/3 -translate-y-1/4" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-brand-red/4 rounded-full blur-[90px] pointer-events-none" />
+        {/* Glow blobs - Hidden on mobile to improve TBT performance */}
+        <div className="hidden lg:block absolute top-0 right-0 w-[700px] h-[700px] bg-brand-red/8 rounded-full blur-[130px] pointer-events-none translate-x-1/3 -translate-y-1/4" />
+        <div className="hidden lg:block absolute bottom-0 left-0 w-[400px] h-[400px] bg-brand-red/4 rounded-full blur-[90px] pointer-events-none" />
 
         {/* Main grid */}
         <div className="container mx-auto px-6 max-w-7xl relative z-10 flex-1 flex flex-col justify-center pt-20 pb-12">

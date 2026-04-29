@@ -16,7 +16,7 @@ export const generateOrganizationSchema = () => ({
   contactPoint: {
     '@type': 'ContactPoint',
     telephone: '+91-95665-56056',
-    email: 'admin@truenorthitc.com',
+    email: 'support@truenorth.com',
     contactType: 'customer service',
     areaServed: ['IN', 'AE', 'GB', 'US', 'SG'],
     availableLanguage: ['English', 'Tamil'],
@@ -36,7 +36,7 @@ export const generateLocalBusinessSchema = () => ({
   description:
     'True North IT Consultant provides expert IT consulting, software development, QA testing, and managed support globally.',
   telephone: '+91-95665-56056',
-  email: 'admin@truenorthitc.com',
+  email: 'support@truenorth.com',
   priceRange: '$$',
   currenciesAccepted: 'INR, USD, AED',
   areaServed: 'Worldwide',

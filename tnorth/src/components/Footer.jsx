@@ -98,10 +98,10 @@ const Footer = () => {
               <li className="flex items-center text-text-secondary text-sm">
                 <Mail size={16} className="mr-3 text-brand-red shrink-0" />
                 <a
-                  href="mailto:admin@truenorthitc.com"
+                  href="mailto:support@truenorth.com"
                   className="hover:text-text-primary transition-colors"
                 >
-                  admin@truenorthitc.com
+                  support@truenorth.com
                 </a>
               </li>
               <li className="flex items-center text-text-secondary text-sm">

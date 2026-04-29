@@ -235,8 +235,8 @@ const ServiceDetail = () => {
               <a href="tel:+919566556056" className="sd-cta__contact-link">
                 <Phone size={16} /> +91 95665 56056
               </a>
-              <a href="mailto:admin@truenorthitc.com" className="sd-cta__contact-link">
-                <Mail size={16} /> admin@truenorthitc.com
+              <a href="mailto:support@truenorth.com" className="sd-cta__contact-link">
+                <Mail size={16} /> support@truenorth.com
               </a>
             </div>
           </AnimatedSection>

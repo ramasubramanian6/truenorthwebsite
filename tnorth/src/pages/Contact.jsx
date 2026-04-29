@@ -201,7 +201,7 @@ const Contact = () => {
                 <p className="text-sm text-text-primary font-bold mb-1">Global Operations Hub</p>
                 <p className="text-xs text-text-secondary mb-2">Central Engineering | Distributed Teams</p>
                 <p className="text-xs text-text-secondary mb-4">We operate with a decentralized, global-first model, ensuring 24/7 availability and seamless collaboration across all time zones.</p>
-                <p className="text-xs text-text-secondary">Official Channel: admin@truenorthitc.com</p>
+                <p className="text-xs text-text-secondary">Official Channel: support@truenorth.com</p>
 
                 <div className="mt-8 pt-8 border-t border-border-subtle">
                   <Link to="/about" className="flex items-center gap-2 text-brand-red font-bold text-xs uppercase tracking-widest hover:underline">

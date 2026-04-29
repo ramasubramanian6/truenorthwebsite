@@ -46,7 +46,7 @@ const PrivacyPolicy = () => {
           <div className="mt-12 p-6 bg-bg-secondary rounded-2xl border border-border-subtle">
             <h4 className="text-lg font-bold text-text-primary mb-2">Contact Us</h4>
             <p className="text-text-secondary text-sm">
-              If you have any questions about this Privacy Policy, please contact us at: <a href="mailto:admin@truenorthitc.com" className="text-brand-red hover:underline">admin@truenorthitc.com</a>
+              If you have any questions about this Privacy Policy, please contact us at: <a href="mailto:support@truenorth.com" className="text-brand-red hover:underline">support@truenorth.com</a>
             </p>
           </div>
         </AnimatedSection>

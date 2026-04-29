@@ -211,9 +211,9 @@ const Careers = () => {
                               <div>
                                 <p className="text-[10px] text-text-secondary uppercase font-bold tracking-widest mb-1.5">Send To</p>
                                 <div className="flex items-center justify-between p-3 bg-bg-primary rounded-lg border border-border-subtle">
-                                  <span className="font-mono text-text-primary text-xs">admin@truenorthitc.com</span>
+                                  <span className="font-mono text-text-primary text-xs">support@truenorth.com</span>
                                   <button 
-                                    onClick={() => navigator.clipboard.writeText('admin@truenorthitc.com')}
+                                    onClick={() => navigator.clipboard.writeText('support@truenorth.com')}
                                     className="text-brand-red hover:text-red-400 transition-colors flex items-center gap-1.5 text-xs font-bold"
                                   >
                                     <Copy size={14} /> Copy
@@ -243,7 +243,7 @@ const Careers = () => {
                               
                               <div className="flex gap-2 w-full sm:w-auto">
                                 <a 
-                                  href={`https://mail.google.com/mail/?view=cm&fs=1&to=admin@truenorthitc.com&su=${encodeURIComponent('Application for ' + job.title + ' - ' + job.team)}&body=${encodeURIComponent('Please find my resume attached.')}`}
+                                  href={`https://mail.google.com/mail/?view=cm&fs=1&to=support@truenorth.com&su=${encodeURIComponent('Application for ' + job.title + ' - ' + job.team)}&body=${encodeURIComponent('Please find my resume attached.')}`}
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   className="flex-1 sm:flex-none px-4 py-3 bg-bg-primary text-text-primary text-xs font-bold rounded-lg border border-border-subtle hover:border-brand-red transition-all flex justify-center items-center gap-2"
@@ -251,7 +251,7 @@ const Careers = () => {
                                   <Mail size={16} /> Gmail
                                 </a>
                                 <a 
-                                  href={`mailto:admin@truenorthitc.com?subject=${encodeURIComponent('Application for ' + job.title + ' - ' + job.team)}&body=${encodeURIComponent('Please find my resume attached.')}`}
+                                  href={`mailto:support@truenorth.com?subject=${encodeURIComponent('Application for ' + job.title + ' - ' + job.team)}&body=${encodeURIComponent('Please find my resume attached.')}`}
                                   className="flex-1 sm:flex-none px-4 py-3 bg-brand-red text-white text-xs font-bold rounded-lg border border-brand-red hover:bg-red-700 transition-all flex justify-center items-center gap-2"
                                 >
                                   Mail App
@@ -270,7 +270,7 @@ const Careers = () => {
 
           <AnimatedSection className="mt-16 glass p-8 rounded-2xl border border-border-subtle text-center" delay={0.4}>
              <h4 className="text-xl font-bold text-text-primary mb-4">Spontaneous Application?</h4>
-             <p className="text-text-secondary mb-8">Send your CV and a brief note on how you can help us scale to <a href="mailto:admin@truenorthitc.com" className="text-brand-red font-bold hover:underline">admin@truenorthitc.com</a></p>
+             <p className="text-text-secondary mb-8">Send your CV and a brief note on how you can help us scale to <a href="mailto:support@truenorth.com" className="text-brand-red font-bold hover:underline">support@truenorth.com</a></p>
              <div className="inline-flex items-center gap-2 text-xs font-bold text-text-secondary uppercase tracking-[0.2em]">
                 Average Response Time <span className="text-brand-red">48 Hours</span>
              </div>
