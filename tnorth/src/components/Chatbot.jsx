@@ -14,130 +14,286 @@ function getSessionId() {
   return sid;
 }
 
-/* ─── Knowledge Base (client-side) ───────────────────────────────────── */
+/* ─── Knowledge Base (client-side, 35+ topics) ───────────────────────── */
 const KB = [
   {
     tags: ['hello', 'hi', 'hey', 'greet', 'morning', 'evening', 'start', 'good day'],
-    reply: "👋 Hi there! Welcome to **True North IT Consultancy**.\n\nI'm TrueBot — I can help you explore our services, answer questions, or connect you with our team. What can I help you with today?",
+    reply: "👋 Hi there! Welcome to **True North IT Consultancy**.\n\nI'm TrueBot. What can I help you with today?",
+    suggestions: ['What services do you offer?', 'How much does it cost?', 'Contact Sales']
   },
   {
     tags: ['service', 'offer', 'provide', 'solution', 'what do you do', 'capabilities'],
-    reply: "True North offers four core service pillars:\n\n🚀 **Software Engineering** — Custom web & SaaS platforms\n🔐 **Cybersecurity & QA** — Penetration testing & test automation\n☁️ **Cloud & DevOps** — AWS, Azure, GCP, Docker, Kubernetes\n📊 **IT Consulting** — Digital strategy & managed IT support\n\nWant to dive deeper into any of these?",
+    reply: "We offer **Software Engineering**, **Cybersecurity & QA**, **Cloud & DevOps**, and **IT Consulting**. Which area interests you?",
+    suggestions: ['Software Engineering', 'Cloud & DevOps', 'Cybersecurity', 'IT Consulting']
   },
   {
-    tags: ['software', 'development', 'web', 'app', 'saas', 'platform', 'build', 'custom', 'react', 'node', 'frontend', 'backend'],
-    reply: "Our **Software Engineering** team builds:\n\n• Custom web apps & portals\n• SaaS products with multi-tenant architecture\n• API design, integration & microservices\n• React, Next.js, Node.js, Go & Python stacks\n\nEvery solution is engineered code-first — no bloated builders. 💡 Ready to discuss your project? [Get in touch](/contact).",
+    tags: ['software engineering', 'web development', 'app development', 'saas', 'custom software', 'react', 'node', 'build app', 'custom app'],
+    reply: "We build custom web apps, SaaS products, and APIs using modern stacks (React, Node, Go). Ready to discuss a project?",
+    suggestions: ['Get a Quote', 'View Case Studies']
   },
   {
-    tags: ['cloud', 'devops', 'aws', 'azure', 'gcp', 'docker', 'kubernetes', 'ci', 'cd', 'deploy', 'infrastructure', 'pipeline'],
-    reply: "Our **Cloud & DevOps** practice covers:\n\n☁️ Multi-cloud architecture (AWS / Azure / GCP)\n🐳 Containerisation with Docker & Kubernetes\n⚙️ CI/CD pipeline automation\n📈 Infrastructure as Code (Terraform, Pulumi)\n\nWe design for **99.9% uptime** and zero-downtime deployments.",
+    tags: ['cloud', 'devops', 'aws', 'azure', 'gcp', 'docker', 'kubernetes', 'cloud migration', 'infrastructure'],
+    reply: "Our Cloud & DevOps team handles multi-cloud architecture, CI/CD, and infrastructure as code. Want to know about our SLAs?",
+    suggestions: ['SLA Details', 'Consulting Services']
   },
   {
-    tags: ['security', 'cyber', 'pentest', 'penetration', 'qa', 'quality', 'test', 'audit', 'vulnerability', 'assurance', 'bug'],
-    reply: "Our **Cybersecurity & QA** services include:\n\n🔐 Penetration testing & vulnerability assessments\n🧪 Automated & manual QA (Cypress, Playwright, Selenium)\n📋 Security audits on every production release\n🔍 Performance & regression testing\n\nWe catch critical issues before your users do.",
+    tags: ['security', 'cybersecurity', 'pentest', 'penetration testing', 'qa', 'automated testing', 'audit', 'vulnerability', 'test'],
+    reply: "We provide penetration testing, security audits, and automated QA to ensure your platform is rock solid and secure.",
+    suggestions: ['Security Audits', 'Pricing']
   },
   {
-    tags: ['consult', 'strategy', 'advice', 'plan', 'digital', 'transform', 'manage', 'it consulting', 'roadmap'],
-    reply: "Our **IT Consulting** team helps you:\n\n📐 Define digital transformation roadmaps\n🏗️ Architect scalable infrastructure\n📊 Build BI dashboards & data pipelines\n🤝 Provide SLA-backed managed IT support\n\nWe embed with your team to understand your exact business needs — not just deliver off a template.",
+    tags: ['consulting', 'digital strategy', 'it consulting', 'transformation roadmap', 'advice', 'strategy'],
+    reply: "Our IT Consulting helps you define digital roadmaps and architect scalable infrastructure. How can we advise you today?",
+    suggestions: ['How does the process work?', 'Contact Us']
   },
   {
-    tags: ['experience', 'expertise', 'year', 'history', 'how long', 'background', 'senior', 'team'],
-    reply: "True North is backed by **60+ years of combined hands-on IT experience** across our leadership team.\n\nWe're a **founder-led engineering consultancy** — meaning senior engineers are involved in every project, not just in oversight. Quality is non-negotiable at every layer.",
+    tags: ['price', 'cost', 'rate', 'quote', 'pricing', 'budget', 'charge', 'how much', 'estimate'],
+    reply: "Pricing depends on scope and engagement model (Project, Retainer, or Staff Augmentation). Would you like a custom quote?",
+    suggestions: ['Get a Quote', 'Contact Sales']
   },
   {
-    tags: ['price', 'cost', 'rate', 'quote', 'pricing', 'budget', 'charge', 'fee', 'how much', 'invoice'],
-    reply: "Pricing depends on scope, team size, and duration. We offer:\n\n• **Project-based** — fixed-price engagements\n• **Retainer / SLA** — monthly support packages\n• **Staff augmentation** — hourly or daily rates\n\nFor an accurate quote, please 📬 [contact our team](/contact) — we respond within **24 business hours**.",
+    tags: ['contact', 'reach', 'email', 'phone', 'speak to a human', 'support team', 'get in touch'],
+    reply: "You can reach us directly via our **[Contact page](/contact)**, or I can take your details right now to have someone call you back.",
+    suggestions: ['Leave details here', 'Go to Contact page']
   },
   {
-    tags: ['contact', 'reach', 'email', 'phone', 'talk', 'speak', 'human', 'person', 'team', 'get in touch', 'enquire'],
-    reply: "You can reach us via our 📬 **[Contact page](/contact)**.\n\nFill in your details and a consultant will respond within **24 business hours**.\n\nOr explore:\n• 🛠️ [Services](/services)\n• 📖 [Blog](/blog)\n• 💼 [Case Studies](/case-studies)",
+    tags: ['leave details here', 'connect me', 'get a quote', 'contact sales', 'start project', 'hire you'],
+    reply: "Great! Please fill out this short form and our sales team will reach out within 24 hours.",
+    type: 'lead_form',
+    suggestions: []
   },
   {
-    tags: ['industry', 'sector', 'client', 'who', 'serve', 'work with', 'domain', 'vertical'],
-    reply: "We work with clients across:\n\n🛒 Retail & e-commerce\n🏥 Healthcare administration\n💼 Professional services\n💻 Technology companies\n🌍 Startups to established enterprises\n\nWe serve clients **globally** — UK, Europe, North America, and beyond.",
+    tags: ['career', 'job', 'hiring', 'vacancy', 'apply', 'work for', 'openings'],
+    reply: "We're always looking for top talent! Check our **[Careers page](/careers)** for current openings in Engineering and Consulting.",
+    suggestions: ['Company Culture', 'Our Services']
   },
   {
-    tags: ['uptime', 'sla', 'support', 'maintenance', 'reliability', 'available', '24/7', 'monitoring', 'downtime'],
-    reply: "True North offers **SLA-backed support** with:\n\n✅ **99.9% uptime** guarantee\n⚡ Rapid issue resolution\n🔄 24/7 monitoring on critical systems\n📋 Regular performance optimisation cycles\n\nWe stay engaged long after launch — not just at delivery.",
+    tags: ['testimonial', 'review', 'client feedback', 'ratings', 'success story'],
+    reply: "Our clients love us! Check out our **[Testimonials page](/testimonials)** to see how we've helped companies scale seamlessly.",
+    suggestions: ['Case Studies', 'What services do you offer?']
   },
   {
-    tags: ['career', 'job', 'hire', 'join', 'position', 'vacancy', 'work', 'employment', 'apply', 'opening', 'recruitment'],
-    reply: "We're always looking for exceptional talent! True North welcomes:\n\n💻 Full-stack engineers\n🔐 Security & QA specialists\n☁️ DevOps / cloud architects\n📊 IT consultants\n\nCheck out our 🚀 **[Careers page](/careers)** for current openings.",
+    tags: ['blog', 'articles', 'news', 'insights'],
+    reply: "Our engineering **[Blog](/blog)** covers industry trends, technical guides, and company news.",
+    suggestions: ['Software Engineering', 'Cloud & DevOps']
   },
   {
-    tags: ['testimonial', 'review', 'feedback', 'client said', 'trust', 'story', 'rating'],
-    reply: "Our clients speak for us!\n\n⭐ *\"True North delivered our platform ahead of schedule and above quality expectations.\"*\n— Arjun Mehta, CTO NovaSoft Technologies\n\n⭐ *\"Six months, zero downtime. Their SLA-backed support has been a game-changer.\"*\n— Ravi Shankar, Director of Operations, Pinnacle Retail\n\nRead all reviews on our **[Testimonials page](/testimonials)**.",
+    tags: ['case study', 'portfolio', 'past work', 'examples', 'showcase'],
+    reply: "We've delivered everything from SaaS platforms to enterprise cloud migrations. Browse our **[Case Studies](/case-studies)** for details.",
+    suggestions: ['Get a Quote', 'Services']
   },
   {
-    tags: ['blog', 'article', 'read', 'insight', 'news', 'post', 'guide', 'tutorial'],
-    reply: "We publish engineering insights, industry commentary, and practical tech guides on our **[Blog](/blog)**.\n\nWorth a read if you're exploring cloud, DevOps, or software architecture trends. 📖",
+    tags: ['location', 'where are you', 'office', 'headquarters', 'global', 'based'],
+    reply: "We are a global consultancy, serving clients across the UK, Europe, North America, and India. 🌍",
+    suggestions: ['Contact Us', 'About Us']
   },
   {
-    tags: ['case study', 'portfolio', 'project', 'example', 'work done', 'past', 'showcase', 'result'],
-    reply: "Browse our **[Case Studies](/case-studies)** to see real-world results we've delivered — from SaaS platforms to enterprise infrastructure overhauls.\n\nEach study includes scope, tech stack, and measurable outcomes. 📊",
+    tags: ['process', 'methodology', 'how you work', 'agile', 'waterfall', 'approach'],
+    reply: "We use an Agile, consultative approach:\n\n1️⃣ **Consult**\n2️⃣ **Build**\n3️⃣ **Test**\n4️⃣ **Implement**\n\nNo templates — everything is tailored.",
+    suggestions: ['Technology Stack', 'Pricing']
   },
   {
-    tags: ['location', 'where', 'based', 'office', 'india', 'uk', 'global', 'remote', 'timezone'],
-    reply: "True North is a **global consultancy** with delivery standards built for international markets.\n\nWe serve clients across **India, the UK, Europe, and North America** — working remotely and on-site as required. 🌍",
+    tags: ['tech stack', 'technology', 'tools', 'languages', 'frameworks'],
+    reply: "We specialize in React, Next.js, Node.js, Python, Go, AWS, Azure, Docker, and Kubernetes.",
+    suggestions: ['Software Engineering', 'Cloud & DevOps']
   },
   {
-    tags: ['process', 'methodology', 'approach', 'how', 'step', 'workflow', 'delivery', 'method'],
-    reply: "Our proven delivery methodology:\n\n1️⃣ **Consult** — Understand your goals & bottlenecks\n2️⃣ **Build** — Engineer scalable, production-ready solutions\n3️⃣ **Test** — Rigorous QA before every release\n4️⃣ **Implement** — Smooth deployment & knowledge transfer\n\nNo templates — every engagement is tailored to your specific needs.",
+    tags: ['about', 'company history', 'who are you', 'experience'],
+    reply: "True North IT is a founder-led consultancy with **60+ years of combined experience** delivering enterprise solutions.",
+    suggestions: ['Leadership Team', 'Our Services']
   },
   {
-    tags: ['technology', 'tech stack', 'tools', 'framework', 'language', 'programming', 'stack'],
-    reply: "Our full-stack technology expertise:\n\n☁️ **Cloud** — AWS, Azure, GCP\n⚛️ **Frontend** — React, Next.js, Vue\n⚡ **Backend** — Node.js, Go, Python\n🗄️ **Database** — MongoDB, PostgreSQL\n🧪 **QA** — Cypress, Playwright, Selenium\n🐳 **DevOps** — Docker, Kubernetes, Terraform",
+    tags: ['thank', 'thanks', 'bye', 'goodbye', 'appreciate it', 'cheers'],
+    reply: "You're welcome! Feel free to ask if anything else comes up. Have a great day! 🚀",
+    suggestions: ['Start over']
   },
   {
-    tags: ['about', 'who are you', 'company', 'true north', 'what is', 'overview'],
-    reply: "**True North IT Consultancy** is a global, founder-led engineering firm with **60+ years of combined hands-on IT experience**.\n\nWe specialise in:\n• Software Engineering\n• Cloud & DevOps\n• Cybersecurity & QA\n• Strategic IT Consulting\n\nWe serve clients in the UK, Europe, North America, and beyond — delivering world-class digital infrastructure. 🌐",
+    tags: ['start over', 'reset', 'menu', 'main menu'],
+    reply: "Back to the start! What can I help you with?",
+    suggestions: ['What services do you offer?', 'How much does it cost?', 'Contact Sales']
   },
   {
-    tags: ['thank', 'thanks', 'great', 'awesome', 'perfect', 'good', 'excellent', 'bye', 'goodbye', 'helpful', 'cheers'],
-    reply: "Thank you for chatting with us! 😊\n\nIf you have more questions or are ready to start a project, visit our **[Contact page](/contact)**.\n\nHave a great day! 🚀",
+    tags: ['managed services', 'maintenance', 'ongoing support'],
+    reply: "We offer SLA-backed managed services to keep your systems updated, secure, and performant 24/7.",
+    suggestions: ['SLA Details', 'Pricing']
   },
+  {
+    tags: ['data', 'analytics', 'bi', 'business intelligence', 'data pipeline'],
+    reply: "Our data engineers build robust pipelines and BI dashboards to help you make data-driven decisions.",
+    suggestions: ['IT Consulting', 'Case Studies']
+  },
+  {
+    tags: ['mobile app', 'ios', 'android', 'react native', 'flutter'],
+    reply: "We build high-performance cross-platform mobile applications using React Native and Flutter.",
+    suggestions: ['Software Engineering', 'Get a Quote']
+  },
+  {
+    tags: ['ui', 'ux', 'design', 'user interface', 'user experience'],
+    reply: "Our UI/UX team creates intuitive, beautiful, and highly responsive digital experiences.",
+    suggestions: ['Web Development', 'Mobile Apps']
+  },
+  {
+    tags: ['startup', 'mvp', 'seed stage', 'early stage'],
+    reply: "We help startups accelerate their MVP development with scalable architectures so they can pitch and pivot faster.",
+    suggestions: ['Get a Quote', 'Process']
+  },
+  {
+    tags: ['enterprise', 'corporate', 'large scale', 'b2b solutions'],
+    reply: "We partner with enterprises to modernize legacy systems and manage large-scale cloud deployments securely.",
+    suggestions: ['Legacy Modernization', 'Security Audits']
+  },
+  {
+    tags: ['api', 'integration', 'microservices', 'rest', 'graphql'],
+    reply: "We design and build secure, scalable APIs (REST & GraphQL) and microservices to integrate your systems seamlessly.",
+    suggestions: ['Tech Stack', 'Cloud & DevOps']
+  },
+  {
+    tags: ['legacy modernization', 'tech debt', 'refactoring', 'upgrade system'],
+    reply: "We safely modernize legacy applications, migrating them to cloud-native architectures with zero downtime.",
+    suggestions: ['Cloud Migration', 'Enterprise Solutions']
+  },
+  {
+    tags: ['compliance', 'iso', 'gdpr', 'hipaa', 'soc2'],
+    reply: "We build systems compliant with global standards including GDPR, HIPAA, and SOC2, backed by rigorous security audits.",
+    suggestions: ['Security Audits', 'Cloud Infrastructure']
+  },
+  {
+    tags: ['team size', 'how many people', 'employees'],
+    reply: "We have a curated team of senior engineers, architects, and consultants dedicated to high-quality delivery. We don't offshore to juniors.",
+    suggestions: ['Company Culture', 'Careers']
+  },
+  {
+    tags: ['culture', 'values', 'work environment'],
+    reply: "Our culture is rooted in engineering excellence, transparency, and a flat hierarchy that empowers our team to innovate.",
+    suggestions: ['Careers', 'About Us']
+  },
+  {
+    tags: ['partnership', 'partner with us', 'vendor', 'outsource'],
+    reply: "We act as strategic technology partners, embedding deeply with your team rather than just acting as external vendors.",
+    suggestions: ['Consulting', 'Process']
+  },
+  {
+    tags: ['sla details', 'service level agreement', 'uptime guarantee', 'response time', 'sla'],
+    reply: "Our standard SLA includes a **99.9% uptime guarantee**, 24/7 monitoring, and rapid response times for critical issues.",
+    suggestions: ['Managed Services', 'Contact Sales']
+  },
+  {
+    tags: ['security audits', 'vulnerability scan', 'penetration testing details'],
+    reply: "Our security audits encompass automated scanning, manual penetration testing, and code-level vulnerability reviews.",
+    suggestions: ['Compliance', 'Cybersecurity']
+  },
+  {
+    tags: ['cloud migration', 'move to cloud', 'aws migration', 'azure migration'],
+    reply: "We handle seamless migrations from on-premise to AWS, Azure, or GCP, minimizing risk and maximizing cost efficiency.",
+    suggestions: ['Cloud & DevOps', 'Case Studies']
+  },
+  {
+    tags: ['performance optimization', 'speed up app', 'load time', 'scaling issue', 'slow'],
+    reply: "If your app is slow or crashing under load, our engineers can profile, optimize, and scale your infrastructure.",
+    suggestions: ['Tech Stack', 'Get a Quote']
+  },
+  {
+    tags: ['seo', 'digital marketing', 'search engine', 'ranking'],
+    reply: "While our core is engineering, we ensure all web platforms are technically optimized for maximum SEO performance (Core Web Vitals).",
+    suggestions: ['Web Development', 'Performance Optimization']
+  },
+  {
+    tags: ['leadership', 'founders', 'management', 'directors'],
+    reply: "Our leadership team comprises veteran technologists with decades of experience who actively participate in architecture and project oversight.",
+    suggestions: ['About Us', 'Contact Us']
+  }
 ];
 
-/* ─── Client-side KB matcher ──────────────────────────────────────────── */
+/* ─── Client-side KB matcher (Smarter multi-word scoring) ────────────── */
 function getBotReply(userMsg) {
-  const lower = userMsg.toLowerCase();
+  const lower = userMsg.toLowerCase().trim();
   let bestMatch = null;
   let bestScore = 0;
 
   for (const entry of KB) {
-    const score = entry.tags.filter(tag => lower.includes(tag)).length;
+    let score = 0;
+    for (const tag of entry.tags) {
+      if (lower.includes(tag)) {
+        const words = tag.split(' ').length;
+        // Phrase matching gets exponentially higher points
+        score += words === 1 ? 1 : words * 5; 
+      }
+    }
     if (score > bestScore) {
       bestScore = score;
       bestMatch = entry;
     }
   }
 
-  if (bestMatch && bestScore > 0) return bestMatch.reply;
+  if (bestMatch && bestScore > 0) return bestMatch;
 
-  return "I'm not sure I have the perfect answer for that right now — but our team definitely does! 😊\n\nPlease visit our **[Contact page](/contact)** and a consultant will respond within 24 hours.\n\nOr explore:\n• 🛠️ [Services](/services)\n• 📖 [Blog](/blog)\n• 💼 [Case Studies](/case-studies)";
+  return {
+    reply: "I'm not completely sure about that. Would you like me to connect you with our team so they can help?",
+    suggestions: ['Leave details here', 'Go to Contact page', 'What services do you offer?']
+  };
 }
 
 /* ─── Save conversation to backend (fire-and-forget) ─────────────────── */
-async function saveToBackend(userMsg, botReply, sid) {
+async function saveToBackend(userMsg, botReplyText, sid) {
   try {
     await fetch(`${API_URL}/api/chat`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: userMsg, reply: botReply, sessionId: sid }),
+      body: JSON.stringify({ message: userMsg, reply: botReplyText, sessionId: sid }),
     });
   } catch {
-    // Silent — backend is optional; chatbot always works
+    // Silent
   }
 }
 
-/* ─── Quick-reply chips ──────────────────────────────────────────────── */
-const QUICK_REPLIES = [
-  'What services do you offer?',
-  'How much does it cost?',
-  'Tell me about your process',
-  'How can I contact you?',
-  "I'm looking for a job",
-];
+/* ─── Lead Form Component ────────────────────────────────────────────── */
+function LeadForm({ onSubmit, disabled }) {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
+  return (
+    <form 
+      onSubmit={(e) => { 
+        e.preventDefault(); 
+        if (!disabled) onSubmit({name, email, message}); 
+      }} 
+      className="flex flex-col gap-2 mt-2 w-full max-w-[240px] bg-bg-primary p-3 rounded-xl border border-border-subtle shadow-sm"
+    >
+      <p className="text-xs font-semibold text-text-primary mb-1">Contact Details</p>
+      <input 
+        required 
+        disabled={disabled}
+        className="w-full bg-bg-secondary border border-border-subtle rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-brand-red text-text-primary placeholder:text-text-secondary disabled:opacity-60" 
+        placeholder="Your Name" 
+        value={name} onChange={e => setName(e.target.value)} 
+      />
+      <input 
+        required 
+        type="email"
+        disabled={disabled}
+        className="w-full bg-bg-secondary border border-border-subtle rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-brand-red text-text-primary placeholder:text-text-secondary disabled:opacity-60" 
+        placeholder="Email Address" 
+        value={email} onChange={e => setEmail(e.target.value)} 
+      />
+      <textarea 
+        required 
+        disabled={disabled}
+        className="w-full bg-bg-secondary border border-border-subtle rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-brand-red text-text-primary resize-none placeholder:text-text-secondary disabled:opacity-60" 
+        rows={2}
+        placeholder="Brief Message" 
+        value={message} onChange={e => setMessage(e.target.value)} 
+      />
+      <button 
+        disabled={disabled}
+        type="submit" 
+        className="w-full mt-1 bg-brand-red text-white rounded-lg px-3 py-2 text-xs font-semibold hover:bg-red-700 transition-colors disabled:opacity-50 disabled:bg-gray-500"
+      >
+        {disabled ? 'Submitted ✓' : 'Submit Details'}
+      </button>
+    </form>
+  );
+}
 
 /* ─── Typing bubble ──────────────────────────────────────────────────── */
 function TypingBubble() {
@@ -223,10 +379,10 @@ const Chatbot = () => {
       role: 'bot',
       text: "👋 Hi! I'm **TrueBot**, your True North IT assistant.\n\nAsk me about our **services**, **pricing**, **process**, or anything else. How can I help?",
       id: 'welcome',
+      suggestions: ['What services do you offer?', 'How much does it cost?', 'Leave details here']
     },
   ]);
   const [loading, setLoading]     = useState(false);
-  const [showQuick, setShowQuick] = useState(true);
   const [unread, setUnread]       = useState(0);
   const [showScroll, setShowScroll] = useState(false);
 
@@ -257,29 +413,60 @@ const Chatbot = () => {
     setShowScroll(el.scrollHeight - el.scrollTop - el.clientHeight > 80);
   };
 
-  /* ── Send handler: KB reply is instant, backend save is background ── */
+  /* ── Lead Submission Handler ───────────────────────────────────────── */
+  const handleLeadSubmit = async (msgId, data) => {
+    setMessages(prev => prev.map(m => m.id === msgId ? { ...m, formSubmitted: true } : m));
+    
+    // Simulate sending lead data
+    try {
+      await fetch(`${API_URL}/api/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+    } catch {
+      // Silent
+    }
+
+    setLoading(true);
+    setTimeout(() => {
+      setMessages(prev => [...prev, { 
+        role: 'bot', 
+        text: `Thanks, ${data.name}! Our team will review your message and reach out to you at ${data.email} shortly.`, 
+        id: Date.now(),
+        suggestions: ['Start over', 'View Services'] 
+      }]);
+      setLoading(false);
+      if (!open) setUnread(u => u + 1);
+    }, 800);
+  };
+
+  /* ── Send handler ──────────────────────────────────────────────────── */
   const send = useCallback(async (text) => {
     const msg = (text || input).trim();
     if (!msg || loading) return;
 
     setInput('');
-    setShowQuick(false);
     setMessages(prev => [...prev, { role: 'user', text: msg, id: Date.now() }]);
     setLoading(true);
 
-    // Simulate a brief typing delay (400–700 ms) so it feels natural
     const delay = 400 + Math.floor(Math.random() * 300);
     await new Promise(res => setTimeout(res, delay));
 
-    // Get reply from local KB — always works, zero network dependency
-    const reply = getBotReply(msg);
+    const replyData = getBotReply(msg);
 
-    setMessages(prev => [...prev, { role: 'bot', text: reply, id: Date.now() + 1 }]);
+    setMessages(prev => [...prev, { 
+      role: 'bot', 
+      text: replyData.reply, 
+      id: Date.now() + 1,
+      suggestions: replyData.suggestions,
+      type: replyData.type
+    }]);
+    
     if (!open) setUnread(u => u + 1);
     setLoading(false);
 
-    // Persist to backend silently (won't block or error the UI)
-    saveToBackend(msg, reply, sessionId.current);
+    saveToBackend(msg, replyData.reply, sessionId.current);
   }, [input, loading, open]);
 
   const handleKeyDown = (e) => {
@@ -291,7 +478,6 @@ const Chatbot = () => {
 
   return (
     <>
-      {/* ── Injected keyframes ───────────────────────────────────────── */}
       <style>{`
         @keyframes chatDot {
           0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
@@ -309,7 +495,6 @@ const Chatbot = () => {
         .chat-window { animation: chatSlideUp 0.3s cubic-bezier(.34,1.56,.64,1) forwards; }
       `}</style>
 
-      {/* ── Floating trigger button ──────────────────────────────────── */}
       <button
         id="chatbot-trigger"
         aria-label="Open chat assistant"
@@ -324,13 +509,11 @@ const Chatbot = () => {
         )}
       </button>
 
-      {/* ── Chat window ─────────────────────────────────────────────── */}
       {open && (
         <div
           className="chat-window fixed bottom-24 right-6 z-[99] w-[360px] max-w-[calc(100vw-2rem)] flex flex-col rounded-2xl overflow-hidden shadow-2xl border border-border-subtle"
           style={{ height: '520px', background: 'var(--color-bg-primary)' }}
         >
-          {/* Header */}
           <div className="flex items-center gap-3 px-4 py-3 bg-brand-red shrink-0">
             <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center">
               <Bot size={18} className="text-white" />
@@ -351,62 +534,71 @@ const Chatbot = () => {
             </button>
           </div>
 
-          {/* Messages */}
           <div
             ref={scrollRef}
             onScroll={handleScroll}
             className="flex-1 overflow-y-auto px-4 py-4 space-y-4 scroll-smooth"
             style={{ overscrollBehavior: 'contain' }}
           >
-            {messages.map((msg) => (
-              <div
-                key={msg.id}
-                className={`chat-msg flex items-end gap-2 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
-              >
-                {msg.role === 'bot' && (
-                  <div className="w-7 h-7 rounded-full bg-brand-red/10 border border-brand-red/20 flex items-center justify-center shrink-0">
-                    <Bot size={13} className="text-brand-red" />
+            {messages.map((msg, idx) => {
+              const isLast = idx === messages.length - 1;
+              return (
+                <div key={msg.id} className="flex flex-col">
+                  <div className={`chat-msg flex items-end gap-2 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                    {msg.role === 'bot' && (
+                      <div className="w-7 h-7 rounded-full bg-brand-red/10 border border-brand-red/20 flex items-center justify-center shrink-0">
+                        <Bot size={13} className="text-brand-red" />
+                      </div>
+                    )}
+                    
+                    <div className="flex flex-col gap-1 max-w-[78%]">
+                      <div
+                        className={`px-4 py-3 rounded-2xl text-sm leading-relaxed ${
+                          msg.role === 'user'
+                            ? 'bg-brand-red text-white rounded-br-sm'
+                            : 'bg-bg-secondary border border-border-subtle text-text-primary rounded-bl-sm'
+                        }`}
+                      >
+                        <RichText text={msg.text} />
+                      </div>
+                      
+                      {msg.role === 'bot' && msg.type === 'lead_form' && (
+                        <LeadForm 
+                          disabled={msg.formSubmitted} 
+                          onSubmit={(data) => handleLeadSubmit(msg.id, data)} 
+                        />
+                      )}
+                    </div>
+
+                    {msg.role === 'user' && (
+                      <div className="w-7 h-7 rounded-full bg-bg-secondary border border-border-subtle flex items-center justify-center shrink-0">
+                        <User size={13} className="text-text-secondary" />
+                      </div>
+                    )}
                   </div>
-                )}
-                <div
-                  className={`px-4 py-3 rounded-2xl text-sm leading-relaxed max-w-[78%] ${
-                    msg.role === 'user'
-                      ? 'bg-brand-red text-white rounded-br-sm'
-                      : 'bg-bg-secondary border border-border-subtle text-text-primary rounded-bl-sm'
-                  }`}
-                >
-                  <RichText text={msg.text} />
+
+                  {/* Contextual Suggestions */}
+                  {isLast && msg.role === 'bot' && msg.suggestions && msg.suggestions.length > 0 && !loading && (
+                    <div className="flex flex-wrap gap-1.5 mt-2 pl-9 chat-msg" style={{ animationDelay: '0.1s' }}>
+                      {msg.suggestions.map(s => (
+                        <button 
+                          key={s} 
+                          onClick={() => send(s)} 
+                          className="text-[11px] px-3 py-1.5 rounded-full border border-brand-red/30 bg-brand-red/5 text-brand-red hover:bg-brand-red hover:text-white transition-colors"
+                        >
+                          {s}
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </div>
-                {msg.role === 'user' && (
-                  <div className="w-7 h-7 rounded-full bg-bg-secondary border border-border-subtle flex items-center justify-center shrink-0">
-                    <User size={13} className="text-text-secondary" />
-                  </div>
-                )}
-              </div>
-            ))}
+              );
+            })}
 
             {loading && <TypingBubble />}
-
-            {/* Quick-reply chips (shown only on first open) */}
-            {showQuick && !loading && messages.length === 1 && (
-              <div className="space-y-2 pt-1">
-                <p className="text-[10px] uppercase tracking-widest text-text-secondary font-semibold px-1">Quick questions</p>
-                {QUICK_REPLIES.map(q => (
-                  <button
-                    key={q}
-                    onClick={() => send(q)}
-                    className="block w-full text-left text-xs px-3 py-2.5 rounded-xl border border-border-subtle bg-bg-secondary hover:border-brand-red/40 hover:bg-brand-red/5 text-text-secondary hover:text-text-primary transition-all duration-200"
-                  >
-                    {q}
-                  </button>
-                ))}
-              </div>
-            )}
-
             <div ref={bottomRef} />
           </div>
 
-          {/* Scroll-down hint */}
           {showScroll && (
             <button
               onClick={scrollToBottom}
@@ -416,7 +608,6 @@ const Chatbot = () => {
             </button>
           )}
 
-          {/* Input */}
           <div className="px-4 py-3 border-t border-border-subtle bg-bg-secondary shrink-0">
             <div className="flex gap-2 items-center">
               <input
