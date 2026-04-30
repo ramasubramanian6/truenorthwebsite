@@ -33,7 +33,17 @@ const AdminDashboard = () => {
     slug: '',
     content: '',
     excerpt: '',
+    category: 'Technology',
+    readTime: '5 min read',
+    coverImage: '',
     isPublished: false
+  });
+  const [newTestimonial, setNewTestimonial] = useState({
+    author: '',
+    role: '',
+    company: '',
+    message: '',
+    rating: 5
   });
   const [modalType, setModalType] = useState(null);
   const navigate = useNavigate();
@@ -149,30 +159,152 @@ const AdminDashboard = () => {
     e.preventDefault();
     setActionLoading(true);
     try {
+      const postData = {
+        ...newPost,
+        date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+      };
+      
+      if (editingItem) {
+        // Update existing post
+        await fetch(`${API_URL}/api/blog/admin/${editingItem._id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json', 'x-auth-token': token },
+          body: JSON.stringify(postData)
+        });
+      } else {
+        // Create new post
         await fetch(`${API_URL}/api/blog/admin`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'x-auth-token': token },
-            body: JSON.stringify(newPost)
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'x-auth-token': token },
+          body: JSON.stringify(postData)
         });
-        setShowModal(false);
-        setModalType(null);
-        setNewPost({
-            title: '',
-            slug: '',
-            content: '',
-            excerpt: '',
-            isPublished: false
-        });
-        fetchData();
+      }
+      
+      setShowModal(false);
+      setModalType(null);
+      setEditingItem(null);
+      setNewPost({
+        title: '',
+        slug: '',
+        content: '',
+        excerpt: '',
+        category: 'Technology',
+        readTime: '5 min read',
+        coverImage: '',
+        isPublished: false
+      });
+      fetchData();
     } catch (err) {
-        alert('Failed to create post');
+      alert(editingItem ? 'Failed to update post' : 'Failed to create post');
     } finally {
-        setActionLoading(false);
+      setActionLoading(false);
     }
   };
 
-  const logout = () => {
-    localStorage.removeItem('adminToken');
+  const createTestimonial = async (e) => {
+    e.preventDefault();
+    setActionLoading(true);
+    try {
+      if (editingItem) {
+        await fetch(`${API_URL}/api/testimonials/admin/${editingItem._id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json', 'x-auth-token': token },
+          body: JSON.stringify(newTestimonial)
+        });
+      } else {
+        await fetch(`${API_URL}/api/testimonials/admin`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'x-auth-token': token },
+          body: JSON.stringify(newTestimonial)
+        });
+      }
+      setShowModal(false);
+      setModalType(null);
+      setEditingItem(null);
+      setNewTestimonial({
+        author: '',
+        role: '',
+        company: '',
+        message: '',
+        rating: 5
+      });
+      fetchData();
+    } catch (err) {
+      alert(editingItem ? 'Failed to update testimonial' : 'Failed to create testimonial');
+    } finally {
+      setActionLoading(false);
+    }
+  };
+
+  const updateJob = async (e) => {
+    e.preventDefault();
+    setActionLoading(true);
+    try {
+      const jobData = {
+        ...newJob,
+        requirements: newJob.requirements.split(',').map(r => r.trim())
+      };
+      await fetch(`${API_URL}/api/careers/admin/${editingItem._id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', 'x-auth-token': token },
+        body: JSON.stringify(jobData)
+      });
+      setShowModal(false);
+      setModalType(null);
+      setEditingItem(null);
+      setNewJob({
+        title: '',
+        description: '',
+        requirements: '',
+        location: '',
+        type: 'Full-time',
+        team: '',
+        active: true
+      });
+      fetchData();
+    } catch (err) {
+      alert('Failed to update job');
+    } finally {
+      setActionLoading(false);
+    }
+  };
+
+  const handleEdit = (item, type) => {
+    setEditingItem(item);
+    setModalType(type);
+    
+    if (type === 'post') {
+      setNewPost({
+        title: item.title || '',
+        slug: item.slug || '',
+        content: item.content || '',
+        excerpt: item.excerpt || '',
+        category: item.category || 'Technology',
+        readTime: item.readTime || '5 min read',
+        coverImage: item.coverImage || '',
+        isPublished: item.isPublished || false
+      });
+    } else if (type === 'job') {
+      setNewJob({
+        title: item.title || '',
+        description: item.description || '',
+        requirements: item.requirements?.join(', ') || '',
+        location: item.location || '',
+        type: item.type || 'Full-time',
+        team: item.team || '',
+        active: item.active || true
+      });
+    } else if (type === 'testimonial') {
+      setNewTestimonial({
+        author: item.author || '',
+        role: item.role || '',
+        company: item.company || '',
+        message: item.message || '',
+        rating: item.rating || 5
+      });
+    }
+    
+    setShowModal(true);
     navigate('/admin/login');
   };
 
@@ -401,7 +533,7 @@ const AdminDashboard = () => {
                                               <button onClick={() => togglePublish(post._id, post.isPublished)} className="p-2.5 bg-bg-secondary rounded-lg border border-border-subtle hover:text-brand-red transition-colors" title={post.isPublished ? 'Unpublish' : 'Publish'}>
                                                   {post.isPublished ? <EyeOff size={16} /> : <Eye size={16} />}
                                               </button>
-                                              <button className="p-2.5 bg-bg-secondary rounded-lg border border-border-subtle hover:text-brand-red transition-colors">
+                                              <button onClick={() => handleEdit(post, 'post')} className="p-2.5 bg-bg-secondary rounded-lg border border-border-subtle hover:text-brand-red transition-colors">
                                                   <Edit size={16} />
                                               </button>
                                               <button onClick={() => deleteItem('blog', post._id)} className="p-2.5 bg-bg-secondary rounded-lg border border-border-subtle hover:bg-brand-red/10 hover:text-brand-red hover:border-brand-red/30 transition-colors">
@@ -448,6 +580,9 @@ const AdminDashboard = () => {
                                   </div>
                               </div>
                               <div className="flex gap-2">
+                                  <button onClick={() => handleEdit(job, 'job')} className="p-3 bg-bg-secondary rounded-xl border border-border-subtle hover:text-brand-red transition-all">
+                                      <Edit size={18} />
+                                  </button>
                                   <button onClick={() => deleteItem('careers', job._id)} className="p-3 bg-bg-secondary rounded-xl border border-border-subtle hover:text-brand-red transition-all">
                                       <Trash2 size={18} />
                                   </button>
@@ -499,9 +634,14 @@ const AdminDashboard = () => {
            {/* Testimonials Tab */}
            {activeTab === 'testimonials' && (
               <div className="max-w-7xl mx-auto animate-in fade-in duration-500">
-                  <header className="mb-12">
-                      <h1 className="text-4xl font-black tracking-tight">Customer <span className="text-gradient">Reviews</span></h1>
-                      <p className="text-text-secondary mt-1">Manage testimonials and client feedback</p>
+                  <header className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 mb-12">
+                      <div>
+                          <h1 className="text-4xl font-black tracking-tight">Customer <span className="text-gradient">Reviews</span></h1>
+                          <p className="text-text-secondary mt-1">Manage testimonials and client feedback</p>
+                      </div>
+                      <button onClick={() => { setEditingItem(null); setShowModal(true); setModalType('testimonial'); }} className="flex items-center gap-3 px-8 py-4 bg-brand-red text-white font-bold rounded-2xl shadow-xl shadow-brand-red/30 hover:scale-[1.02] active:scale-95 transition-all">
+                          <Plus size={20} /> New Testimonial
+                      </button>
                   </header>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       {data.testimonials.length === 0 ? (
@@ -511,7 +651,10 @@ const AdminDashboard = () => {
                       ) : (
                           data.testimonials.map(testimonial => (
                               <div key={testimonial._id} className="glass p-8 rounded-3xl border border-border-subtle relative group">
-                                  <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                                  <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity flex gap-2">
+                                      <button onClick={() => handleEdit(testimonial, 'testimonial')} className="p-2 text-text-secondary hover:text-brand-red transition-colors">
+                                          <Edit size={18} />
+                                      </button>
                                       <button onClick={() => deleteItem('testimonials', testimonial._id)} className="p-2 text-text-secondary hover:text-brand-red transition-colors">
                                           <Trash2 size={18} />
                                       </button>
@@ -608,12 +751,12 @@ const AdminDashboard = () => {
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[200] flex items-center justify-center p-4 sm:p-6">
           <div className="glass max-w-2xl w-full max-h-[85vh] sm:max-h-[80vh] p-4 sm:p-6 rounded-3xl border border-border-subtle relative flex flex-col">
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 sm:gap-0 mb-6 sm:mb-8 flex-shrink-0">
-              <h2 className="text-xl sm:text-2xl font-black">Create New Position</h2>
-              <button onClick={() => { setShowModal(false); setModalType(null); }} className="p-2 hover:bg-bg-secondary rounded-xl transition-colors self-end sm:self-auto">
+              <h2 className="text-xl sm:text-2xl font-black">{editingItem ? 'Edit Position' : 'Create New Position'}</h2>
+              <button onClick={() => { setShowModal(false); setModalType(null); setEditingItem(null); }} className="p-2 hover:bg-bg-secondary rounded-xl transition-colors self-end sm:self-auto">
                 <X size={20} />
               </button>
             </div>
-            <form onSubmit={createJob} className="flex flex-col flex-grow overflow-hidden min-h-0">
+            <form onSubmit={editingItem ? updateJob : createJob} className="flex flex-col flex-grow overflow-hidden min-h-0">
               <div className="overflow-y-auto flex-grow space-y-4 sm:space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
@@ -706,7 +849,7 @@ const AdminDashboard = () => {
                   type="submit"
                   className="px-6 sm:px-8 py-2 sm:py-3 bg-brand-red text-white font-bold rounded-xl hover:scale-105 active:scale-95 transition-all"
                 >
-                  Create Position
+                  {editingItem ? 'Update Position' : 'Create Position'}
                 </button>
               </div>
             </form>
@@ -719,8 +862,8 @@ const AdminDashboard = () => {
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[200] flex items-center justify-center p-4 sm:p-6">
           <div className="glass max-w-2xl w-full max-h-[85vh] sm:max-h-[80vh] p-4 sm:p-6 rounded-3xl border border-border-subtle relative flex flex-col">
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 sm:gap-0 mb-6 sm:mb-8 flex-shrink-0">
-              <h2 className="text-xl sm:text-2xl font-black">Create New Article</h2>
-              <button onClick={() => { setShowModal(false); setModalType(null); }} className="p-2 hover:bg-bg-secondary rounded-xl transition-colors self-end sm:self-auto">
+              <h2 className="text-xl sm:text-2xl font-black">{editingItem ? 'Edit Article' : 'Create New Article'}</h2>
+              <button onClick={() => { setShowModal(false); setModalType(null); setEditingItem(null); }} className="p-2 hover:bg-bg-secondary rounded-xl transition-colors self-end sm:self-auto">
                 <X size={20} />
               </button>
             </div>
@@ -790,7 +933,7 @@ const AdminDashboard = () => {
                   type="submit"
                   className="px-6 sm:px-8 py-2 sm:py-3 bg-brand-red text-white font-bold rounded-xl hover:scale-105 active:scale-95 transition-all"
                 >
-                  Create Article
+                  {editingItem ? 'Update Article' : 'Create Article'}
                 </button>
               </div>
             </form>
@@ -803,6 +946,96 @@ const AdminDashboard = () => {
               <Activity className="animate-spin text-brand-red" size={16} />
               <span className="text-[10px] font-black uppercase tracking-widest text-text-secondary">Executing operation...</span>
           </div>
+      )}
+
+      {/* Create/Edit Testimonial Modal */}
+      {showModal && modalType === 'testimonial' && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[200] flex items-center justify-center p-4 sm:p-6">
+          <div className="glass max-w-2xl w-full max-h-[85vh] sm:max-h-[80vh] p-4 sm:p-6 rounded-3xl border border-border-subtle relative flex flex-col">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 sm:gap-0 mb-6 sm:mb-8 flex-shrink-0">
+              <h2 className="text-xl sm:text-2xl font-black">{editingItem ? 'Edit Testimonial' : 'Create New Testimonial'}</h2>
+              <button onClick={() => { setShowModal(false); setModalType(null); setEditingItem(null); }} className="p-2 hover:bg-bg-secondary rounded-xl transition-colors self-end sm:self-auto">
+                <X size={20} />
+              </button>
+            </div>
+            <form onSubmit={createTestimonial} className="flex flex-col flex-grow overflow-hidden min-h-0">
+              <div className="overflow-y-auto flex-grow space-y-4 sm:space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-bold text-text-secondary mb-2">Author Name</label>
+                    <input
+                      type="text"
+                      value={newTestimonial.author}
+                      onChange={(e) => setNewTestimonial({...newTestimonial, author: e.target.value})}
+                      className="w-full px-4 py-3 bg-bg-secondary border border-border-subtle rounded-xl focus:border-brand-red focus:outline-none transition-colors"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-bold text-text-secondary mb-2">Role/Title</label>
+                    <input
+                      type="text"
+                      value={newTestimonial.role}
+                      onChange={(e) => setNewTestimonial({...newTestimonial, role: e.target.value})}
+                      className="w-full px-4 py-3 bg-bg-secondary border border-border-subtle rounded-xl focus:border-brand-red focus:outline-none transition-colors"
+                      placeholder="e.g. CTO, Company Name"
+                      required
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-sm font-bold text-text-secondary mb-2">Company</label>
+                  <input
+                    type="text"
+                    value={newTestimonial.company}
+                    onChange={(e) => setNewTestimonial({...newTestimonial, company: e.target.value})}
+                    className="w-full px-4 py-3 bg-bg-secondary border border-border-subtle rounded-xl focus:border-brand-red focus:outline-none transition-colors"
+                    placeholder="Optional company name"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-bold text-text-secondary mb-2">Rating</label>
+                  <select
+                    value={newTestimonial.rating}
+                    onChange={(e) => setNewTestimonial({...newTestimonial, rating: parseInt(e.target.value)})}
+                    className="w-full px-4 py-3 bg-bg-secondary border border-border-subtle rounded-xl focus:border-brand-red focus:outline-none transition-colors"
+                  >
+                    <option value={5}>5 Stars</option>
+                    <option value={4}>4 Stars</option>
+                    <option value={3}>3 Stars</option>
+                    <option value={2}>2 Stars</option>
+                    <option value={1}>1 Star</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-bold text-text-secondary mb-2">Testimonial Message</label>
+                  <textarea
+                    value={newTestimonial.message}
+                    onChange={(e) => setNewTestimonial({...newTestimonial, message: e.target.value})}
+                    className="w-full px-4 py-3 bg-bg-secondary border border-border-subtle rounded-xl focus:border-brand-red focus:outline-none transition-colors h-24 sm:h-32 resize-none"
+                    placeholder="What the client said about your service..."
+                    required
+                  />
+                </div>
+              </div>
+              <div className="flex justify-end gap-4 pt-4 sm:pt-6 border-t border-border-subtle flex-shrink-0 mt-4">
+                <button
+                  type="button"
+                  onClick={() => { setShowModal(false); setModalType(null); setEditingItem(null); }}
+                  className="px-4 sm:px-6 py-2 sm:py-3 text-text-secondary hover:text-text-primary transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-6 sm:px-8 py-2 sm:py-3 bg-brand-red text-white font-bold rounded-xl hover:scale-105 active:scale-95 transition-all"
+                >
+                  {editingItem ? 'Update Testimonial' : 'Create Testimonial'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
       )}
     </div>
   );

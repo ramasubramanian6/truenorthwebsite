@@ -11,7 +11,11 @@ import { servicesData } from '../data/servicesData';
 import {
   ArrowRight, Code, Server, Shield, Activity,
   CheckCircle2, TrendingUp, Lightbulb, ShieldCheck, Rocket, Star,
-  Cpu, Database, Cloud, Layers, Globe, Zap, MapPin
+  Cpu, Database, Cloud, Layers, Globe, Zap, MapPin,
+  GitBranch, Container, Terminal, Box,
+  // Replace Figma with a generic tool icon if it's missing
+  PenTool,
+  Layout // Often used as a replacement for "Figma/Design" icons
 } from 'lucide-react';
 
 /* ──────────────────────────────────────────────────────────── */
@@ -108,6 +112,10 @@ const Home = () => {
         {/* Glow blobs - Hidden on mobile to improve TBT performance */}
         <div className="hidden lg:block absolute top-0 right-0 w-[700px] h-[700px] bg-brand-red/8 rounded-full blur-[130px] pointer-events-none translate-x-1/3 -translate-y-1/4" />
         <div className="hidden lg:block absolute bottom-0 left-0 w-[400px] h-[400px] bg-brand-red/4 rounded-full blur-[90px] pointer-events-none" />
+        {/* Decorative geometric shapes */}
+        <div className="hidden lg:block absolute top-20 right-[15%] w-20 h-20 border border-brand-red/20 rotate-45 pointer-events-none" />
+        <div className="hidden lg:block absolute bottom-32 left-[10%] w-16 h-16 border border-white/10 rounded-full pointer-events-none" />
+        <div className="hidden lg:block absolute top-1/3 left-[5%] w-px h-32 bg-gradient-to-b from-brand-red/0 via-brand-red/30 to-brand-red/0 pointer-events-none" />
 
         {/* Main grid */}
         <div className="container mx-auto px-6 max-w-7xl relative z-10 flex-1 flex flex-col justify-center pt-20 pb-12">
@@ -116,7 +124,7 @@ const Home = () => {
             {/* LEFT — Text */}
             <div className="flex flex-col">
               {/* Eyebrow */}
-              <div className="flex items-center gap-3 mb-8">
+              <div className="flex items-center gap-3 mb-5">
                 <div className="w-8 h-px bg-brand-red" />
                 <span className="text-brand-red text-xs font-bold uppercase tracking-[0.3em]">
                   True North IT Consultant
@@ -125,7 +133,7 @@ const Home = () => {
 
               {/* Heading */}
               <h1 className="font-black leading-[0.95] tracking-tight mb-8 text-[clamp(2.8rem,6vw,5.5rem)]">
-                <span className="block text-text-primary">{t('hero.title1')}</span>
+                <span className="block text-text-primary mb-5">{t('hero.title1')}</span>
                 <span className="block text-gradient">{t('hero.title2')}</span>
               </h1>
 
@@ -397,12 +405,12 @@ const Home = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
             {[
-              { name: 'Cloud Infrastructure', icon: Cloud, color: 'text-blue-500', desc: 'AWS, Azure, GCP' },
-              { name: 'Frontend Eng.', icon: Layers, color: 'text-cyan-400', desc: 'React, Next.js, Vue' },
+              { name: 'Cloud Infrastructure', icon: Cloud, color: 'text-blue-400', desc: 'AWS, Azure, GCP' },
+              { name: 'Frontend Eng.', icon: PenTool, color: 'text-pink-400', desc: 'React, Next.js, Vue' },
               { name: 'Backend Systems', icon: Zap, color: 'text-yellow-400', desc: 'Node.js, Go, Python' },
               { name: 'Database Arch.', icon: Database, color: 'text-green-500', desc: 'MongoDB, PostgreSQL' },
-              { name: 'Quality Assurance', icon: Shield, color: 'text-brand-red', desc: 'Cypress, Playwright' },
-              { name: 'Global Scalability', icon: Globe, color: 'text-indigo-400', desc: 'Docker, Kubernetes' }
+              { name: 'Quality Assurance', icon: Terminal, color: 'text-brand-red', desc: 'Cypress, Playwright' },
+              { name: 'DevOps & Cloud', icon: Container, color: 'text-cyan-400', desc: 'Docker, Kubernetes' }
             ].map((tech, i) => (
               <AnimatedSection key={tech.name} delay={i * 0.1} className="glass p-6 rounded-2xl border border-border-subtle group hover:border-brand-red/30 transition-all duration-500 text-center">
                 <div className={`mb-4 mx-auto w-12 h-12 rounded-xl bg-bg-secondary flex items-center justify-center border border-border-subtle group-hover:scale-110 transition-transform duration-500 ${tech.color}`}>
@@ -465,7 +473,10 @@ const Home = () => {
       </section>
 
       {/* ── FAQ ───────────────────────────────────────────────── */}
-      <section className="py-16 md:py-20 border-t border-b border-border-subtle bg-bg-secondary transition-colors">
+      <section className="py-16 md:py-20 border-t border-b border-border-subtle bg-bg-secondary transition-colors relative overflow-hidden">
+        {/* Decorative background */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-brand-red/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
         <div className="container mx-auto px-6 max-w-3xl">
           <AnimatedSection className="text-center mb-14">
             <span className="text-brand-red text-xs font-bold uppercase tracking-[0.3em] mb-4 block">FAQ</span>
@@ -492,6 +503,10 @@ const Home = () => {
       <section className="py-20 md:py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-brand-red" />
         <div className="absolute inset-0 opacity-20 bg-[repeating-linear-gradient(45deg,transparent,transparent_10px,rgba(0,0,0,0.1)_10px,rgba(0,0,0,0.1)_20px)]" />
+        {/* Decorative circles */}
+        <div className="absolute top-10 left-10 w-32 h-32 border border-white/20 rounded-full pointer-events-none" />
+        <div className="absolute bottom-10 right-10 w-24 h-24 border border-white/10 rounded-full pointer-events-none" />
+        <div className="absolute top-1/2 right-1/4 w-px h-40 bg-white/20 pointer-events-none" />
         <div className="container mx-auto px-6 max-w-4xl relative z-10 text-center">
           <AnimatedSection>
             <span className="text-white/70 text-xs font-bold uppercase tracking-[0.3em] mb-6 block">Ready to scale?</span>
