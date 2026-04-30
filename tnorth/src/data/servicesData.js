@@ -3,13 +3,13 @@ export const servicesData = [
     id: 'development',
     title: 'Custom Software Development',
     short: 'World-class business websites, web applications, and enterprise software engineered for global scale and performance.',
-    metaTitle: 'Custom Software Development | Web & App Engineering – True North IT Consultant',
+    metaTitle: 'Custom Software Development | Web & App Engineering – True North IT Consultancy',
     metaDescription:
-      'True North IT Consultant delivers world-class custom software development. We engineer high-performance business websites, web apps, and enterprise digital tools built for global scale.',
+      'True North IT Consultancy delivers world-class custom software development. We engineer high-performance business websites, web apps, and enterprise digital tools built for global scale.',
     overview:
-      'True North IT Consultant engineers high-performance business websites, web applications, and bespoke digital tools — precisely tailored to your requirements. We architect scalable solutions that drive real business outcomes, ensuring every line of code is crafted for performance, security, and long-term growth on a global stage.',
+      'True North IT Consultancy engineers high-performance business websites, web applications, and bespoke digital tools — precisely tailored to your requirements. We architect scalable solutions that drive real business outcomes, ensuring every line of code is crafted for performance, security, and long-term growth on a global stage.',
     longDescription:
-      'True North brings enterprise-grade software engineering expertise to organisations of every size. Whether you are a high-growth startup or a global enterprise seeking cost-effective, quality-first development — our team delivers. We combine 25+ years of technology leadership with modern engineering practices to build future-ready digital products that compete globally.',
+      'True North brings enterprise-grade software engineering expertise to organisations of every size. Whether you are a high-growth startup or a global enterprise seeking cost-effective, quality-first development — our team delivers. We combine 60+ years of combined hands-on IT experience with modern engineering practices to build future-ready digital products that compete globally.',
     features: [
       'Custom Business Websites & Landing Pages',
       'Enterprise Web Application Development',
@@ -34,7 +34,7 @@ export const servicesData = [
       {
         question: 'Do you develop software for international clients?',
         answer:
-          'Yes. True North IT Consultant serves clients across the UK, USA, Middle East, Singapore, and beyond. Our delivery model is fully remote-capable with structured global project governance.',
+          'Yes. True North IT Consultancy serves clients across the UK, USA, Middle East, Singapore, and beyond. Our delivery model is fully remote-capable with structured global project governance.',
       },
       {
         question: 'Can you build a web application from scratch?',
@@ -52,13 +52,13 @@ export const servicesData = [
     id: 'qa-testing',
     title: 'QA & Software Testing',
     short: 'Comprehensive functional, performance, and security testing ensuring flawless digital products for global enterprises.',
-    metaTitle: 'QA & Software Testing Services | Quality Assurance – True North IT Consultant',
+    metaTitle: 'QA & Software Testing Services | Quality Assurance – True North IT Consultancy',
     metaDescription:
-      'True North IT Consultant provides expert QA and software testing services including functional, performance, security, and automated testing for the global market.',
+      'True North IT Consultancy provides expert QA and software testing services including functional, performance, security, and automated testing for the global market.',
     overview:
-      'Quality is non-negotiable. True North IT Consultant provides end-to-end QA and software testing services that guarantee your web, mobile, and enterprise applications are reliable, fast, and completely secure before they reach your global users. We deliver zero-defect launches as a standard, ensuring production readiness for high-stakes environments.',
+      'Quality is non-negotiable. True North IT Consultancy provides end-to-end QA and software testing services that guarantee your web, mobile, and enterprise applications are reliable, fast, and completely secure before they reach your global users. We deliver zero-defect launches as a standard, ensuring production readiness for high-stakes environments.',
     longDescription:
-      'Our QA practice integrates seamlessly into your development lifecycle — from sprint-level test planning to full regression suites and security audits. As a global IT consultant with 25+ years of domain expertise, we understand the unique risk profiles of businesses operating in highly competitive international markets. We ensure every release meets the highest global standards of reliability.',
+      'Our QA practice integrates seamlessly into your development lifecycle — from sprint-level test planning to full regression suites and security audits. As a global IT consultancy with 60+ years of combined hands-on IT experience, we understand the unique risk profiles of businesses operating in highly competitive international markets. We ensure every release meets the highest global standards of reliability.',
     features: [
       'Functional & Regression Testing',
       'Performance, Load & Stress Testing',
@@ -101,11 +101,11 @@ export const servicesData = [
     id: 'support',
     title: 'Managed IT Support',
     short: '24/7 proactive monitoring and SLA-backed managed support keeping global business systems running without interruption.',
-    metaTitle: 'Managed IT Support Services | 24/7 Global Monitoring – True North IT Consultant',
+    metaTitle: 'Managed IT Support Services | 24/7 Global Monitoring – True North IT Consultancy',
     metaDescription:
-      'True North IT Consultant offers 24/7 managed IT support, proactive monitoring, and rapid issue resolution for global enterprises. SLA-backed contracts available.',
+      'True North IT Consultancy offers 24/7 managed IT support, proactive monitoring, and rapid issue resolution for global enterprises. SLA-backed contracts available.',
     overview:
-      "Downtime is expensive. True North IT Consultant's Managed IT Support service keeps your digital systems operating at peak performance around the clock. With proactive monitoring, rapid incident response, and SLA-backed contracts, we ensure business continuity for our clients worldwide. Your operations never stop — and neither do we.",
+      "Downtime is expensive. True North IT Consultancy's Managed IT Support service keeps your digital systems operating at peak performance around the clock. With proactive monitoring, rapid incident response, and SLA-backed contracts, we ensure business continuity for our clients worldwide. Your operations never stop — and neither do we.",
     longDescription:
       "Our managed support practice is built on the principle that prevention beats cure. We deploy intelligent monitoring agents on your infrastructure, detect anomalies before they escalate, and resolve incidents through a structured ITIL-aligned process. With a dedicated support team and transparent reporting dashboards, you always have full visibility into your global system health.",
     features: [
@@ -150,11 +150,11 @@ export const servicesData = [
     id: 'implementation',
     title: 'IT Consulting & Implementation',
     short: 'Strategic IT consulting and end-to-end system implementation aligning technology with global business goals.',
-    metaTitle: 'IT Consulting & Implementation | Digital Strategy – True North IT Consultant',
+    metaTitle: 'IT Consulting & Implementation | Digital Strategy – True North IT Consultancy',
     metaDescription:
-      'True North IT Consultant provides expert IT consulting and end-to-end system implementation for global businesses seeking digital transformation.',
+      'True North IT Consultancy provides expert IT consulting and end-to-end system implementation for global businesses seeking digital transformation.',
     overview:
-      'True North IT Consultant is your strategic technology partner. We provide expert IT consulting and implementation services that align technology with your specific business objectives. From assessing infrastructure to architecting tailored solutions — our consultants guide every step of your digital transformation journey, ensuring global scalability and measurable ROI.',
+      'True North IT Consultancy is your strategic technology partner. We provide expert IT consulting and implementation services that align technology with your specific business objectives. From assessing infrastructure to architecting tailored solutions — our consultants guide every step of your digital transformation journey, ensuring global scalability and measurable ROI.',
     longDescription:
       'Digital transformation is a journey that requires precision. True North helps organisations navigate this journey by identifying the right tools, designing scalable architectures, and managing change to ensure long-term operational success. We have delivered successful implementations for diverse industries across multiple continents.',
     features: [
@@ -181,7 +181,7 @@ export const servicesData = [
       {
         question: 'What industries do you consult for?',
         answer:
-          'We consult across manufacturing, retail, logistics, healthcare, education, and financial services — with deep domain knowledge from 25+ years of hands-on delivery.',
+          'We consult across manufacturing, retail, logistics, healthcare, education, and financial services — with deep domain knowledge from 60+ years of combined hands-on IT delivery.',
       },
       {
         question: 'Can you help us choose the right software for our business?',

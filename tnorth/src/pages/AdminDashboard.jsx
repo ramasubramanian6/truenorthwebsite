@@ -5,7 +5,7 @@ import {
   LayoutDashboard, FileText, Users, Briefcase, Mail, 
   Settings, LogOut, Plus, Trash2, Edit, ChevronRight,
   Activity, CheckCircle2, Clock, X, Menu, ExternalLink,
-  Eye, EyeOff, Globe, ToggleLeft, ToggleRight
+  Eye, EyeOff, Globe, ToggleLeft, ToggleRight, MessageCircle, Bot
 } from 'lucide-react';
 import { API_URL } from '../config/api';
 import { useSiteSettings } from '../context/SiteSettingsContext';
@@ -39,13 +39,17 @@ const AdminDashboard = () => {
     isPublished: false
   });
   const [newTestimonial, setNewTestimonial] = useState({
-    author: '',
+    name: '',
     role: '',
     company: '',
-    message: '',
-    rating: 5
+    content: '',
+    rating: 5,
+    isApproved: true
   });
   const [modalType, setModalType] = useState(null);
+  const [chatSessions, setChatSessions] = useState([]);
+  const [chatThread, setChatThread]   = useState(null);
+  const [chatLoading, setChatLoading] = useState(false);
   const navigate = useNavigate();
   const token = localStorage.getItem('adminToken');
   const { settings, updateSetting } = useSiteSettings();
@@ -54,6 +58,15 @@ const AdminDashboard = () => {
     if (!token) navigate('/admin/login');
     fetchData();
   }, [token]);
+
+  useEffect(() => {
+    if (activeTab === 'chat') fetchChatSessions();
+  }, [activeTab]);
+
+  const logout = () => {
+    localStorage.removeItem('adminToken');
+    navigate('/admin/login');
+  };
 
   const fetchData = async () => {
     try {
@@ -87,9 +100,50 @@ const AdminDashboard = () => {
         setError('');
     } catch (err) {
         console.error('Fetch failed:', err);
-        setError(`Connection failed: ${err.message}. Make sure the backend is running on port 5003.`);
+        setError(`Connection failed: ${err.message}. Make sure the backend is running on port 5002.`);
     } finally {
         setLoading(false);
+    }
+  };
+
+  const fetchChatSessions = async () => {
+    setChatLoading(true);
+    try {
+      const res = await fetch(`${API_URL}/api/chat/admin/sessions`, {
+        headers: { 'x-auth-token': token }
+      });
+      const data = await res.json();
+      if (data.success) setChatSessions(data.data);
+    } catch (err) {
+      console.error('Chat sessions fetch failed', err);
+    } finally {
+      setChatLoading(false);
+    }
+  };
+
+  const fetchChatThread = async (sessionId) => {
+    try {
+      const res = await fetch(`${API_URL}/api/chat/admin/session/${sessionId}`, {
+        headers: { 'x-auth-token': token }
+      });
+      const data = await res.json();
+      if (data.success) setChatThread({ sessionId, messages: data.data });
+    } catch (err) {
+      console.error('Chat thread fetch failed', err);
+    }
+  };
+
+  const deleteChatSession = async (sessionId) => {
+    if (!window.confirm('Delete this chat session?')) return;
+    try {
+      await fetch(`${API_URL}/api/chat/admin/session/${sessionId}`, {
+        method: 'DELETE',
+        headers: { 'x-auth-token': token }
+      });
+      setChatThread(null);
+      fetchChatSessions();
+    } catch (err) {
+      alert('Delete failed');
     }
   };
 
@@ -205,32 +259,38 @@ const AdminDashboard = () => {
     e.preventDefault();
     setActionLoading(true);
     try {
+      let res;
       if (editingItem) {
-        await fetch(`${API_URL}/api/testimonials/admin/${editingItem._id}`, {
+        res = await fetch(`${API_URL}/api/testimonials/admin/${editingItem._id}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json', 'x-auth-token': token },
           body: JSON.stringify(newTestimonial)
         });
       } else {
-        await fetch(`${API_URL}/api/testimonials/admin`, {
+        res = await fetch(`${API_URL}/api/testimonials/admin`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'x-auth-token': token },
-          body: JSON.stringify(newTestimonial)
+          body: JSON.stringify({ ...newTestimonial, isApproved: true })
         });
+      }
+      if (!res.ok) {
+        const errorText = await res.text();
+        throw new Error(`Server responded ${res.status}: ${errorText}`);
       }
       setShowModal(false);
       setModalType(null);
       setEditingItem(null);
       setNewTestimonial({
-        author: '',
+        name: '',
         role: '',
         company: '',
-        message: '',
-        rating: 5
+        content: '',
+        rating: 5,
+        isApproved: true
       });
       fetchData();
     } catch (err) {
-      alert(editingItem ? 'Failed to update testimonial' : 'Failed to create testimonial');
+      alert(`Error: ${err.message || 'Operation failed'}. Please check if the backend is running on port 5002 and your internet connection.`);
     } finally {
       setActionLoading(false);
     }
@@ -296,16 +356,16 @@ const AdminDashboard = () => {
       });
     } else if (type === 'testimonial') {
       setNewTestimonial({
-        author: item.author || '',
+        name: item.name || '',
         role: item.role || '',
         company: item.company || '',
-        message: item.message || '',
-        rating: item.rating || 5
+        content: item.content || '',
+        rating: item.rating || 5,
+        isApproved: item.isApproved ?? true
       });
     }
     
     setShowModal(true);
-    navigate('/admin/login');
   };
 
   if (loading) return (
@@ -385,6 +445,7 @@ const AdminDashboard = () => {
                 <NavItem id="careers" label="Careers" icon={Briefcase} />
                 <NavItem id="testimonials" label="Reviews" icon={Users} />
                 <NavItem id="messages" label="Messages" icon={Mail} />
+                <NavItem id="chat" label="Chat" icon={MessageCircle} />
                 
                 <div className="pt-10 mt-10 border-t border-border-subtle space-y-1">
                    <NavItem id="settings" label="Settings" icon={Settings} />
@@ -661,10 +722,10 @@ const AdminDashboard = () => {
                                   </div>
                                   <div className="flex items-center gap-4 mb-6">
                                       <div className="w-12 h-12 rounded-full bg-bg-secondary flex items-center justify-center font-black text-brand-red">
-                                          {(testimonial.author || 'U').charAt(0)}
+                                          {(testimonial.name || 'U').charAt(0)}
                                       </div>
                                       <div>
-                                          <h4 className="font-bold text-text-primary">{testimonial.author || 'Anonymous'}</h4>
+                                          <h4 className="font-bold text-text-primary">{testimonial.name || 'Anonymous'}</h4>
                                           <p className="text-xs text-text-secondary">{testimonial.role || 'Client'}</p>
                                       </div>
                                   </div>
@@ -673,7 +734,7 @@ const AdminDashboard = () => {
                                           <span key={i}>★</span>
                                       ))}
                                   </div>
-                                  <p className="text-text-secondary text-sm leading-relaxed">\"{testimonial.message}\"</p>
+                                  <p className="text-text-secondary text-sm leading-relaxed">"{testimonial.content}"</p>
                               </div>
                           ))
                       )}
@@ -741,6 +802,108 @@ const AdminDashboard = () => {
 
                 </div>
               </div>
+           )}
+
+           {/* Chat Sessions Tab */}
+           {activeTab === 'chat' && (
+             <div className="max-w-5xl mx-auto animate-in fade-in duration-500">
+               <header className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-10">
+                 <div>
+                   <h1 className="text-4xl font-black tracking-tight">Chat <span className="text-gradient">Sessions</span></h1>
+                   <p className="text-text-secondary mt-1">All chatbot conversations stored from site visitors</p>
+                 </div>
+                 <button
+                   onClick={fetchChatSessions}
+                   className="px-6 py-3 bg-bg-secondary border border-border-subtle rounded-xl text-sm font-bold hover:border-brand-red/40 transition-all"
+                 >
+                   Refresh
+                 </button>
+               </header>
+
+               <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-6 min-h-[500px]">
+                 {/* Session list */}
+                 <div className="glass rounded-3xl border border-border-subtle overflow-hidden flex flex-col">
+                   <div className="px-6 py-4 border-b border-border-subtle bg-bg-secondary/40">
+                     <p className="text-[10px] uppercase tracking-widest font-black text-text-secondary">Sessions ({chatSessions.length})</p>
+                   </div>
+                   <div className="flex-1 overflow-y-auto divide-y divide-border-subtle/50">
+                     {chatLoading && (
+                       <div className="py-10 text-center text-text-secondary text-sm">Loading...</div>
+                     )}
+                     {!chatLoading && chatSessions.length === 0 && (
+                       <div className="py-16 text-center">
+                         <Bot size={36} className="text-text-secondary mx-auto mb-3 opacity-30" />
+                         <p className="text-text-secondary text-sm">No chat sessions yet.</p>
+                       </div>
+                     )}
+                     {chatSessions.map(s => (
+                       <button
+                         key={s._id}
+                         onClick={() => fetchChatThread(s._id)}
+                         className={`w-full text-left px-6 py-4 hover:bg-bg-secondary/60 transition-colors group ${
+                           chatThread?.sessionId === s._id ? 'bg-brand-red/5 border-l-2 border-brand-red' : ''
+                         }`}
+                       >
+                         <p className="text-xs font-bold text-text-primary truncate mb-1 group-hover:text-brand-red transition-colors">
+                           {s._id.slice(0, 28)}…
+                         </p>
+                         <div className="flex justify-between items-center">
+                           <span className="text-[10px] text-text-secondary">{s.count} messages</span>
+                           <span className="text-[10px] text-text-secondary">{new Date(s.lastMessage).toLocaleDateString()}</span>
+                         </div>
+                       </button>
+                     ))}
+                   </div>
+                 </div>
+
+                 {/* Thread viewer */}
+                 <div className="glass rounded-3xl border border-border-subtle flex flex-col overflow-hidden">
+                   {!chatThread ? (
+                     <div className="flex-1 flex flex-col items-center justify-center text-text-secondary p-10 text-center">
+                       <MessageCircle size={48} className="mb-4 opacity-20" />
+                       <p className="text-sm">Select a session on the left to view the conversation.</p>
+                     </div>
+                   ) : (
+                     <>
+                       <div className="px-6 py-4 border-b border-border-subtle bg-bg-secondary/40 flex justify-between items-center shrink-0">
+                         <div>
+                           <p className="text-xs font-bold text-text-primary">Session: {chatThread.sessionId.slice(0, 20)}…</p>
+                           <p className="text-[10px] text-text-secondary">{chatThread.messages.length} messages</p>
+                         </div>
+                         <button
+                           onClick={() => deleteChatSession(chatThread.sessionId)}
+                           className="p-2 text-text-secondary hover:text-brand-red transition-colors rounded-lg hover:bg-brand-red/10"
+                           title="Delete session"
+                         >
+                           <Trash2 size={16} />
+                         </button>
+                       </div>
+                       <div className="flex-1 overflow-y-auto p-6 space-y-3">
+                         {chatThread.messages.map(msg => (
+                           <div key={msg._id} className={`flex gap-3 ${ msg.role === 'user' ? 'justify-end' : 'justify-start' }`}>
+                             {msg.role === 'bot' && (
+                               <div className="w-7 h-7 rounded-full bg-brand-red/10 border border-brand-red/20 flex items-center justify-center shrink-0 mt-1">
+                                 <Bot size={12} className="text-brand-red" />
+                               </div>
+                             )}
+                             <div className={`max-w-[75%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${
+                               msg.role === 'user'
+                                 ? 'bg-brand-red text-white rounded-br-sm'
+                                 : 'bg-bg-secondary border border-border-subtle text-text-primary rounded-bl-sm'
+                             }`}>
+                               <p className="whitespace-pre-wrap">{msg.message}</p>
+                               <p className={`text-[10px] mt-1 ${ msg.role === 'user' ? 'text-white/60' : 'text-text-secondary' }`}>
+                                 {new Date(msg.createdAt).toLocaleTimeString()}
+                               </p>
+                             </div>
+                           </div>
+                         ))}
+                       </div>
+                     </>
+                   )}
+                 </div>
+               </div>
+             </div>
            )}
 
         </main>
@@ -965,8 +1128,8 @@ const AdminDashboard = () => {
                     <label className="block text-sm font-bold text-text-secondary mb-2">Author Name</label>
                     <input
                       type="text"
-                      value={newTestimonial.author}
-                      onChange={(e) => setNewTestimonial({...newTestimonial, author: e.target.value})}
+                      value={newTestimonial.name}
+                      onChange={(e) => setNewTestimonial({...newTestimonial, name: e.target.value})}
                       className="w-full px-4 py-3 bg-bg-secondary border border-border-subtle rounded-xl focus:border-brand-red focus:outline-none transition-colors"
                       required
                     />
@@ -1010,8 +1173,8 @@ const AdminDashboard = () => {
                 <div>
                   <label className="block text-sm font-bold text-text-secondary mb-2">Testimonial Message</label>
                   <textarea
-                    value={newTestimonial.message}
-                    onChange={(e) => setNewTestimonial({...newTestimonial, message: e.target.value})}
+                    value={newTestimonial.content}
+                    onChange={(e) => setNewTestimonial({...newTestimonial, content: e.target.value})}
                     className="w-full px-4 py-3 bg-bg-secondary border border-border-subtle rounded-xl focus:border-brand-red focus:outline-none transition-colors h-24 sm:h-32 resize-none"
                     placeholder="What the client said about your service..."
                     required

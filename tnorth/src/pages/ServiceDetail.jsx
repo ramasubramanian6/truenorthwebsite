@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import {
@@ -46,11 +46,11 @@ const ServiceDetail = () => {
   return (
     <div className="sd-page">
       <Helmet>
-        <title>{service.metaTitle || `${service.title} | True North IT Consultant`}</title>
+        <title>{service.metaTitle || `${service.title} | True North IT Consultancy`}</title>
         <meta name="description" content={service.metaDescription || service.short} />
         <meta
           name="keywords"
-          content={`${service.title}, IT Consultant, True North IT, Enterprise Software, Engineering Excellence`}
+          content={`${service.title}, IT Consultancy, True North IT, Enterprise Software, Engineering Excellence`}
         />
         <meta property="og:title" content={service.metaTitle || service.title} />
         <meta property="og:description" content={service.metaDescription || service.short} />

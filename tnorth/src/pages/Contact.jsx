@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
@@ -79,7 +79,7 @@ const Contact = () => {
   return (
     <div className="bg-bg-primary min-h-screen pb-24 overflow-x-hidden relative">
       <Helmet>
-        <title>Contact & Support | True North IT Consultant Mission Control</title>
+        <title>Contact & Support | True North IT Consultancy Mission Control</title>
         <meta name="description" content="Reach our global engineering headquarters. Connect with True North for project inquiries, technical support, and partnership opportunities." />
         <script type="application/ld+json">
           {JSON.stringify(generateBreadcrumbSchema([

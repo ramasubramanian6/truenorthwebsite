@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import AnimatedSection from '../components/AnimatedSection';
 
@@ -6,8 +6,8 @@ const TermsOfService = () => {
   return (
     <div className="pt-20 pb-24">
       <Helmet>
-        <title>Terms of Service | True North IT Consultant</title>
-        <meta name="description" content="Terms of Service and usage guidelines for True North IT Consultant." />
+        <title>Terms of Service | True North IT Consultancy</title>
+        <meta name="description" content="Terms of Service and usage guidelines for True North IT Consultancy." />
       </Helmet>
 
       <section className="container mx-auto px-6 max-w-4xl">
@@ -20,17 +20,17 @@ const TermsOfService = () => {
         <AnimatedSection delay={0.1} className="glass p-8 md:p-12 rounded-3xl border border-border-subtle prose prose-invert max-w-none">
           <h3 className="text-xl font-bold text-text-primary mb-4 mt-8 first:mt-0">1. Acceptance of Terms</h3>
           <p className="text-text-secondary leading-relaxed mb-6">
-            By accessing and using the True North IT Consultant website and our services, you accept and agree to be bound by the terms and provisions of this agreement. If you do not agree to abide by these terms, please do not use this service.
+            By accessing and using the True North IT Consultancy website and our services, you accept and agree to be bound by the terms and provisions of this agreement. If you do not agree to abide by these terms, please do not use this service.
           </p>
 
           <h3 className="text-xl font-bold text-text-primary mb-4 mt-8">2. Intellectual Property Rights</h3>
           <p className="text-text-secondary leading-relaxed mb-6">
-            All content included on this site, such as text, graphics, logos, button icons, images, and software, is the property of True North IT Consultant or its content suppliers and protected by international copyright laws.
+            All content included on this site, such as text, graphics, logos, button icons, images, and software, is the property of True North IT Consultancy or its content suppliers and protected by international copyright laws.
           </p>
 
           <h3 className="text-xl font-bold text-text-primary mb-4 mt-8">3. Use License</h3>
           <p className="text-text-secondary leading-relaxed mb-6">
-            Permission is granted to temporarily download one copy of the materials (information or software) on True North IT Consultant' website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title.
+            Permission is granted to temporarily download one copy of the materials (information or software) on True North IT Consultancy' website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title.
           </p>
 
           <h3 className="text-xl font-bold text-text-primary mb-4 mt-8">4. Service Limitations</h3>

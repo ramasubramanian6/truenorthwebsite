@@ -5,6 +5,7 @@ import Header from './Header';
 import Footer from './Footer';
 import SocialBar from './SocialBar';
 import NoiseOverlay from './NoiseOverlay';
+import Chatbot from './Chatbot';
 import { logPageView } from '../utils/analytics';
 
 const Layout = () => {
@@ -37,6 +38,7 @@ const Layout = () => {
         <Outlet />
       </main>
       <Footer />
+      <Chatbot />
     </div>
   );
 };

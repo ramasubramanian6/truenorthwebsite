@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import AnimatedSection from '../components/AnimatedSection';
@@ -9,7 +9,7 @@ const CaseStudies = () => {
   return (
     <div className="pt-20 pb-24">
       <Helmet>
-        <title>Case Studies | True North IT Consultant</title>
+        <title>Case Studies | True North IT Consultancy</title>
         <meta name="description" content="Explore our portfolio of successful enterprise IT projects, cloud migrations, and custom software development case studies." />
       </Helmet>
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import AnimatedSection from '../components/AnimatedSection';
@@ -40,7 +40,7 @@ const Blog = () => {
   return (
     <div className="container mx-auto px-6 max-w-7xl">
       <Helmet>
-        <title>Insights & Blog | True North IT Consultant</title>
+        <title>Insights & Blog | True North IT Consultancy</title>
         <meta
           name="description"
           content="Insights on software development, QA testing, SaaS architecture, and digital transformation from the True North team."

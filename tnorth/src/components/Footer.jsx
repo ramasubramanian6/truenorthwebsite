@@ -25,7 +25,7 @@ const Footer = () => {
             <Link to="/" className="flex items-center space-x-3 select-none mb-6 group" aria-label="True North Home">
               <img
                 src={logo}
-                alt="True North IT Consultant"
+                alt="True North IT Consultancy"
                 width="27"
                 height="48"
                 className={`h-12 w-auto object-contain transition-all duration-300 group-hover:scale-105 ${theme === 'dark' ? 'brightness-0 invert' : ''
@@ -35,8 +35,8 @@ const Footer = () => {
                 <span className="font-black uppercase tracking-[0.1em] text-base text-brand-red">
                   True North
                 </span>
-                <span className="text-[9px] tracking-[0.25em] uppercase text-text-secondary font-medium">
-                  IT Consultant
+                <span className="text-[10px] tracking-[0.25em] uppercase text-text-secondary font-medium">
+                  IT Consultancy
                 </span>
               </div>
             </Link>
@@ -120,7 +120,7 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="border-t border-border-subtle pt-8 flex flex-col md:flex-row justify-between items-center gap-4 transition-colors">
           <p className="text-text-secondary text-sm text-center md:text-left">
-            &copy; {currentYear} True North IT Consultant. {t('footer.rights')}
+            &copy; {currentYear} True North IT Consultancy. {t('footer.rights')}
           </p>
           <div className="flex items-center gap-4 text-xs text-text-secondary">
             <Link to="/privacy" className="hover:text-brand-red transition-colors">Privacy Policy</Link>

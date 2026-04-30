@@ -30,49 +30,45 @@ const Header = () => {
   };
 
   const navLinks = [
-    { name: t('nav.home'),         path: '/' },
-    { name: t('nav.services'),     path: '/services' },
-    { name: t('nav.about'),        path: '/about' },
-    { name: t('nav.careers'),      path: '/careers' },
-    { name: t('nav.contact'),      path: '/contact' },
+    { name: t('nav.home'), path: '/' },
+    { name: t('nav.services'), path: '/services' },
+    { name: t('nav.about'), path: '/about' },
+    { name: t('nav.careers'), path: '/careers' },
+    { name: t('nav.contact'), path: '/contact' },
   ];
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-        isScrolled
-          ? 'py-1.5 glass shadow-2xl shadow-black/10'
-          : 'py-2 bg-transparent'
-      }`}
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ${isScrolled
+        ? 'py-1.5 glass shadow-2xl shadow-black/10'
+        : 'py-2 bg-transparent'
+        }`}
     >
-      <div className="container mx-auto max-w-7xl px-6 flex items-center justify-between">
+      <div className="container mx-auto max-w-7xl px-6 flex items-center justify-between mb-2">
         {/* Logo & Brand */}
         <Link to="/" className="flex flex-col items-center z-50 group" aria-label="True North Home">
           <div className="relative">
             <img
               src={logo}
-              alt="True North IT Consultant"
+              alt="True North IT Consultancy"
               width="27"
               height="48"
-              className={`h-12 w-auto object-contain transition-all duration-500 group-hover:scale-105 ${
-                theme === 'dark' ? 'brightness-0 invert' : ''
-              }`}
+              className={`h-12 w-auto object-contain transition-all duration-500 group-hover:scale-105 ${theme === 'dark' ? 'brightness-0 invert' : ''
+                }`}
             />
             <motion.div
               layoutId="logo-glow"
-              className={`absolute inset-0 bg-brand-red/10 blur-2xl rounded-full -z-10 transition-opacity duration-500 ${
-                isScrolled ? 'opacity-100' : 'opacity-0'
-              }`}
+              className={`absolute inset-0 bg-brand-red/10 blur-2xl rounded-full -z-10 transition-opacity duration-500 ${isScrolled ? 'opacity-100' : 'opacity-0'
+                }`}
             />
           </div>
           <div className="flex flex-col items-center leading-none select-none mt-1">
             <span className="font-black uppercase tracking-[0.08em] text-base text-brand-red">
               True North Co.
             </span>
-            <span className={`text-[8px] tracking-[0.22em] uppercase font-bold mt-0.5 ${
-              theme === 'dark' ? 'text-white' : 'text-black'
-            }`}>
-              IT Consultant
+            <span className={`text-[12px] tracking-[0.22em] uppercase font-bold mt-0.5 ${theme === 'dark' ? 'text-white' : 'text-black'
+              }`}>
+              IT Consultancy
             </span>
           </div>
         </Link>
@@ -85,10 +81,9 @@ const Header = () => {
                 key={link.name}
                 to={link.path}
                 className={({ isActive }) =>
-                  `text-[14px] tracking-wide font-semibold relative transition-all duration-300 ${
-                    isActive
-                      ? 'text-brand-red'
-                      : 'text-text-secondary hover:text-text-primary'
+                  `text-[14px] tracking-wide font-semibold relative transition-all duration-300 ${isActive
+                    ? 'text-brand-red'
+                    : 'text-text-secondary hover:text-text-primary'
                   }`
                 }
               >
@@ -96,9 +91,8 @@ const Header = () => {
                   <div className="relative py-1">
                     {link.name}
                     <span
-                      className={`absolute bottom-0 left-0 h-0.5 bg-brand-red rounded-full transition-all duration-300 ${
-                        isActive ? 'w-full' : 'w-0'
-                      }`}
+                      className={`absolute bottom-0 left-0 h-0.5 bg-brand-red rounded-full transition-all duration-300 ${isActive ? 'w-full' : 'w-0'
+                        }`}
                     />
                   </div>
                 )}
@@ -157,8 +151,7 @@ const Header = () => {
                     key={link.name}
                     to={link.path}
                     className={({ isActive }) =>
-                      `text-xl font-bold tracking-tight transition-colors ${
-                        isActive ? 'text-brand-red' : 'text-text-primary'
+                      `text-xl font-bold tracking-tight transition-colors ${isActive ? 'text-brand-red' : 'text-text-primary'
                       }`
                     }
                   >

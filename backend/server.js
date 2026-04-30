@@ -8,6 +8,7 @@ const testimonialRoutes = require('./routes/testimonials');
 const blogRoutes = require('./routes/blog');
 const careerRoutes = require('./routes/careers');
 const adminRoutes = require('./routes/admin');
+const chatRoutes  = require('./routes/chat');
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.use('/api/testimonials', testimonialRoutes);
 app.use('/api/blog', blogRoutes);
 app.use('/api/careers', careerRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/chat',  chatRoutes);
 
 // Root health check
 app.get('/', (req, res) => {

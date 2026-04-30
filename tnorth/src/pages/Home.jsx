@@ -3,6 +3,7 @@ import { useSiteSettings } from '../context/SiteSettingsContext';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
+import { API_URL } from '../config/api';
 import { generateOrganizationSchema, generateWebsiteSchema, generateFAQSchema } from '../utils/seoSchema';
 import AnimatedSection from '../components/AnimatedSection';
 import ServiceCard from '../components/ServiceCard';
@@ -63,6 +64,24 @@ const StarRow = ({ count = 5 }) => (
 const Home = () => {
   const { t } = useTranslation();
   const { settings } = useSiteSettings();
+  const [testimonials, setTestimonials] = React.useState(TESTIMONIAL_PREVIEW);
+
+  React.useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        const res = await fetch(`${API_URL}/api/testimonials`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data.success && Array.isArray(data.data) && data.data.length > 0) {
+            setTestimonials(data.data.slice(0, 3));
+          }
+        }
+      } catch (err) {
+        console.info('[Home] Using static testimonials fallback');
+      }
+    };
+    if (settings.testimonialsVisible) fetchTestimonials();
+  }, [settings.testimonialsVisible]);
 
   const faqs = [
     {
@@ -86,11 +105,11 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <title>True North IT Consultant | Global Software Engineering & Digital Infrastructure</title>
-        <meta name="description" content="True North IT Consultant – World-class IT consulting, software development, QA testing, and managed IT support serving global clients." />
+        <title>True North IT Consultancy | Global Software Engineering & Digital Infrastructure</title>
+        <meta name="description" content="True North IT Consultancy – World-class IT consulting, software development, QA testing, and managed IT support serving global clients." />
         <meta name="keywords" content="Software Engineering, Digital Infrastructure, SaaS Development, Cloud Native, React Developers, Node.js Experts" />
         <link rel="canonical" href="https://truenorthitc.com/" />
-        <meta property="og:title" content="True North IT Consultant | Engineering Excellence" />
+        <meta property="og:title" content="True North IT Consultancy | Engineering Excellence" />
         <meta property="og:description" content="World-class IT consulting and software development for global businesses." />
         <meta property="og:url" content="https://truenorthitc.com/" />
         <meta property="og:type" content="website" />
@@ -127,7 +146,7 @@ const Home = () => {
               <div className="flex items-center gap-3 mb-5">
                 <div className="w-8 h-px bg-brand-red" />
                 <span className="text-brand-red text-xs font-bold uppercase tracking-[0.3em]">
-                  True North IT Consultant
+                  True North IT Consultancy
                 </span>
               </div>
 
@@ -164,7 +183,7 @@ const Home = () => {
 
               <AnimatedSection delay={0.2} className="flex items-center gap-6 flex-wrap">
                 {[
-                  { val: '25+', label: 'Years Exp.' },
+                  { val: '60+', label: 'Yrs Combined Exp.' },
                   { val: 'Founder', label: 'Led Engineering' },
                   { val: '99.9%', label: 'Uptime SLA' },
                 ].map((item, i) => (
@@ -226,8 +245,8 @@ const Home = () => {
                 {/* Stats */}
                 <div className="grid grid-cols-3 gap-4 text-center">
                   <div>
-                    <p className="text-2xl font-black text-brand-red">25+</p>
-                    <p className="text-[10px] text-text-secondary mt-0.5 uppercase tracking-wider">Years Exp.</p>
+                    <p className="text-2xl font-black text-brand-red">60+</p>
+                    <p className="text-[10px] text-text-secondary mt-0.5 uppercase tracking-wider">Yrs Combined Exp.</p>
                   </div>
                   <div className="border-x border-border-subtle">
                     <p className="text-2xl font-black text-text-primary">High</p>
@@ -369,13 +388,13 @@ const Home = () => {
               <p className="text-text-secondary max-w-xl mx-auto">From startups to established enterprises — our clients achieve measurable results.</p>
             </AnimatedSection>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-              {TESTIMONIAL_PREVIEW.map((item, idx) => (
-                <AnimatedSection key={item.name} delay={0.1 * idx} className="glass rounded-2xl p-8 flex flex-col">
-                  <StarRow />
-                  <p className="text-text-secondary leading-relaxed mb-6 flex-grow text-sm">"{item.quote}"</p>
+              {testimonials.map((item, idx) => (
+                <AnimatedSection key={item._id || item.name} delay={0.1 * idx} className="glass rounded-2xl p-8 flex flex-col">
+                  <StarRow count={item.rating || 5} />
+                  <p className="text-text-secondary leading-relaxed mb-6 flex-grow text-sm">"{item.content || item.quote}"</p>
                   <div className="flex items-center gap-3 border-t border-border-subtle pt-5">
-                    <div className="w-9 h-9 rounded-full bg-brand-red/10 border border-brand-red/20 flex items-center justify-center text-brand-red font-bold text-xs shrink-0">
-                      {item.initials}
+                    <div className="w-9 h-9 rounded-full bg-brand-red/10 border border-brand-red/20 flex items-center justify-center text-brand-red font-bold text-xs shrink-0" style={{ backgroundColor: item.color }}>
+                      {item.initials || item.name?.substring(0, 2).toUpperCase()}
                     </div>
                     <div>
                       <p className="text-sm font-bold text-text-primary leading-none mb-0.5">{item.name}</p>

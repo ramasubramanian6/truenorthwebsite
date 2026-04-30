@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import AnimatedSection from '../components/AnimatedSection';
 import { Star, Quote, ArrowRight } from 'lucide-react';
@@ -77,10 +77,10 @@ const Testimonials = () => {
   return (
     <div className="container mx-auto px-6 max-w-7xl">
       <Helmet>
-        <title>Client Testimonials | True North IT Consultant</title>
+        <title>Client Testimonials | True North IT Consultancy</title>
         <meta
           name="description"
-          content="Read what clients say about working with True North IT Consultant — from SaaS delivery to QA testing, deployment, and ongoing support."
+          content="Read what clients say about working with True North IT Consultancy — from SaaS delivery to QA testing, deployment, and ongoing support."
         />
       </Helmet>
 

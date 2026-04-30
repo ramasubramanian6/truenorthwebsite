@@ -3,11 +3,11 @@ const BASE_URL = 'https://truenorthitc.com';
 export const generateOrganizationSchema = () => ({
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'True North IT Consultant',
+  name: 'True North IT Consultancy',
   url: BASE_URL,
   logo: `${BASE_URL}/logo.png`,
   description:
-    'True North IT Consultant – World-class IT consulting, software development, QA testing, and managed IT support serving global clients.',
+    'True North IT Consultancy – World-class IT consulting, software development, QA testing, and managed IT support serving global clients.',
   foundingDate: '1999',
   sameAs: [
     'https://www.linkedin.com/company/truenorth-it',
@@ -29,12 +29,12 @@ export const generateOrganizationSchema = () => ({
 export const generateLocalBusinessSchema = () => ({
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  name: 'True North IT Consultant',
+  name: 'True North IT Consultancy',
   url: BASE_URL,
   logo: `${BASE_URL}/logo.png`,
   image: `${BASE_URL}/logo.png`,
   description:
-    'True North IT Consultant provides expert IT consulting, software development, QA testing, and managed support globally.',
+    'True North IT Consultancy provides expert IT consulting, software development, QA testing, and managed support globally.',
   telephone: '+91-95665-56056',
   email: 'support@truenorth.com',
   priceRange: '$$',
@@ -45,11 +45,11 @@ export const generateLocalBusinessSchema = () => ({
 export const generateWebsiteSchema = () => ({
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: 'True North IT Consultant',
-  alternateName: ['True North', 'True North IT', 'True North IT Consultant'],
+  name: 'True North IT Consultancy',
+  alternateName: ['True North', 'True North IT', 'True North IT Consultancy'],
   url: BASE_URL,
   description:
-    'IT Consultant & Software Development Company – Serving global clients with 25+ years of engineering excellence.',
+    'IT Consultant & Software Development Company – Serving global clients with 60+ years of combined hands-on IT experience.',
   potentialAction: {
     '@type': 'SearchAction',
     target: `${BASE_URL}/blog?q={search_term_string}`,
@@ -90,7 +90,7 @@ export const generateServiceSchema = (service) => ({
   url: `${BASE_URL}/services/${service.id}`,
   provider: {
     '@type': 'LocalBusiness',
-    name: 'True North IT Consultant',
+    name: 'True North IT Consultancy',
     url: BASE_URL,
     telephone: '+91-95665-56056',
   },

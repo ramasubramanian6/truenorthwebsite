@@ -14,10 +14,10 @@ const About = () => {
   return (
     <div className="container mx-auto px-6 max-w-7xl">
       <Helmet>
-        <title>About True North IT Consultant | IT Consultancy Backed by 25+ Years of Leadership</title>
+        <title>About True North IT Consultancy | 60+ Years of Combined IT Leadership Experience</title>
         <meta
           name="description"
-          content="True North is a technology consultancy specialising in scalable digital solutions and SaaS products, backed by leadership with 25+ years of IT industry expertise."
+          content="True North is a technology consultancy specialising in scalable digital solutions and SaaS products, backed by leadership with 60+ years of combined hands-on IT experience."
         />
         <script type="application/ld+json">
           {JSON.stringify(generateBreadcrumbSchema([
@@ -44,8 +44,8 @@ const About = () => {
           </p>
           <p className="text-lg text-text-secondary leading-relaxed mb-5">
             We are backed by leadership with{' '}
-            <strong className="text-text-primary">over 25 years of experience</strong> in the IT
-            industry — bringing deep, battle-tested expertise in software architecture, system
+            <strong className="text-text-primary">60+ years of combined hands-on IT experience</strong> —
+            bringing deep, battle-tested expertise in software architecture, system
             design, and enterprise delivery to every engagement.
           </p>
           <p className="text-lg text-text-secondary leading-relaxed">
@@ -82,8 +82,8 @@ const About = () => {
           </div>
           {/* Stat badges */}
           <div className="absolute top-4 left-4 glass rounded-xl px-4 py-3 shadow-lg">
-            <p className="text-xl font-black text-brand-red">25+</p>
-            <p className="text-xs text-text-secondary">Leadership Exp.</p>
+            <p className="text-xl font-black text-brand-red">60+</p>
+            <p className="text-xs text-text-secondary">Yrs Combined Exp.</p>
           </div>
           <div className="absolute bottom-4 right-4 glass rounded-xl px-4 py-3 shadow-lg">
             <p className="text-xl font-black text-brand-red">Founders</p>
@@ -109,7 +109,7 @@ const About = () => {
 
       {/* ── Leadership Experience ──────────────────────────── */}
       <section className="py-16 mb-24 bg-bg-secondary rounded-3xl border border-border-subtle px-8 md:px-16 relative overflow-hidden">
-        <div className="absolute -top-8 -right-8 text-[12rem] font-black leading-none text-brand-red/5 select-none pointer-events-none">25</div>
+        <div className="absolute -top-8 -right-8 text-[12rem] font-black leading-none text-brand-red/5 select-none pointer-events-none">60</div>
         <div className="absolute top-0 left-0 w-96 h-96 bg-brand-red/5 blur-3xl rounded-full pointer-events-none" />
 
         <div className="relative z-10 flex flex-col lg:flex-row items-start gap-16">
@@ -118,10 +118,10 @@ const About = () => {
           <AnimatedSection className="lg:w-5/12 flex-shrink-0 pt-2">
             <span className="text-brand-red text-xs font-bold uppercase tracking-[0.3em] mb-4 block">Our Leadership</span>
             <h2 className="text-3xl md:text-4xl font-bold text-text-primary leading-tight mb-6">
-              25 Years of <span className="text-gradient">IT Expertise</span>
+              60+ Years of <span className="text-gradient">Combined IT Expertise</span>
             </h2>
             <p className="text-base text-text-secondary leading-relaxed mb-4">
-              Our leadership brings over <strong className="text-text-primary">25 years of hands-on
+              Our leadership brings over <strong className="text-text-primary">60 years of combined hands-on
               IT industry experience</strong> — spanning enterprise systems, cloud infrastructure,
               software architecture, and large-scale digital transformation.
             </p>
@@ -142,7 +142,7 @@ const About = () => {
             {[
               {
                 icon: Award,
-                badge: '25+ Yrs',
+                badge: '60+ Yrs',
                 title: 'Industry Experience',
                 desc: 'Leadership forged across decades of complex IT delivery for global enterprises.',
                 color: 'text-brand-red',

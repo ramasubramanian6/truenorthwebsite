@@ -15,16 +15,16 @@ const LOCATIONS = ['Tirunelveli', 'Chennai', 'Dubai', 'Worldwide'];
 
 const Services = () => {
   const pageTitle =
-    'Engineering Excellence & Digital Transformation Services | True North IT Consultant';
+    'Engineering Excellence & Digital Transformation Services | True North IT Consultancy';
   const pageDesc =
-    'True North IT Consultant delivers world-class software engineering, QA automation, and strategic IT consulting. Built on 25+ years of expertise for global enterprises and scaling businesses.';
+    'True North IT Consultancy delivers world-class software engineering, QA automation, and strategic IT consulting. Built on 60+ years of combined hands-on IT experience for global enterprises and scaling businesses.';
 
   return (
     <div className="services-page">
       <Helmet>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDesc} />
-        <meta name="keywords" content="IT Consultant, Software Development, Web Development, Digital Transformation, Managed IT Support, QA Testing, Enterprise Software" />
+        <meta name="keywords" content="IT Consultancy, Software Development, Web Development, Digital Transformation, Managed IT Support, QA Testing, Enterprise Software" />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDesc} />
         <meta property="og:type" content="website" />
@@ -48,8 +48,8 @@ const Services = () => {
               </span>
             </h1>
             <p className="services-hero__desc">
-              True North IT Consultant delivers high-performance technology solutions built on
-              25+ years of leadership expertise. We architect scalable, secure, and future-ready 
+              True North IT Consultancy delivers high-performance technology solutions built on
+              60+ years of combined hands-on IT experience. We architect scalable, secure, and future-ready
               systems for enterprises and high-growth companies worldwide.
             </p>
             <div className="services-hero__actions">

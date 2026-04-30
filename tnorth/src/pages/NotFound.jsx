@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, useReducedMotion } from 'framer-motion';
@@ -10,7 +10,7 @@ const NotFound = () => {
   return (
     <div className="min-h-[75vh] flex flex-col items-center justify-center px-6 text-center relative overflow-hidden">
       <Helmet>
-        <title>404 Not Found | True North IT Consultant</title>
+        <title>404 Not Found | True North IT Consultancy</title>
         <meta name="robots" content="noindex" />
       </Helmet>
 
