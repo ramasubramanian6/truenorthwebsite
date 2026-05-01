@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node update-sitemap-date.js",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"

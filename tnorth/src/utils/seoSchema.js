@@ -49,7 +49,7 @@ export const generateWebsiteSchema = () => ({
   alternateName: ['True North', 'True North IT', 'True North IT Consultancy'],
   url: BASE_URL,
   description:
-    'IT Consultant & Software Development Company – Serving global clients with 60+ years of combined hands-on IT experience.',
+    'IT Consultancy & Software Development Company – Serving global clients with 60+ years of combined hands-on IT experience.',
   potentialAction: {
     '@type': 'SearchAction',
     target: `${BASE_URL}/blog?q={search_term_string}`,
