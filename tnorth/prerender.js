@@ -12,7 +12,6 @@ const routes = [
   '/services/development',
   '/services/qa-testing',
   '/services/support',
-  '/services/implementation',
   '/about',
   '/contact',
   '/careers',
@@ -48,31 +47,37 @@ async function prerender() {
     console.log('Prerender server running on port 3000');
   });
 
-  const browser = await puppeteer.launch({ headless: 'new' });
-  
-  for (const route of routes) {
-    console.log(`Prerendering ${route}...`);
-    const page = await browser.newPage();
-    
+  try {
+    const browser = await puppeteer.launch({ headless: 'new' });
+
     try {
-      await page.goto(`http://localhost:3000${route}`, { waitUntil: 'networkidle0', timeout: 30000 });
-      
-      const html = await page.content();
-      
-      const routePath = route === '/' ? '/index.html' : `${route}/index.html`;
-      const outputPath = path.join(distPath, routePath);
-      
-      await fs.mkdir(path.dirname(outputPath), { recursive: true });
-      await fs.writeFile(outputPath, html);
-    } catch (err) {
-      console.error(`Failed to prerender ${route}:`, err);
+      for (const route of routes) {
+        console.log(`Prerendering ${route}...`);
+        const page = await browser.newPage();
+
+        try {
+          await page.goto(`http://localhost:3000${route}`, { waitUntil: 'networkidle0', timeout: 30000 });
+
+          const html = await page.content();
+
+          const routePath = route === '/' ? '/index.html' : `${route}/index.html`;
+          const outputPath = path.join(distPath, routePath);
+
+          await fs.mkdir(path.dirname(outputPath), { recursive: true });
+          await fs.writeFile(outputPath, html);
+        } catch (err) {
+          console.error(`Failed to prerender ${route}:`, err);
+        } finally {
+          await page.close();
+        }
+      }
     } finally {
-      await page.close();
+      await browser.close();
     }
+  } finally {
+    server.close();
   }
 
-  await browser.close();
-  server.close();
   console.log('Prerendering complete!');
 }
 

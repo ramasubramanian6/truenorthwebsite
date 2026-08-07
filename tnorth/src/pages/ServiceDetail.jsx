@@ -5,7 +5,7 @@ import {
   ArrowRight, CheckSquare, TrendingUp, Check, ArrowUpRight,
   ChevronDown, ChevronUp, MapPin, BarChart2, Phone, Mail,
 } from 'lucide-react';
-import * as LucideIcons from 'lucide-react';
+import { SERVICE_ICONS } from '../utils/serviceIcons';
 import AnimatedSection from '../components/AnimatedSection';
 import { servicesData } from '../data/servicesData';
 import {
@@ -40,7 +40,7 @@ const ServiceDetail = () => {
 
   if (!service) return <Navigate to="/404" replace />;
 
-  const IconComponent = LucideIcons[service.icon] || LucideIcons.Briefcase;
+  const IconComponent = SERVICE_ICONS[service.icon] || SERVICE_ICONS.Briefcase;
   const canonical = `https://truenorthitc.com/services/${service.id}`;
 
   return (
@@ -235,8 +235,8 @@ const ServiceDetail = () => {
               <a href="tel:+919566556056" className="sd-cta__contact-link">
                 <Phone size={16} /> +91 95665 56056
               </a>
-              <a href="mailto:support@truenorth.com" className="sd-cta__contact-link">
-                <Mail size={16} /> support@truenorth.com
+              <a href="mailto:support@truenorthitc.com" className="sd-cta__contact-link">
+                <Mail size={16} /> support@truenorthitc.com
               </a>
             </div>
           </AnimatedSection>

@@ -8,7 +8,12 @@ export const generateOrganizationSchema = () => ({
   logo: `${BASE_URL}/logo.png`,
   description:
     'True North IT Consultancy – World-class IT consulting, software development, QA testing, and managed IT support serving global clients.',
-  foundingDate: '1999',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Tirunelveli',
+    addressRegion: 'Tamil Nadu',
+    addressCountry: 'IN',
+  },
   sameAs: [
     'https://www.linkedin.com/company/truenorth-it',
     'https://twitter.com/truenorth_it',
@@ -16,7 +21,7 @@ export const generateOrganizationSchema = () => ({
   contactPoint: {
     '@type': 'ContactPoint',
     telephone: '+91-95665-56056',
-    email: 'support@truenorth.com',
+    email: 'support@truenorthitc.com',
     contactType: 'customer service',
     areaServed: ['IN', 'AE', 'GB', 'US', 'SG'],
     availableLanguage: ['English', 'Tamil'],
@@ -36,10 +41,16 @@ export const generateLocalBusinessSchema = () => ({
   description:
     'True North IT Consultancy provides expert IT consulting, software development, QA testing, and managed support globally.',
   telephone: '+91-95665-56056',
-  email: 'support@truenorth.com',
+  email: 'support@truenorthitc.com',
   priceRange: '$$',
   currenciesAccepted: 'INR, USD, AED',
   areaServed: 'Worldwide',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Tirunelveli',
+    addressRegion: 'Tamil Nadu',
+    addressCountry: 'IN',
+  },
 });
 
 export const generateWebsiteSchema = () => ({

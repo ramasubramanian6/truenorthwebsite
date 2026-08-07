@@ -58,7 +58,7 @@ const About = () => {
         {/* Compass visual */}
         <AnimatedSection delay={0.2} animationType="fadeIn" className="w-full lg:w-1/2 relative">
           <div className="aspect-square max-w-sm mx-auto bg-bg-secondary rounded-3xl border border-border-subtle relative flex items-center justify-center overflow-hidden">
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-red/10 via-bg-secondary to-bg-secondary rounded-3xl" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-brand-red/10 via-bg-secondary to-bg-secondary rounded-3xl" />
             {/* Outer spinning ring */}
             <div
               className="absolute w-64 h-64 border border-brand-red/20 rounded-full"
@@ -77,7 +77,7 @@ const About = () => {
             {/* Core */}
             <div className="absolute flex flex-col items-center z-20">
               <span className="text-brand-red font-black text-6xl leading-none mb-1">N</span>
-              <div className="w-px h-16 bg-gradient-to-b from-brand-red to-transparent" />
+              <div className="w-px h-16 bg-linear-to-b from-brand-red to-transparent" />
             </div>
           </div>
           {/* Stat badges */}
@@ -115,7 +115,7 @@ const About = () => {
         <div className="relative z-10 flex flex-col lg:flex-row items-start gap-16">
 
           {/* Left — Copy */}
-          <AnimatedSection className="lg:w-5/12 flex-shrink-0 pt-2">
+          <AnimatedSection className="lg:w-5/12 shrink-0 pt-2">
             <span className="text-brand-red text-xs font-bold uppercase tracking-[0.3em] mb-4 block">Our Leadership</span>
             <h2 className="text-3xl md:text-4xl font-bold text-text-primary leading-tight mb-6">
               60+ Years of <span className="text-gradient">Combined IT Expertise</span>
@@ -123,7 +123,9 @@ const About = () => {
             <p className="text-base text-text-secondary leading-relaxed mb-4">
               Our leadership brings over <strong className="text-text-primary">60 years of combined hands-on
               IT industry experience</strong> — spanning enterprise systems, cloud infrastructure,
-              software architecture, and large-scale digital transformation.
+              software architecture, and large-scale digital transformation, including{' '}
+              <strong className="text-text-primary">2+ years of hands-on experience building and
+              managing production workloads on AWS</strong>.
             </p>
             <p className="text-base text-text-secondary leading-relaxed mb-8">
               Every strategy we recommend, every architecture we design, and every solution we
@@ -131,7 +133,7 @@ const About = () => {
               from proven insight, not guesswork.
             </p>
             <div className="flex flex-wrap gap-3">
-              {['Enterprise Architecture', 'Cloud Strategy', 'Digital Transformation', 'SaaS Leadership', 'IT Consulting'].map(tag => (
+              {['Enterprise Architecture', 'AWS Cloud (2+ Yrs)', 'Cloud Strategy', 'Digital Transformation', 'SaaS Leadership', 'IT Consulting'].map(tag => (
                 <span key={tag} className="px-3 py-1.5 text-xs font-semibold rounded-full border border-brand-red/30 text-brand-red" style={{ backgroundColor: 'rgba(229,9,20,0.07)' }}>{tag}</span>
               ))}
             </div>
@@ -204,7 +206,7 @@ const About = () => {
         </AnimatedSection>
 
         <div className="relative grid grid-cols-2 md:grid-cols-4 gap-8">
-          <div className="hidden md:block absolute top-[27px] left-[12.5%] right-[12.5%] h-px bg-brand-red/20 z-0" />
+          <div className="hidden md:block absolute top-6.75 left-[12.5%] right-[12.5%] h-px bg-brand-red/20 z-0" />
           {[
             { num: '01', label: 'Consult',   icon: Lightbulb, desc: 'We deeply understand your business goals and technical landscape to form a clear strategy.' },
             { num: '02', label: 'Build',     icon: Code,      desc: 'We engineer solutions using modern, production-grade stacks optimised for performance and scale.' },

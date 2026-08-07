@@ -113,7 +113,7 @@ export const servicesData = [
       'Rapid Incident Response & Escalation Management',
       'Scheduled Preventive Maintenance',
       'Security Patch & Update Management',
-      'Cloud Infrastructure Management (AWS, GCP, Azure)',
+      'Cloud Infrastructure Management (AWS, GCP, Azure) — 2+ Years Hands-On AWS Experience',
       'SLA-Backed Service Contracts',
       'Monthly Health & Performance Reporting',
     ],
@@ -132,7 +132,7 @@ export const servicesData = [
       {
         question: 'Do you provide support for cloud-hosted systems?',
         answer:
-          'Yes. We manage applications and infrastructure hosted on AWS, Google Cloud, Azure, and private servers — providing unified support regardless of your global hosting environment.',
+          'Yes. We manage applications and infrastructure hosted on AWS, Google Cloud, Azure, and private servers — including 2+ years of hands-on experience running production workloads on AWS — providing unified support regardless of your global hosting environment.',
       },
       {
         question: 'What does your SLA guarantee?',
@@ -147,51 +147,78 @@ export const servicesData = [
     ],
   },
   {
-    id: 'implementation',
-    title: 'IT Consulting & Implementation',
-    short: 'Strategic IT consulting and end-to-end system implementation aligning technology with global business goals.',
-    metaTitle: 'IT Consulting & Implementation | Digital Strategy – True North IT Consultancy',
+    id: 'school-erp',
+    title: 'AI-Powered School Management',
+    short: 'An AI-powered School ERP for schools, colleges, universities, and training institutes — AI timetabling, document automation, a 360° student sphere, fleet routing, and question paper generation, all on one platform.',
+    metaTitle: 'AI-Powered School Management Software | AI School ERP – True North IT Consultancy',
     metaDescription:
-      'True North IT Consultancy provides expert IT consulting and end-to-end system implementation for global businesses seeking digital transformation.',
+      "True North's AI-Powered School Management platform automates timetabling, documents, transport fleet routing, and question paper generation, alongside a 360° student sphere covering admissions, attendance, fees, and communication.",
     overview:
-      'True North IT Consultancy is your strategic technology partner. We provide expert IT consulting and implementation services that align technology with your specific business objectives. From assessing infrastructure to architecting tailored solutions — our consultants guide every step of your digital transformation journey, ensuring global scalability and measurable ROI.',
+      "True North's AI-Powered School Management platform replaces disconnected spreadsheets and legacy systems with a single, cloud-native ERP that puts AI to work on the tasks that eat up administrative time — building conflict-free timetables, digitizing documents, routing the transport fleet, and generating question papers. A 360° student Sphere brings academics, attendance, fees, and behavior into one AI-assisted view. Built as a true multi-tenant SaaS product, it scales from a single school to multi-campus institutions.",
     longDescription:
-      'Digital transformation is a journey that requires precision. True North helps organisations navigate this journey by identifying the right tools, designing scalable architectures, and managing change to ensure long-term operational success. We have delivered successful implementations for diverse industries across multiple continents.',
+      'Schools, colleges, universities, and training institutes lose hours every week to manual administration spread across spreadsheets, paper registers, and disconnected tools. True North AI-Powered School Management consolidates student records, academics, examinations, finance, HR, and communication into one platform — and layers AI on top of the most time-consuming workflows. Timetables are generated automatically without clashes, admission and compliance documents are digitized and auto-verified, transport routes are optimized with predictive ETAs, and question papers are generated from your syllabus and question bank in a fraction of the time. The 360° Sphere gives administrators, teachers, and parents one AI-assisted view of every student. Engineered on production-grade, multi-tenant architecture with the same 60+ years of combined hands-on IT experience behind every True North engagement.',
     features: [
-      'IT Strategy & Digital Transformation Roadmaps',
-      'Technology Audit & Infrastructure Assessment',
-      'CRM, ERP & Enterprise Software Implementation',
-      'Cloud Migration & Architecture Design',
-      'Vendor Selection & Technology Procurement',
-      'Change Management & Staff Training',
-      'Post-Implementation Optimisation & Support',
+      'AI-Generated, Conflict-Free Timetables',
+      'AI Document Automation — Digitization & Auto-Verification',
+      'AI-Powered 360° Student Sphere (Academics, Attendance, Fees & Behavior in One View)',
+      'AI-Optimized Transport Fleet Routing & Predictive ETAs',
+      'AI Question Paper Generation from Syllabus & Question Banks',
+      'Admissions, Registration & Digital Student Profiles',
+      'Examination Scheduling, Hall Tickets, Marks Entry & Report Cards',
+      'HR: Employee Records, Payroll, Leave & Recruitment',
+      'Fee Collection, Expense Tracking & Accounting',
+      'Email, SMS, Push & WhatsApp Parent Communication',
+      'Library, Transport (with GPS Tracking) & Hostel Management',
+      'Parent Portal & Mobile App (Android & iOS)',
+      'Academic, Financial, Attendance & Custom Reporting',
     ],
     benefits: [
-      'Strategic Technology Alignment with Business Goals',
-      'Reduced Implementation Risk & Cost Overruns',
-      'Faster Time-to-Value on Technology Investments',
-      'Streamlined, Automated Business Operations',
-      'Scalable Architecture for Future Growth',
-      'Expert Guidance from Senior Technology Leaders',
+      'Timetables Built in Minutes, Not Days',
+      'Faster Admissions Through Automated Document Processing',
+      'One AI-Assisted View of Every Student — Instead of Scattered Spreadsheets',
+      'Safer, More Efficient Transport Through Optimized Routing',
+      'Question Papers Generated in a Fraction of the Time',
+      'Scales from a Single School to Multi-Campus Institutions',
+      'Secure, Cloud-Native & Always Available',
     ],
-    process: ['Discovery & Assessment', 'Strategy & Roadmap', 'Architecture Design', 'Implementation & Integration', 'Review & Optimisation'],
-    outcome: 'Technology-Powered Business Growth',
-    icon: 'Rocket',
+    process: ['Institution Onboarding', 'Data Migration', 'AI Model Setup & Staff Training', 'Go-Live', 'Ongoing Support & Updates'],
+    outcome: 'AI-Powered Administration From Admissions to Alumni',
+    icon: 'GraduationCap',
     faqs: [
       {
-        question: 'What industries do you consult for?',
+        question: 'Which institutions is the AI-Powered School Management platform built for?',
         answer:
-          'We consult across manufacturing, retail, logistics, healthcare, education, and financial services — with deep domain knowledge from 60+ years of combined hands-on IT delivery.',
+          'Schools, colleges, universities, and training institutes of any size — from a single campus to multi-branch institutions.',
       },
       {
-        question: 'Can you help us choose the right software for our business?',
+        question: 'How does AI generate the timetable?',
         answer:
-          'Yes. Our technology audit and vendor selection service evaluates your requirements against global market solutions and recommends the best-fit tools.',
+          'The platform takes your classes, sections, subjects, teacher availability, and room constraints, and automatically generates a conflict-free timetable — removing the manual back-and-forth of building schedules by hand each term.',
       },
       {
-        question: 'Do you support organisations outside India?',
+        question: 'What does AI document automation actually do?',
         answer:
-          'Yes. We regularly engage clients in North America, Europe, and the Middle East. Our consulting model is designed for remote-first, timezone-flexible delivery.',
+          'Admission and compliance documents (ID proofs, certificates, transfer records) are digitized and auto-verified against the details entered during registration, cutting down manual document checking during admissions.',
+      },
+      {
+        question: 'What is the 360° Student Sphere?',
+        answer:
+          "The Sphere is a unified, AI-assisted view of a student's full profile — academics, attendance, fees, and behavior — in one place, instead of administrators and teachers checking separate spreadsheets or modules.",
+      },
+      {
+        question: 'How does AI help with question paper generation?',
+        answer:
+          "Question papers are generated from your syllabus and existing question bank, matched to the marks distribution and difficulty level you set — a starting draft teachers can review and adjust rather than compile from scratch.",
+      },
+      {
+        question: 'Is student and parent data secure?',
+        answer:
+          'Yes. The platform is built on multi-tenant, cloud-native infrastructure with encryption in transit and at rest, role-based access control, and regular backups.',
+      },
+      {
+        question: 'Can we migrate our existing student and fee records into the ERP?',
+        answer:
+          'Yes. Our onboarding process includes structured data migration from spreadsheets or legacy systems, with staff and parent training before go-live.',
       },
     ],
   },

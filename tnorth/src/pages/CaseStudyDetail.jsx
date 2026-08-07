@@ -42,9 +42,9 @@ const CaseStudyDetail = () => {
           </div>
         </AnimatedSection>
 
-        <AnimatedSection delay={0.1} className="w-full h-[400px] md:h-[500px] rounded-3xl overflow-hidden mb-16 relative border border-border-subtle">
+        <AnimatedSection delay={0.1} className="w-full h-100 md:h-125 rounded-3xl overflow-hidden mb-16 relative border border-border-subtle">
           <div className="absolute inset-0 bg-brand-red/10 mix-blend-overlay z-10"></div>
-          <img src={study.image} alt={study.title} className="w-full h-full object-cover" />
+          <img src={study.image} alt={study.title} fetchpriority="high" decoding="async" className="w-full h-full object-cover" />
         </AnimatedSection>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
@@ -62,7 +62,7 @@ const CaseStudyDetail = () => {
 
           <div className="md:col-span-1">
             <AnimatedSection delay={0.4} className="glass p-8 rounded-3xl border border-border-subtle sticky top-24">
-              <h3 className="text-lg font-bold text-text-primary mb-6 uppercase tracking-wider text-xs">The Results</h3>
+              <h3 className="font-bold text-text-primary mb-6 uppercase tracking-wider text-xs">The Results</h3>
               <ul className="space-y-6">
                 {study.results.map((result, idx) => (
                   <li key={idx} className="flex items-start">

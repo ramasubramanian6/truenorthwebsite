@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "@fontsource-variable/inter/wght.css";
 @plugin "@tailwindcss/typography";
 
 :root {
@@ -32,7 +33,7 @@
   --color-border-subtle: var(--color-border-subtle);
   --color-brand-red: var(--color-brand-red);
   --color-red-glow: var(--color-red-glow);
-  --font-sans: 'Inter', sans-serif;
+  --font-sans: 'Inter Variable', 'Inter', sans-serif;
 }
 
 @layer base {
@@ -47,7 +48,7 @@
   }
   
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-red to-red-400;
+    @apply bg-clip-text text-transparent bg-linear-to-r from-brand-red to-red-400;
   }
   
   .bento-card {

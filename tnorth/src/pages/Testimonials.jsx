@@ -114,7 +114,7 @@ const Testimonials = () => {
             >
               <div className="absolute -top-6 -right-6 w-24 h-24 bg-brand-red/5 rounded-full blur-2xl pointer-events-none group-hover:bg-brand-red/10 transition-colors" />
               <Quote size={28} className="text-brand-red/20 mb-4" />
-              <p className="text-text-secondary leading-relaxed mb-8 flex-grow text-sm">
+              <p className="text-text-secondary leading-relaxed mb-8 grow text-sm">
                 "{item.content}"
               </p>
               <div className="flex items-center justify-between flex-wrap gap-4 pt-5 border-t border-border-subtle">
@@ -124,6 +124,8 @@ const Testimonials = () => {
                     <img
                       src={item.avatarUrl}
                       alt={item.name}
+                      loading="lazy"
+                      decoding="async"
                       className="w-11 h-11 rounded-full object-cover shrink-0"
                       onError={(e) => {
                         e.currentTarget.style.display = 'none';
@@ -157,7 +159,7 @@ const Testimonials = () => {
 
       {/* CTA */}
       <AnimatedSection className="text-center mb-24 py-14 glass rounded-3xl relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-red/5 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-brand-red/5 via-transparent to-transparent pointer-events-none" />
         <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-4 relative z-10">
           Ready to become our next <span className="text-gradient">success story?</span>
         </h2>

@@ -10,10 +10,15 @@ export default defineConfig({
     drop: ['console', 'debugger'],
   },
   build: {
-    rollupOptions: {
+    rolldownOptions: {
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
+            if (id.includes('framer-motion')) return 'vendor-motion';
+            if (id.includes('react-router')) return 'vendor-router';
+            if (id.includes('i18next') || id.includes('react-i18next')) return 'vendor-i18n';
+            if (id.includes('lucide-react') || id.includes('react-icons')) return 'vendor-icons';
+            if (id.includes('react-dom') || id.includes('/react/')) return 'vendor-react';
             return 'vendor';
           }
         }

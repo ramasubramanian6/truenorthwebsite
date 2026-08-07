@@ -16,8 +16,17 @@ import {
   GitBranch, Container, Terminal, Box,
   // Replace Figma with a generic tool icon if it's missing
   PenTool,
-  Layout // Often used as a replacement for "Figma/Design" icons
+  Layout, // Often used as a replacement for "Figma/Design" icons
+  Calendar, FileText, Orbit, Truck, FileQuestion, Sparkles,
 } from 'lucide-react';
+
+const AI_SCHOOL_FEATURES = [
+  { icon: Calendar, name: 'AI Timetables', desc: 'Conflict-free schedules generated automatically from classes, teachers & rooms.' },
+  { icon: FileText, name: 'AI Document Automation', desc: 'Admission & compliance documents digitized and auto-verified.' },
+  { icon: Orbit, name: '360° Student Sphere', desc: 'Academics, attendance, fees & behavior — one AI-assisted view per student.' },
+  { icon: Truck, name: 'AI Fleet Routing', desc: 'Optimized transport routes with predictive ETAs for every trip.' },
+  { icon: FileQuestion, name: 'AI Question Papers', desc: 'Generated from your syllabus & question bank, ready for teacher review.' },
+];
 
 /* ──────────────────────────────────────────────────────────── */
 /* Static data                                                  */
@@ -127,14 +136,14 @@ const Home = () => {
       {/* ── HERO ───────────────────────────────────────────── */}
       <section className="relative min-h-[88vh] flex flex-col overflow-hidden bg-bg-primary">
         {/* Background grid */}
-        <div className="absolute inset-0 bg-[linear-gradient(var(--color-border-subtle)_1px,transparent_1px),linear-gradient(90deg,var(--color-border-subtle)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_50%,transparent_100%)] z-0 pointer-events-none" />
+        <div className="absolute inset-0 bg-[linear-gradient(var(--color-border-subtle)_1px,transparent_1px),linear-gradient(90deg,var(--color-border-subtle)_1px,transparent_1px)] bg-size-[4rem_4rem] mask-[radial-gradient(ellipse_80%_80%_at_50%_50%,#000_50%,transparent_100%)] z-0 pointer-events-none" />
         {/* Glow blobs - Hidden on mobile to improve TBT performance */}
-        <div className="hidden lg:block absolute top-0 right-0 w-[700px] h-[700px] bg-brand-red/8 rounded-full blur-[130px] pointer-events-none translate-x-1/3 -translate-y-1/4" />
-        <div className="hidden lg:block absolute bottom-0 left-0 w-[400px] h-[400px] bg-brand-red/4 rounded-full blur-[90px] pointer-events-none" />
+        <div className="hidden lg:block absolute top-0 right-0 w-175 h-175 bg-brand-red/8 rounded-full blur-[130px] pointer-events-none translate-x-1/3 -translate-y-1/4" />
+        <div className="hidden lg:block absolute bottom-0 left-0 w-100 h-100 bg-brand-red/4 rounded-full blur-[90px] pointer-events-none" />
         {/* Decorative geometric shapes */}
         <div className="hidden lg:block absolute top-20 right-[15%] w-20 h-20 border border-brand-red/20 rotate-45 pointer-events-none" />
         <div className="hidden lg:block absolute bottom-32 left-[10%] w-16 h-16 border border-white/10 rounded-full pointer-events-none" />
-        <div className="hidden lg:block absolute top-1/3 left-[5%] w-px h-32 bg-gradient-to-b from-brand-red/0 via-brand-red/30 to-brand-red/0 pointer-events-none" />
+        <div className="hidden lg:block absolute top-1/3 left-[5%] w-px h-32 bg-linear-to-b from-brand-red/0 via-brand-red/30 to-brand-red/0 pointer-events-none" />
 
         {/* Main grid */}
         <div className="container mx-auto px-6 max-w-7xl relative z-10 flex-1 flex flex-col justify-center pt-20 pb-12">
@@ -168,7 +177,7 @@ const Home = () => {
                     to="/contact"
                     className="px-7 py-4 bg-brand-red text-white font-bold rounded-lg hover:bg-red-700 hover:scale-[1.02] transition-all duration-300 shadow-[0_0_28px_var(--color-red-glow)] text-center relative overflow-hidden group"
                   >
-                    <span className="absolute inset-0 w-1/3 bg-white/15 skew-x-12 -ml-10 group-hover:translate-x-[600px] transition-transform duration-700 pointer-events-none" />
+                    <span className="absolute inset-0 w-1/3 bg-white/15 skew-x-12 -ml-10 group-hover:translate-x-150 transition-transform duration-700 pointer-events-none" />
                     {t('hero.ctaPrimary')} <ArrowRight size={16} className="inline ml-1" />
                   </Link>
                   <Link
@@ -199,7 +208,7 @@ const Home = () => {
             </div>
 
             {/* RIGHT — Dashboard Visual */}
-            <AnimatedSection delay={0.3} animationType="fadeIn" className="relative hidden lg:block lg:ml-auto w-full max-w-[480px]">
+            <AnimatedSection delay={0.3} animationType="fadeIn" className="relative hidden lg:block lg:ml-auto w-full max-w-120">
               {/* Main glass card */}
               <div className="glass rounded-3xl p-3 relative overflow-hidden shadow-2xl">
                 <div className="absolute -top-20 -right-20 w-56 h-56 bg-brand-red/10 rounded-full blur-3xl pointer-events-none" />
@@ -229,7 +238,7 @@ const Home = () => {
                         <span className="text-xs font-bold text-text-primary">{m.value}</span>
                       </div>
                       <div className="w-full h-1.5 bg-bg-secondary rounded-full overflow-hidden">
-                        <div className={`h-full bg-gradient-to-r ${m.from} ${m.to} rounded-full`} style={{ width: `${m.pct}%` }} />
+                        <div className={`h-full bg-linear-to-r ${m.from} ${m.to} rounded-full`} style={{ width: `${m.pct}%` }} />
                       </div>
                     </div>
                   ))}
@@ -292,7 +301,7 @@ const Home = () => {
       <div className="bg-bg-secondary border-y border-border-subtle">
         <div className="container mx-auto px-6 max-w-7xl py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 relative">
-            <div className="hidden md:block absolute top-[22px] left-[12.5%] right-[12.5%] h-px bg-border-subtle z-0" />
+            <div className="hidden md:block absolute top-5.5 left-[12.5%] right-[12.5%] h-px bg-border-subtle z-0" />
             {PROCESS_STEPS.map(({ num, label, detail, icon: Icon }) => (
               <div key={label} className="text-center relative z-10">
                 <div className="w-11 h-11 mx-auto mb-3 bg-bg-primary rounded-full border border-brand-red flex items-center justify-center shadow-[0_0_12px_var(--color-red-glow)]">
@@ -325,6 +334,44 @@ const Home = () => {
         </div>
       </section>
 
+      {/* ── AI-POWERED SCHOOL MANAGEMENT ──────────────────────── */}
+      <section className="py-16 md:py-20 bg-bg-secondary relative overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-150 h-75 bg-brand-red/6 blur-[100px] pointer-events-none" />
+        <div className="container mx-auto px-6 max-w-7xl relative z-10">
+          <AnimatedSection className="mb-14 text-center">
+            <span className="inline-flex items-center gap-2 text-brand-red text-xs font-bold uppercase tracking-[0.3em] mb-4">
+              <Sparkles size={14} /> AI-Powered
+            </span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+              AI-Powered <span className="text-gradient">School Management</span>
+            </h2>
+            <p className="text-text-secondary max-w-2xl mx-auto text-base md:text-lg">
+              Timetables, documents, transport, and question papers — automated by AI, so your staff spend less
+              time on paperwork and more time teaching.
+            </p>
+          </AnimatedSection>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+            {AI_SCHOOL_FEATURES.map((feat, i) => (
+              <AnimatedSection key={feat.name} delay={0.08 * i} className="glass rounded-2xl p-6 border border-border-subtle hover:border-brand-red/30 transition-all duration-500 group">
+                <div className="w-12 h-12 mb-4 bg-bg-primary text-brand-red rounded-xl flex items-center justify-center border border-border-subtle group-hover:scale-110 transition-transform duration-500">
+                  <feat.icon size={22} />
+                </div>
+                <h3 className="text-sm font-bold text-text-primary mb-1.5">{feat.name}</h3>
+                <p className="text-xs text-text-secondary leading-relaxed">{feat.desc}</p>
+              </AnimatedSection>
+            ))}
+          </div>
+          <AnimatedSection delay={0.3} className="text-center mt-12">
+            <Link
+              to="/services/school-erp"
+              className="inline-flex items-center gap-2 px-7 py-4 bg-brand-red text-white font-bold rounded-lg hover:bg-red-700 hover:scale-[1.02] transition-all duration-300 shadow-[0_0_28px_var(--color-red-glow)]"
+            >
+              Explore AI School Management <ArrowRight size={16} />
+            </Link>
+          </AnimatedSection>
+        </div>
+      </section>
+
       {/* ── ENGINEERING EXCELLENCE BENTO ──────────────────────── */}
       <section className="py-16 md:py-20 bg-bg-secondary">
         <div className="container mx-auto px-6 max-w-7xl">
@@ -338,7 +385,7 @@ const Home = () => {
             </p>
           </AnimatedSection>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <AnimatedSection delay={0.1} className="lg:col-span-2 rounded-3xl glass p-8 relative group hover:border-brand-red/30 transition-colors min-h-[260px]">
+            <AnimatedSection delay={0.1} className="lg:col-span-2 rounded-3xl glass p-8 relative group hover:border-brand-red/30 transition-colors min-h-65">
               <div className="absolute top-0 right-0 w-64 h-64 bg-brand-red/5 blur-3xl pointer-events-none rounded-full" />
               <Code size={40} className="text-brand-red mb-6" />
               <h3 className="text-3xl font-bold text-text-primary mb-4">Code-First Approach</h3>
@@ -349,7 +396,7 @@ const Home = () => {
                 ))}
               </div>
             </AnimatedSection>
-            <AnimatedSection delay={0.2} className="rounded-3xl overflow-hidden glass p-8 flex flex-col items-start justify-center group hover:border-brand-red/30 transition-colors min-h-[260px]">
+            <AnimatedSection delay={0.2} className="rounded-3xl overflow-hidden glass p-8 flex flex-col items-start justify-center group hover:border-brand-red/30 transition-colors min-h-65">
               <Server size={40} className="text-brand-red mb-4" />
               <h3 className="text-2xl font-bold text-text-primary mb-2">99.9% Uptime</h3>
               <p className="text-text-secondary">Load-balanced, redundant architectures built for fault tolerance and continuous availability.</p>
@@ -391,7 +438,7 @@ const Home = () => {
               {testimonials.map((item, idx) => (
                 <AnimatedSection key={item._id || item.name} delay={0.1 * idx} className="glass rounded-2xl p-8 flex flex-col">
                   <StarRow count={item.rating || 5} />
-                  <p className="text-text-secondary leading-relaxed mb-6 flex-grow text-sm">"{item.content || item.quote}"</p>
+                  <p className="text-text-secondary leading-relaxed mb-6 grow text-sm">"{item.content || item.quote}"</p>
                   <div className="flex items-center gap-3 border-t border-border-subtle pt-5">
                     <div className="w-9 h-9 rounded-full bg-brand-red/10 border border-brand-red/20 flex items-center justify-center text-brand-red font-bold text-xs shrink-0" style={{ backgroundColor: item.color }}>
                       {item.initials || item.name?.substring(0, 2).toUpperCase()}
@@ -424,7 +471,7 @@ const Home = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
             {[
-              { name: 'Cloud Infrastructure', icon: Cloud, color: 'text-blue-400', desc: 'AWS, Azure, GCP' },
+              { name: 'Cloud Infrastructure', icon: Cloud, color: 'text-blue-400', desc: 'AWS (2+ Yrs), Azure, GCP' },
               { name: 'Frontend Eng.', icon: PenTool, color: 'text-pink-400', desc: 'React, Next.js, Vue' },
               { name: 'Backend Systems', icon: Zap, color: 'text-yellow-400', desc: 'Node.js, Go, Python' },
               { name: 'Database Arch.', icon: Database, color: 'text-green-500', desc: 'MongoDB, PostgreSQL' },

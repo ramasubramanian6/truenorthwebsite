@@ -27,20 +27,22 @@ const CaseStudies = () => {
             <AnimatedSection key={study.id} delay={index * 0.1} className="glass rounded-3xl border border-border-subtle overflow-hidden flex flex-col group">
               <div className="h-48 overflow-hidden relative">
                 <div className="absolute inset-0 bg-brand-red/10 mix-blend-overlay z-10"></div>
-                <img 
-                  src={study.image} 
-                  alt={study.title} 
+                <img
+                  src={study.image}
+                  alt={study.title}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
-              <div className="p-8 flex flex-col flex-grow">
+              <div className="p-8 flex flex-col grow">
                 <span className="text-brand-red text-[10px] font-bold uppercase tracking-widest mb-3">
                   {study.clientIndustry}
                 </span>
                 <h3 className="text-xl font-bold text-text-primary mb-4 leading-tight group-hover:text-brand-red transition-colors">
                   {study.title}
                 </h3>
-                <p className="text-text-secondary text-sm leading-relaxed mb-8 flex-grow">
+                <p className="text-text-secondary text-sm leading-relaxed mb-8 grow">
                   {study.summary}
                 </p>
                 <div className="flex flex-wrap gap-2 mb-6">

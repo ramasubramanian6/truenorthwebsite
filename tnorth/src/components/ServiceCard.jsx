@@ -1,11 +1,12 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import * as LucideIcons from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import { SERVICE_ICONS } from '../utils/serviceIcons';
 
 const ServiceCard = ({ id, title, short, icon }) => {
   const shouldReduceMotion = useReducedMotion();
-  const IconComponent = LucideIcons[icon] || LucideIcons.Briefcase;
+  const IconComponent = SERVICE_ICONS[icon] || SERVICE_ICONS.Briefcase;
 
   return (
     <motion.div
@@ -33,7 +34,7 @@ const ServiceCard = ({ id, title, short, icon }) => {
         aria-label={`Learn more about our ${title} services`}
       >
         <span>Explore {title}</span>
-        <LucideIcons.ArrowRight size={14} className="ml-2 group-hover/link:translate-x-1.5 transition-transform" />
+        <ArrowRight size={14} className="ml-2 group-hover/link:translate-x-1.5 transition-transform" />
       </Link>
     </motion.div>
   );
