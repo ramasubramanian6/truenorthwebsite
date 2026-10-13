@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+/* True North IT Consulting. One accent (True North red) on ink and warm
+   white; soft red bands instead of black blocks; Montserrat, shared with
+   GRIT so the company and its product read as one family. */
+:root {
+  --red: #d30812;
+  --red-strong: #a8060e;
+  --red-soft: #fdecec;
+  --red-glow: rgba(211, 8, 18, 0.13);
+  --ink: #141414;
+  --ink-2: #4a4a52;
+  --ink-3: #74747d;
+  --paper: #fbfaf8;
+  --paper-2: #f3f1ed;
+  --card: #ffffff;
+  --line: rgba(20, 20, 20, 0.09);
+  --line-strong: rgba(20, 20, 20, 0.16);
+  --stage: #121214;
+  --stage-2: #1a1a1e;
+  --stage-line: rgba(255, 255, 255, 0.09);
+  --stage-ink: #f4f4f2;
+  --stage-ink-2: #a9a9b2;
+  --ok: #0f9d58;
+  --ok-soft: #e7f6ee;
+}
+
+@theme inline {
+  --color-red: var(--red);
+  --color-red-strong: var(--red-strong);
+  --color-red-soft: var(--red-soft);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-card: var(--card);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-stage: var(--stage);
+  --color-stage-2: var(--stage-2);
+  --color-stage-line: var(--stage-line);
+  --color-stage-ink: var(--stage-ink);
+  --color-stage-ink-2: var(--stage-ink-2);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+html { background: var(--paper); scroll-behavior: smooth; }
+body { background: var(--paper); color: var(--ink); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+::selection { background: var(--red); color: #fff; }
+:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; border-radius: 6px; }
+
+.grid-bg {
+  background-image: linear-gradient(rgba(20, 20, 20, 0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(20, 20, 20, 0.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+.grid-bg-dark {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+.mask-fade-b { -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent); mask-image: linear-gradient(to bottom, #000 55%, transparent); }
+.mask-fade-x { -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent); mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent); }
+
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.animate-marquee { animation: marquee 38s linear infinite; }
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+.spin-slow { animation: spin-slow 80s linear infinite; }
+.spin-slower { animation: spin-slow 140s linear infinite reverse; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
