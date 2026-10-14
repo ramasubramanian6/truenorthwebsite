@@ -1,0 +1,9 @@
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+# The site is installed with npm; the stray pnpm files stay local.
+pnpm-lock.yaml
+pnpm-workspace.yaml
+
