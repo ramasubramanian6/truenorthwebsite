@@ -7,6 +7,7 @@ import { Button, Container, GritLogo, TnLockup, TnMark } from "./ui";
 export default function Footer() {
   const cols = {
     Services: SERVICES.map((s) => ({ label: s.name, href: `/services/${s.slug}/` })),
+    Products: [{ label: "GRIT School ERP", href: "/grit/" }],
     Company: [
       { label: "About", href: "/about/" },
       { label: "How We Work", href: "/#process" },
@@ -34,7 +35,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-[1.5fr_1.4fr_1fr_1fr]">
+        <div className="grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-[1.5fr_1.4fr_1fr_1fr_1fr]">
           <div>
             <Link href="/" aria-label="True North IT Consulting home"><TnLockup /></Link>
             <p className="mt-5 max-w-[320px] text-[14.5px] leading-relaxed text-ink-2">We build, test and run software for organisations, and we build our own products.</p>
