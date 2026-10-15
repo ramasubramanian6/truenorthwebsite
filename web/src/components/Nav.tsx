@@ -4,8 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
 import { SERVICES } from "@/lib/content";
+import { SITE } from "@/lib/site";
 import { Button, GritLogo, TnLockup } from "./ui";
 
 export default function Nav() {
@@ -88,7 +89,11 @@ export default function Nav() {
                       <span className="mt-1.5 block text-[13px] leading-snug text-ink-2">The school operating system: admissions to payroll, with WhatsApp for parents.</span>
                     </span>
                   </Link>
-                  <p className="mt-1 rounded-xl bg-paper-2 px-4 py-3 text-[12.5px] text-ink-3">More products on the way.</p>
+                  {SITE.gritUrl ? (
+                    <a href={SITE.gritUrl} target="_blank" rel="noopener" className="mt-1 flex items-center justify-between rounded-xl bg-paper-2 px-4 py-3 text-[13.5px] font-semibold text-red hover:bg-red-soft">Visit the GRIT website <ArrowUpRight size={15} aria-hidden /></a>
+                  ) : (
+                    <p className="mt-1 rounded-xl bg-paper-2 px-4 py-3 text-[12.5px] text-ink-3">More products on the way.</p>
+                  )}
                 </motion.div>
               ) : null}
             </AnimatePresence>
@@ -116,6 +121,7 @@ export default function Nav() {
             </ul>
             <p className="pt-4 text-[12px] font-bold uppercase tracking-[0.18em] text-ink-3">Products</p>
             <Link href="/grit/" className="mt-2 flex items-center gap-3 border-b border-line pb-4 pt-2"><GritLogo variant="wordmark" className="h-6" /><span className="text-[14px] text-ink-3">School operating system</span></Link>
+            {SITE.gritUrl ? <a href={SITE.gritUrl} target="_blank" rel="noopener" className="flex items-center justify-between border-b border-line py-3 text-[15px] font-semibold text-red">Visit the GRIT website <ArrowUpRight size={16} aria-hidden /></a> : null}
             {[["How We Work", "/#process"], ["About", "/about/"], ["Careers", "/careers/"], ["Contact", "/contact/"]].map(([l, h]) => (
               <Link key={h} href={h} className="block border-b border-line py-4 text-[20px] font-bold text-ink">{l}</Link>
             ))}

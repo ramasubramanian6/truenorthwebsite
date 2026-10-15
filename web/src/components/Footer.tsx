@@ -7,7 +7,7 @@ import { Button, Container, GritLogo, TnLockup, TnMark } from "./ui";
 export default function Footer() {
   const cols = {
     Services: SERVICES.map((s) => ({ label: s.name, href: `/services/${s.slug}/` })),
-    Products: [{ label: "GRIT School ERP", href: "/grit/" }],
+    Products: [{ label: "GRIT School ERP", href: "/grit/" }, ...(SITE.gritUrl ? [{ label: "GRIT Website", href: SITE.gritUrl }] : [])],
     Company: [
       { label: "About", href: "/about/" },
       { label: "How We Work", href: "/#process" },
@@ -49,7 +49,7 @@ export default function Footer() {
             <div key={h}>
               <h3 className="text-[12px] font-bold uppercase tracking-[0.18em] text-ink-3">{h}</h3>
               <ul className="mt-4 grid gap-2.5">
-                {links.map((l) => <li key={l.href}><Link href={l.href} className="text-[14.5px] text-ink-2 transition-colors hover:text-red">{l.label}</Link></li>)}
+                {links.map((l) => <li key={l.href}>{l.href.startsWith("http") ? <a href={l.href} target="_blank" rel="noopener" className="text-[14.5px] text-ink-2 transition-colors hover:text-red">{l.label} ↗</a> : <Link href={l.href} className="text-[14.5px] text-ink-2 transition-colors hover:text-red">{l.label}</Link>}</li>)}
               </ul>
             </div>
           ))}
