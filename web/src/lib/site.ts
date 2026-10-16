@@ -14,7 +14,8 @@ export const SITE = {
      allows requests from truenorthitc.com; elsewhere the form falls back to
      a prefilled email so no enquiry is lost. */
   contactApi: (process.env.NEXT_PUBLIC_CONTACT_API || "https://truenorthwebsite.vercel.app/api/contact").replace(/\/$/, ""),
-  /* GRIT's own website, once its domain is live. Until then GRIT links go
-     to the GRIT page on this site. */
+  /* GRIT's own website. Paste the address here (or set NEXT_PUBLIC_GRIT_URL)
+     once it is hosted; every "Visit the GRIT website" link on this site uses
+     it. While it is empty those links are hidden and GRIT links go to /grit/. */
   gritUrl: process.env.NEXT_PUBLIC_GRIT_URL || "",
 };
