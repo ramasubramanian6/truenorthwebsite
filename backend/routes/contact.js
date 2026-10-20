@@ -2,6 +2,7 @@ const express = require('express');
 const { body, validationResult } = require('express-validator');
 const Contact = require('../models/Contact');
 const auth = require('../middleware/auth');
+const { notifyNewEnquiry, acknowledgeEnquiry } = require('../middleware/mailer');
 const router = express.Router();
 
 // POST /api/contact
@@ -17,8 +18,11 @@ router.post(
     if (!errors.isEmpty()) return res.status(400).json({ success: false, errors: errors.array() });
 
     try {
-      const contact = new Contact(req.body);
+      const { name, email, phone, company, service, message } = req.body;
+      const contact = new Contact({ name, email, phone, company, service, message });
       await contact.save();
+      // Awaited so they finish before Vercel freezes the function; neither throws.
+      await Promise.all([notifyNewEnquiry(contact), acknowledgeEnquiry(contact)]);
       return res.status(201).json({ success: true, message: 'Message received' });
     } catch (err) {
       return res.status(500).json({ success: false, message: 'Server error' });

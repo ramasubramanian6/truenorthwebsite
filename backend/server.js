@@ -20,6 +20,7 @@ app.use(cors({
     'https://truenorth-3191a.web.app',
     'https://truenorthwebsite-fjxoxhejw-truenorthspaces-8691s-projects.vercel.app',
     'http://localhost:5173',
+    'http://localhost:3000',
   ],
   credentials: true,
 }));
