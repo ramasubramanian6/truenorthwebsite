@@ -9,7 +9,9 @@ export const SITE = {
   phoneHref: "tel:+919566556056",
   whatsapp: "https://wa.me/919566556056",
   linkedin: "https://www.linkedin.com/company/truenorth-it",
-  office: "Tirunelveli, Tamil Nadu, India",
+  office: "Tirunelveli, Chennai and Coimbatore, Tamil Nadu",
+  /* City names only: no street addresses on the public site. */
+  offices: ["Tirunelveli", "Chennai", "Coimbatore"],
   /* The existing contact API (backend/routes/contact.js) on Vercel. It
      allows requests from truenorthitc.com; elsewhere the form falls back to
      a prefilled email so no enquiry is lost. */

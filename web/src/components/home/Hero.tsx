@@ -92,7 +92,7 @@ export default function Hero() {
           </motion.div>
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.35 }} className="mt-10 flex flex-wrap items-center gap-x-7 gap-y-3 text-[13.5px] font-semibold text-ink-3">
             <Link href="/grit/" className="group inline-flex items-center gap-2 text-ink-2 hover:text-ink">Makers of <GritLogo variant="wordmark" className="h-[18px]" /><ArrowUpRight size={14} aria-hidden className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></Link>
-            <span className="inline-flex items-center gap-1.5"><MapPin size={14} aria-hidden /> Tirunelveli, India</span>
+            <span className="inline-flex items-center gap-1.5"><MapPin size={14} aria-hidden /> Tirunelveli · Chennai · Coimbatore</span>
             <span>Founder-led</span>
           </motion.div>
         </div>

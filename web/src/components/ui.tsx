@@ -38,9 +38,14 @@ export function TnLockup({ light = false, className = "" }: { light?: boolean; c
   return (
     <span className={`inline-flex items-center gap-3 ${className}`}>
       <TnMark className="h-10" tone={light ? "white" : "ink"} />
-      <span className="flex flex-col leading-none">
-        <span className={`text-[17px] font-extrabold tracking-[-0.01em] ${light ? "text-white" : "text-ink"}`}>True North</span>
-        <span className="mt-1 text-[10.5px] font-bold uppercase tracking-[0.22em] text-red">IT Consulting</span>
+      <span className="inline-flex flex-col leading-none">
+        <span className={`whitespace-nowrap text-[17px] font-extrabold tracking-[-0.01em] ${light ? "text-white" : "text-ink"}`}>True North</span>
+        {/* Spread letter by letter across exactly the width of "True North"
+            (w-0 + min-w-full keeps it from widening the column). */}
+        <span className="sr-only">IT Consulting</span>
+        <span aria-hidden className="mt-[5px] flex w-0 min-w-full select-none justify-between text-[9.5px] font-bold uppercase text-red">
+          {"IT CONSULTING".split("").map((c, n) => <span key={n} className={c === " " ? "w-[3px]" : ""}>{c === " " ? "" : c}</span>)}
+        </span>
       </span>
     </span>
   );

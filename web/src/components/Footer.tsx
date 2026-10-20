@@ -9,6 +9,7 @@ export default function Footer() {
     Services: SERVICES.map((s) => ({ label: s.name, href: `/services/${s.slug}/` })),
     Products: [{ label: "GRIT School ERP", href: "/grit/" }, ...(SITE.gritUrl ? [{ label: "GRIT Website", href: SITE.gritUrl }] : [])],
     Company: [
+      { label: "Home", href: "/" },
       { label: "About", href: "/about/" },
       { label: "How We Work", href: "/#process" },
       { label: "Careers", href: "/careers/" },
@@ -42,7 +43,7 @@ export default function Footer() {
             <ul className="mt-6 grid gap-2.5 text-[14px] text-ink-2">
               <li><a href={`mailto:${SITE.email}`} className="inline-flex items-center gap-2 hover:text-red"><Mail size={15} aria-hidden /> {SITE.email}</a></li>
               <li><a href={SITE.phoneHref} className="inline-flex items-center gap-2 hover:text-red"><Phone size={15} aria-hidden /> {SITE.phone}</a></li>
-              <li className="inline-flex items-center gap-2"><MapPin size={15} aria-hidden /> {SITE.office}</li>
+              <li><Link href="/contact/" className="inline-flex items-start gap-2 hover:text-red"><MapPin size={15} aria-hidden className="mt-[3px] shrink-0" /> {SITE.offices.join(" · ")}</Link></li>
             </ul>
           </div>
           {Object.entries(cols).map(([h, links]) => (

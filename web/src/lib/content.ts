@@ -116,7 +116,27 @@ export const GRIT = {
   name: "GRIT",
   tagline: "Smarter. Faster. Better.",
   promise: "One school. One system.",
-  summary: "GRIT is the school operating system we built for Indian schools: admissions, fees, attendance, timetables, exams, HR, payroll, transport and WhatsApp parent communication in one system, with AI that follows the school's rules.",
+  summary: "GRIT is the school operating system we built for Indian schools, with an AI timetable generator, an AI question paper generator and a document generator built in. Admissions, fees, attendance, timetables, exams, HR, payroll, transport and WhatsApp parent communication live in one system, with AI that follows the school's rules.",
+  /* The three features schools ask about first. Keep claims to what GRIT does. */
+  ai: [
+    {
+      key: "timetable", tag: "AI Timetable Generator", title: "Clash-free timetables, built for you.",
+      text: "Google OR-Tools CP-SAT solves the whole school at once, so no teacher, class or room is ever double booked. When a teacher is absent, GRIT finds the cover.",
+      points: ["Clash-free for every class and teacher", "Cover for absent teachers, found for you", "Rebuild whenever plans change"],
+    },
+    {
+      key: "paper", tag: "AI Question Paper Generator", title: "Exam papers from your own syllabus.",
+      text: "Upload textbooks, past papers or transcripts. Pick the class, subject and marks, and GRIT writes a paper grounded in what you uploaded, with a quality score on every paper.",
+      points: ["Grounded in the school's own material", "Question bank and full paper history", "Quality score on every paper"],
+      screen: { src: "/screens/question-paper.jpg", alt: "GRIT question paper generator dashboard" },
+    },
+    {
+      key: "docs", tag: "Document Generator", title: "Certificates and letters, filled in for you.",
+      text: "Find a student, pick a document and their details fill in automatically. Bonafide and transfer certificates, participation certificates, consent forms and letters, with approvals where you need them.",
+      points: ["Student details filled in automatically", "Approval flow before anything is issued", "Circulars and a complete history"],
+      screen: { src: "/screens/documents.jpg", alt: "GRIT document generator" },
+    },
+  ],
   stats: [
     { value: "28", label: "Modules", hint: "in 7 domains" },
     { value: "11", label: "Roles", hint: "each with its own home" },
@@ -125,12 +145,13 @@ export const GRIT = {
   ],
   highlights: [
     { title: "One Database", text: "Students, money, staff and messages share one schema, so nothing is typed twice." },
-    { title: "A Real Timetable Engine", text: "Google OR-Tools CP-SAT builds clash-free timetables and finds cover for absent teachers." },
+    { title: "Fees and Payroll", text: "Fee collection, receipts and staff payroll run on the same records as everything else." },
     { title: "WhatsApp-First", text: "Absence alerts, receipts and results reach parents the moment they happen." },
-    { title: "Governed AI", text: "Ask GRIT answers inside each person's permissions; question papers come from the school's own syllabus." },
+    { title: "Governed AI", text: "Ask GRIT answers inside each person's permissions, and never outside the school's own data." },
   ],
   screens: [
     { src: "/screens/dashboard.jpg", label: "Overview", alt: "GRIT overview dashboard" },
+    { src: "/screens/question-paper.jpg", label: "Question Papers", alt: "GRIT AI question paper generator" },
     { src: "/screens/collect.jpg", label: "Fee Desk", alt: "GRIT fee collection desk" },
     { src: "/screens/communications.jpg", label: "WhatsApp Inbox", alt: "GRIT WhatsApp parent inbox" },
     { src: "/screens/transport.jpg", label: "Transport", alt: "GRIT fleet and transport overview" },
@@ -159,14 +180,22 @@ export const PRINCIPLES = [
   { title: "We Run What We Build", text: "GRIT is our own product, used by a school every day. We know what production asks of software because we live with it." },
   { title: "Correct Before Clever", text: "Sound data models, real tests and honest estimates come before features and buzzwords." },
   { title: "Founder-Led", text: "You work directly with the people who design and build your system, not a chain of account managers." },
-  { title: "Rooted in India", text: "Based in Tirunelveli, Tamil Nadu, building for Indian organisations and for clients beyond." },
+  { title: "Rooted in India", text: "With offices in Tirunelveli, Chennai and Coimbatore, building for Indian organisations and for clients beyond." },
 ];
 
-export const STACK = ["React", "Next.js", "TypeScript", "Python", "FastAPI", "Node.js", "PostgreSQL", "Redis", "AWS", "Docker", "Playwright", "pytest", "OR-Tools", "Tailwind CSS", "GitHub Actions", "WhatsApp Cloud API", "Razorpay"];
+/* The stack, grouped by what it does for a client. Only tools we use. */
+export const STACK = [
+  { key: "cloud", title: "Cloud Infrastructure", tools: "AWS, Docker, CI/CD" },
+  { key: "web", title: "Web Applications", tools: "React, Next.js, TypeScript" },
+  { key: "api", title: "APIs and Services", tools: "Python, FastAPI, Node.js" },
+  { key: "data", title: "Data Platforms", tools: "PostgreSQL, Redis" },
+  { key: "ai", title: "AI and Optimisation", tools: "LLMs, RAG, OR\u2011Tools" },
+  { key: "quality", title: "Quality Engineering", tools: "Playwright, pytest, GitHub Actions" },
+];
 
 export const FAQ = [
   { q: "What does True North do?", a: "We build, test and run software for organisations, and we build our own products. GRIT, our school operating system, is the best example of how we work." },
-  { q: "Where are you based?", a: "In Tirunelveli, Tamil Nadu, India. We work with clients in person and remotely." },
+  { q: "Where are you based?", a: "We have offices in Tirunelveli, Chennai and Coimbatore, in Tamil Nadu, India. We work with clients in person and remotely." },
   { q: "How do engagements start?", a: "With a short call about the problem. We follow up with a written proposal covering scope, timeline and cost." },
   { q: "Do you work with small organisations?", a: "Yes. We work with organisations of every size and match the engagement to what you need." },
   { q: "Who owns what you build for us?", a: "You do. Code, designs and documentation are handed over as part of the engagement." },
