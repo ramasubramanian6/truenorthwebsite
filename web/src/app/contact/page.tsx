@@ -11,7 +11,7 @@ export default function ContactPage() {
     { icon: Mail, label: "Email", value: SITE.email, href: `mailto:${SITE.email}` },
     { icon: Phone, label: "Phone", value: SITE.phone, href: SITE.phoneHref },
     { icon: MessageCircle, label: "WhatsApp", value: "Chat with us", href: SITE.whatsapp },
-    { icon: MapPin, label: "Office", value: SITE.office },
+    { icon: MapPin, label: "Offices", value: SITE.offices.join(" · ") },
   ];
   return (
     <section className="relative overflow-hidden pb-24 pt-14 sm:pt-20">

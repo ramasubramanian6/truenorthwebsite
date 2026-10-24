@@ -37,7 +37,7 @@ export default function Nav() {
   const enter = (m: "services" | "products") => () => { if (timer.current) clearTimeout(timer.current); setOpen(m); };
   const leave = () => { if (timer.current) clearTimeout(timer.current); timer.current = setTimeout(() => setOpen(null), 160); };
   const active = (href: string) => href !== "/" && !href.includes("#") && pathname.startsWith(href.replace(/\/$/, ""));
-  const link = (href: string) => `rounded-full px-3.5 py-2 text-[14.5px] font-semibold transition-colors ${active(href) ? "text-red" : "text-ink-2 hover:text-ink"}`;
+  const link = (href: string) => `whitespace-nowrap rounded-full px-2.5 py-2 text-[14.5px] font-semibold xl:px-3.5 transition-colors ${active(href) ? "text-red" : "text-ink-2 hover:text-ink"}`;
 
   return (
     <>
@@ -45,10 +45,11 @@ export default function Nav() {
       <div className="mx-auto flex h-[72px] w-full max-w-[1240px] items-center gap-6 px-5 sm:px-8">
         <Link href="/" aria-label="True North IT Consulting home"><TnLockup /></Link>
 
-        <nav aria-label="Primary" className="ml-auto hidden items-center gap-1 lg:flex">
+        <nav aria-label="Primary" className="ml-auto hidden items-center gap-0.5 lg:flex xl:gap-1">
+          <Link href="/" aria-current={pathname === "/" ? "page" : undefined} className={`whitespace-nowrap rounded-full px-2.5 py-2 text-[14.5px] font-semibold xl:px-3.5 transition-colors ${pathname === "/" ? "text-red" : "text-ink-2 hover:text-ink"}`}>Home</Link>
           <div className="relative" onMouseEnter={enter("services")} onMouseLeave={leave}>
             <button type="button" aria-expanded={open === "services"} onClick={() => setOpen((v) => (v === "services" ? null : "services"))} onFocus={enter("services")}
-              className={`inline-flex items-center gap-1 rounded-full px-3.5 py-2 text-[14.5px] font-semibold transition-colors ${open === "services" || active("/services/") ? "text-red" : "text-ink-2 hover:text-ink"}`}>
+              className={`inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2.5 py-2 text-[14.5px] font-semibold xl:px-3.5 transition-colors ${open === "services" || active("/services/") ? "text-red" : "text-ink-2 hover:text-ink"}`}>
               Services <ChevronDown size={15} aria-hidden className={`transition-transform ${open === "services" ? "rotate-180" : ""}`} />
             </button>
             <AnimatePresence>
@@ -75,7 +76,7 @@ export default function Nav() {
           </div>
           <div className="relative" onMouseEnter={enter("products")} onMouseLeave={leave}>
             <button type="button" aria-expanded={open === "products"} onClick={() => setOpen((v) => (v === "products" ? null : "products"))} onFocus={enter("products")}
-              className={`inline-flex items-center gap-1 rounded-full px-3.5 py-2 text-[14.5px] font-semibold transition-colors ${open === "products" || active("/grit/") ? "text-red" : "text-ink-2 hover:text-ink"}`}>
+              className={`inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2.5 py-2 text-[14.5px] font-semibold xl:px-3.5 transition-colors ${open === "products" || active("/grit/") ? "text-red" : "text-ink-2 hover:text-ink"}`}>
               Products <ChevronDown size={15} aria-hidden className={`transition-transform ${open === "products" ? "rotate-180" : ""}`} />
             </button>
             <AnimatePresence>
@@ -86,7 +87,7 @@ export default function Nav() {
                     <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-red-soft"><GritLogo variant="mark" className="h-7" /></span>
                     <span className="min-w-0">
                       <span className="flex items-center gap-2"><GritLogo variant="wordmark" className="h-[18px]" /><span className="rounded-full bg-paper-2 px-2 py-0.5 text-[11px] font-bold text-ink-3">School ERP</span></span>
-                      <span className="mt-1.5 block text-[13px] leading-snug text-ink-2">The school operating system: admissions to payroll, with WhatsApp for parents.</span>
+                      <span className="mt-1.5 block text-[13px] leading-snug text-ink-2">The school operating system, with an AI timetable generator, an AI question paper generator and a document generator.</span>
                     </span>
                   </Link>
                   {SITE.gritUrl ? (
@@ -103,7 +104,7 @@ export default function Nav() {
           <Link href="/careers/" className={link("/careers/")}>Careers</Link>
         </nav>
 
-        <div className="ml-3 hidden lg:block"><Button href="/contact/" size="sm" arrow>Start a Project</Button></div>
+        <div className="ml-2 hidden shrink-0 lg:block"><Button href="/contact/" size="sm" arrow>Start a Project</Button></div>
 
         <button type="button" onClick={() => setMobile((v) => !v)} aria-label={mobile ? "Close menu" : "Open menu"} aria-expanded={mobile}
           className="ml-auto grid h-11 w-11 place-items-center rounded-full text-ink ring-1 ring-line lg:hidden">
@@ -115,7 +116,8 @@ export default function Nav() {
       <AnimatePresence>
         {mobile ? (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-x-0 bottom-0 top-[72px] z-[60] overflow-y-auto bg-paper px-5 pb-10 pt-4 lg:hidden">
-            <p className="pt-2 text-[12px] font-bold uppercase tracking-[0.18em] text-ink-3">Services</p>
+            <Link href="/" className="block border-b border-line pb-4 pt-2 text-[20px] font-bold text-ink">Home</Link>
+            <p className="pt-4 text-[12px] font-bold uppercase tracking-[0.18em] text-ink-3">Services</p>
             <ul className="mt-2 grid gap-1 border-b border-line pb-4">
               {SERVICES.map((s) => <li key={s.slug}><Link href={`/services/${s.slug}/`} className="block py-2 text-[17px] font-semibold text-ink">{s.name}</Link></li>)}
             </ul>

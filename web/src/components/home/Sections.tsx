@@ -4,22 +4,33 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useScroll, useTransform } from "motion/react";
-import { ArrowRight, ArrowUpRight, Check, Minus, Plus, Quote } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BrainCircuit, CalendarClock, Cloud, Database, MonitorSmartphone, Server, ShieldCheck, Check, Minus, Plus, Quote, Sparkles, Stamp } from "lucide-react";
 import { FAQ, GRIT, PRINCIPLES, PROCESS, SERVICES, STACK, TESTIMONIALS } from "@/lib/content";
 import { SITE } from "@/lib/site";
-import { BrowserFrame, Button, Container, GritLogo, Reveal, Section, SectionHeader, TnMark } from "../ui";
+import { BrowserFrame, Button, Container, GritLogo, Reveal, Section, SectionHeader, TnMark, tabKeys } from "../ui";
 
-/* ── The stack, as a quiet marquee ────────────────────────────────────── */
+/* ── The stack, as six capability areas ───────────────────────────────── */
+
+const STACK_ICONS = { cloud: Cloud, web: MonitorSmartphone, api: Server, data: Database, ai: BrainCircuit, quality: ShieldCheck } as const;
 
 export function Stack() {
   return (
-    <div className="border-y border-line bg-card/60 py-6">
-      <p className="text-center text-[12px] font-bold uppercase tracking-[0.2em] text-ink-3">Built With Tools We Use Every Day</p>
-      <div className="mask-fade-x mt-4 overflow-hidden">
-        <div className="animate-marquee flex w-max gap-12 whitespace-nowrap">
-          {[...STACK, ...STACK].map((s, i) => <span key={i} className="text-[18px] font-bold text-ink/45">{s}</span>)}
-        </div>
-      </div>
+    <div className="border-y border-line bg-card/60 py-10">
+      <Container>
+        <p className="text-center text-[12px] font-bold uppercase tracking-[0.2em] text-ink-3">Enterprise-Grade Technology, End to End</p>
+        <Reveal><ul className="mt-7 grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-line ring-1 ring-line md:grid-cols-3 lg:grid-cols-6">
+          {STACK.map((s) => {
+            const Icon = STACK_ICONS[s.key as keyof typeof STACK_ICONS];
+            return (
+              <li key={s.key} className="group bg-card p-5 transition-colors hover:bg-red-soft/40">
+                <span className="grid h-10 w-10 place-items-center rounded-xl bg-red-soft text-red transition-colors group-hover:bg-red group-hover:text-white"><Icon size={19} aria-hidden /></span>
+                <p className="mt-4 text-[14.5px] font-bold leading-snug text-ink">{s.title}</p>
+                <p className="mt-1 text-[12.5px] leading-snug text-ink-3">{s.tools}</p>
+              </li>
+            );
+          })}
+        </ul></Reveal>
+      </Container>
     </div>
   );
 }
@@ -117,6 +128,8 @@ export function GritShowcase() {
           </div>
         </div>
 
+        <GritAi />
+
         <ul className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {GRIT.highlights.map((h, n) => (
             <Reveal as="li" key={h.title} delay={0.05 * n} className="rounded-2xl bg-card p-6 ring-1 ring-line">
@@ -128,6 +141,99 @@ export function GritShowcase() {
         </ul>
       </Container>
     </Section>
+  );
+}
+
+/* ── GRIT's three headline features ───────────────────────────────────── */
+
+const AI_ICONS = { timetable: CalendarClock, paper: Sparkles, docs: Stamp } as const;
+type AiKey = keyof typeof AI_ICONS;
+
+function GritAi() {
+  const ids = GRIT.ai.map((f) => f.key as AiKey);
+  const [k, setK] = useState<AiKey>("timetable");
+  const f = GRIT.ai.find((x) => x.key === k)!;
+  return (
+    <div className="relative mt-20 overflow-hidden rounded-[32px] bg-gradient-to-br from-card via-card to-red-soft p-6 ring-1 ring-red/15 shadow-[0_40px_100px_-50px_rgba(211,8,18,0.45)] sm:p-10">
+      <div aria-hidden className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-[var(--red-glow)] blur-3xl" />
+      <Reveal className="relative max-w-[720px]">
+        <span className="inline-flex items-center gap-2 rounded-full bg-red px-3 py-1 text-[12px] font-bold uppercase tracking-[0.16em] text-white"><Sparkles size={13} aria-hidden /> Built Into GRIT</span>
+        <h3 className="mt-5 text-[30px] font-extrabold leading-[1.08] tracking-[-0.03em] text-ink sm:text-[40px]">The work that eats a school&apos;s week, <span className="text-red">done for you.</span></h3>
+        <p className="mt-4 text-[16.5px] leading-relaxed text-ink-2">Timetables, exam papers and certificates take the most hours in a school office. GRIT generates all three.</p>
+      </Reveal>
+
+      <div className="relative mt-10 grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+        <div role="tablist" aria-label="GRIT features" aria-orientation="vertical" onKeyDown={tabKeys(ids, k, setK, "vertical")} className="grid content-start gap-3">
+          {GRIT.ai.map((x) => {
+            const Icon = AI_ICONS[x.key as AiKey];
+            const on = x.key === k;
+            return (
+              <button key={x.key} type="button" role="tab" data-tab-id={x.key} aria-selected={on} tabIndex={on ? 0 : -1} onClick={() => setK(x.key as AiKey)}
+                className={`flex items-start gap-4 rounded-2xl p-5 text-left transition-all ${on ? "bg-card shadow-[0_20px_50px_-24px_rgba(211,8,18,0.5)] ring-2 ring-red" : "bg-card/60 ring-1 ring-line hover:bg-card"}`}>
+                <span className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl ${on ? "bg-red text-white" : "bg-red-soft text-red"}`}><Icon size={20} aria-hidden /></span>
+                <span>
+                  <span className="block text-[12px] font-bold uppercase tracking-[0.14em] text-red">{x.tag}</span>
+                  <span className="mt-1 block text-[17px] font-bold leading-snug text-ink">{x.title}</span>
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
+        <div role="tabpanel" aria-label={f.tag}>
+          <AnimatePresence mode="wait">
+            <motion.div key={f.key} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.25 }}>
+              {f.screen ? (
+                <BrowserFrame url={`app.grit.school/${f.key === "paper" ? "question-paper" : "documents"}`}>
+                  <Image src={f.screen.src} alt={f.screen.alt} width={2880} height={1800} sizes="(min-width: 1024px) 680px, 100vw" className="h-auto w-full" />
+                </BrowserFrame>
+              ) : <TimetableMock />}
+              <p className="mt-6 text-[16px] leading-relaxed text-ink-2">{f.text}</p>
+              <ul className="mt-4 grid gap-2 sm:grid-cols-3">
+                {f.points.map((pt) => <li key={pt} className="flex gap-2 text-[14px] font-semibold leading-snug text-ink"><Check size={16} aria-hidden className="mt-0.5 shrink-0 text-red" />{pt}</li>)}
+              </ul>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/** An illustration of a generated week, drawn rather than screenshotted. */
+function TimetableMock() {
+  const days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+  const tone: Record<string, string> = { Maths: "bg-red text-white", Science: "bg-red-soft text-red", English: "bg-paper-2 text-ink", Tamil: "bg-ink/[0.06] text-ink-2", Social: "bg-red/15 text-red-strong", Hindi: "bg-card text-ink ring-1 ring-line", PE: "bg-ok-soft text-ok" };
+  const week = [
+    ["Maths", "English", "Science", "Tamil", "Social", "Hindi"],
+    ["English", "Maths", "Tamil", "Science", "PE", "Social"],
+    ["Science", "Tamil", "Maths", "Hindi", "English", "Maths"],
+    ["Tamil", "Social", "English", "Maths", "Science", "PE"],
+    ["Maths", "Science", "Hindi", "English", "Tamil", "Social"],
+  ];
+  return (
+    <BrowserFrame url="app.grit.school/timetable">
+      <div className="p-4 sm:p-6">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <p className="text-[15px] font-bold text-ink">Class 8A <span className="font-medium text-ink-3">· Generated timetable</span></p>
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-ok-soft px-2.5 py-1 text-[12px] font-bold text-ok"><Check size={13} aria-hidden /> No clashes</span>
+        </div>
+        <div className="mt-4 grid grid-cols-[auto_repeat(6,minmax(0,1fr))] gap-1.5 text-[10.5px] font-semibold sm:text-[12px]">
+          <span />
+          {[1, 2, 3, 4, 5, 6].map((p) => <span key={p} className="pb-1 text-center text-ink-3">P{p}</span>)}
+          {days.map((d, r) => (
+            <div key={d} className="contents">
+              <span className="flex items-center pr-2 text-ink-3">{d}</span>
+              {[0, 1, 2, 3, 4, 5].map((c) => {
+                const name = week[r][c], cls = tone[name];
+                return <motion.span key={c} initial={{ opacity: 0, scale: 0.85 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.03 * (r * 6 + c) }} className={`truncate rounded-md px-1 py-2.5 text-center ${cls}`}>{name}</motion.span>;
+              })}
+            </div>
+          ))}
+        </div>
+        <p className="mt-4 text-[12px] text-ink-3">Solved with Google OR-Tools CP-SAT across every class, teacher and period.</p>
+      </div>
+    </BrowserFrame>
   );
 }
 

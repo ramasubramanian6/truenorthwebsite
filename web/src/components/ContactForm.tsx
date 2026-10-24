@@ -37,7 +37,7 @@ export default function ContactForm() {
     if (Object.keys(found).length) { document.getElementById(`cf-${Object.keys(found)[0]}`)?.focus(); return; }
     setState("sending");
     try {
-      const res = await fetch(SITE.contactApi, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: f.name, email: f.email, company: f.company, message: body() }) });
+      const res = await fetch(SITE.contactApi, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: f.name, email: f.email, phone: f.phone, company: f.company, service: f.service, message: body() }) });
       if (!res.ok) throw new Error(String(res.status));
       setState("sent");
       setF(EMPTY);
